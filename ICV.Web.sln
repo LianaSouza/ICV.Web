@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICV.Libary", "ICV.Libary\ICV.Libary.csproj", "{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICV.WebUIMVC", "ICV.WebUIMVC\ICV.WebUIMVC.csproj", "{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7065C1F9-A03C-47D0-A741-CFE40DB1D955}
+	EndGlobalSection
+EndGlobal
