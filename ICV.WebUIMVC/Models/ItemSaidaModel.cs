@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class ItemSaidaModel : ItemAbstract
+    public class ItemSaidaModel : ItemAbstract <ItemSaidaModel>
     {
-
         string dataAtual = DateTime.Now.ToString();
-        public ItemSaidaModel Buscar(int id)
+
+        public override ItemSaidaModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
@@ -33,7 +33,7 @@ namespace ICV.WebUIMVC.Models
             return Item;
         }
 
-        public List<ItemSaidaModel> Buscar()
+        public override List<ItemSaidaModel> Buscar()
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
@@ -60,7 +60,7 @@ namespace ICV.WebUIMVC.Models
             return listaObj;
         }
 
-        public void Cadastrar(ItemSaidaModel objeto)
+        public override void Cadastrar(ItemSaidaModel objeto)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
@@ -73,7 +73,7 @@ namespace ICV.WebUIMVC.Models
             con.Close();
         }
 
-        public void Editar(ItemSaidaModel objeto, int id)
+        public override void Editar(ItemSaidaModel objeto, int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
@@ -82,10 +82,9 @@ namespace ICV.WebUIMVC.Models
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
-
         }
 
-        public void Remover(int id)
+        public override void Remover(int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();

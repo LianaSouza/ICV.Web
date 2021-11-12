@@ -44,7 +44,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Select * from ItemEntrada";
+            string sql = "Select * from Turma";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -84,7 +84,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update Turma Set  NomeTurma='" + objeto.NomeTurma + "', DescricaoTurma='" + objeto.DescricaoTurma + "',StatusTurma='" + objeto.StatusTurma + "', PeriodoTurma='" + objeto.PeriodoTurma + "', where IdPost=" + objeto.IdTurma;
+            string sql = "Update Turma Set  NomeTurma='" + objeto.NomeTurma + "', DescricaoTurma='" + objeto.DescricaoTurma + "',StatusTurma='" + objeto.StatusTurma + "', PeriodoTurma='" + objeto.PeriodoTurma + "', where IdTurma=" + id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -95,7 +95,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Delete From ItemEntrad Where IdPost=" + id + "";
+            string sql = "Delete From Turma Where IdPost=" + id + "";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,27 +25,86 @@ namespace ICV.WebUIMVC.Models
 
         public CursoModel Buscar(int id)
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = @"Select * From Curso where IdCurso =" + id;
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            CursoModel Curso = new CursoModel();
+
+            if (dr.Read())
+            {
+                Curso.IdCurso = Convert.ToInt32(dr["IdCurso"]);
+                Curso.NomeCurso = dr["NomeCurso"].ToString();
+                Curso.DescricaoCurso = dr["DescricaoCurso"].ToString();
+                Curso.StatusCurso = (Status)Convert.ToInt32(dr["StatusCurso"]);
+                Curso.DataCadastroCurso = dr["DataCadastroCurso"].ToString();
+            }
+            return Curso;
         }
 
         public List<CursoModel> Buscar()
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = @"Select * From Curso";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<CursoModel> listObj = new List<CursoModel>();
+
+            if (dr.Read())
+            {
+                CursoModel Curso = new CursoModel();
+
+                Curso.IdCurso = Convert.ToInt32(dr["IdCurso"]);
+                Curso.NomeCurso = dr["NomeCurso"].ToString();
+                Curso.DescricaoCurso = dr["DescricaoCurso"].ToString();
+                Curso.StatusCurso = (Status)Convert.ToInt32(dr["StatusCurso"]);
+                Curso.DataCadastroCurso = dr["DataCadastroCurso"].ToString();
+
+                listObj.Add(Curso);
+            }
+
+            return listObj;
         }
 
         public void Cadastrar(CursoModel objeto)
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = "Insert Into Curso Values ('"+objeto.NomeCurso+"','"+objeto.DescricaoCurso+"','"+objeto.StatusCurso+"','"+objeto.DataCadastroCurso+"')";
+
+            SqlCommand cmd = new SqlCommand(sql,conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Editar(CursoModel objeto, int id)
         {
-            throw new NotImplementedException();
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+           
+            string sql = "Update Curso Set NomeCurso='"+objeto.NomeCurso+"', DescricaoCurso='"+objeto.DataCadastroCurso+"', StatusTurma='"+objeto.StatusCurso+"', where IdCurso="+ id;
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string sql = "Delete From Curso Where IdCurso=" + id + "";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
+            con.Close();
         }
     }
 }

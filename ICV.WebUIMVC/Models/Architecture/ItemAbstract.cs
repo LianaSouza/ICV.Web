@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public abstract class ItemAbstract
+    public abstract class ItemAbstract<T> : ICrud<T>
     {
         [Required]
         public int IdItem { get; set; }
@@ -22,5 +22,14 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public string IdDoacao { get; set; }
 
+        public abstract T Buscar(int id);
+
+        public abstract List<T> Buscar();
+
+        public abstract void Cadastrar(T objeto);
+
+        public abstract void Editar(T objeto, int id);
+
+        public abstract void Remover(int id);
     }
 }

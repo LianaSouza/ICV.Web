@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class AlunoModel : SuperPessoaAbstract, ICrud <AlunoModel>
+    public class AlunoModel : SuperPessoaAbstract<AlunoModel>
     {
+        
         [Required]
         [Display(Name = "Digite o Cpf do Aluno")]
         public string Cpf { get; set; }
@@ -16,27 +17,27 @@ namespace ICV.WebUIMVC.Models
         [Display(Name = "Digite o Data de Nascimento Aluno")]
         public string DataNascimento { get; set; }
 
-        public AlunoModel Buscar(int id)
+        public override AlunoModel Buscar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<AlunoModel> Buscar()
+        public override List<AlunoModel> Buscar()
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(AlunoModel objeto)
+        public override void Cadastrar(AlunoModel objeto)
         {
             throw new NotImplementedException();
         }
 
-        public void Editar(AlunoModel objeto, int id)
+        public override void Editar(AlunoModel objeto, int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Remover(int id)
+        public override void Remover(int id)
         {
             throw new NotImplementedException();
         }

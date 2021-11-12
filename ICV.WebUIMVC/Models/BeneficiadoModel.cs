@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class BeneficiadoModel : SuperPessoaAbstract, ICrud <BeneficiadoModel>
+    public class BeneficiadoModel : SuperPessoaAbstract <BeneficiadoModel>
     {
         [Required]
         public string CpfBeneficiado { get; set; }
@@ -22,27 +22,27 @@ namespace ICV.WebUIMVC.Models
         [Display(Name = "Digite a renda mensal da familia cadastrada")]
         public string RendaMensalBeneficiado { get; set; }
 
-        public BeneficiadoModel Buscar(int id)
+        public override BeneficiadoModel Buscar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<BeneficiadoModel> Buscar()
+        public override List<BeneficiadoModel> Buscar()
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(BeneficiadoModel objeto)
+        public override void Cadastrar(BeneficiadoModel objeto)
         {
             throw new NotImplementedException();
         }
 
-        public void Editar(BeneficiadoModel objeto, int id)
+        public override void Editar(BeneficiadoModel objeto, int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Remover(int id)
+        public override void Remover(int id)
         {
             throw new NotImplementedException();
         }

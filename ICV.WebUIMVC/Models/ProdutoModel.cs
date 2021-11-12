@@ -23,6 +23,7 @@ namespace ICV.WebUIMVC.Models
 
         public string DataCadastroProduto { get; set; }
 
+        string dataAtual = DateTime.Now.ToString();
 
         public ProdutoModel Buscar(int id)
         {
@@ -49,22 +50,64 @@ namespace ICV.WebUIMVC.Models
 
         public List<ProdutoModel> Buscar()
         {
-            throw new NotImplementedException();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = "Select * from Produto";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<ProdutoModel> listaObj = new List<ProdutoModel>();
+
+            if (dr.Read())
+            {
+                ProdutoModel Produto = new ProdutoModel();
+
+                Produto.IdProduto = Convert.ToInt32(dr["IdProduto"]);
+                Produto.NomeProduto = dr["NomeProduto"].ToString();
+                Produto.CategoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
+                Produto.QuantidadeProduto = Convert.ToInt32(dr["QuantidadeProduto"]);
+                Produto.DataCadastroProduto = dr["DataCadastroProduto"].ToString();
+
+                listaObj.Add(Produto);
+            }
+            return listaObj;
         }
 
         public void Cadastrar(ProdutoModel objeto)
         {
-            throw new NotImplementedException();
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string sql = "Insert Into Produto Values ('" + objeto.NomeProduto + "','" + objeto.CategoriaProduto + "','" + objeto.QuantidadeProduto + "','" + dataAtual + "')";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
+            con.Close();
         }
 
         public void Editar(ProdutoModel objeto, int id)
         {
-            throw new NotImplementedException();
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string sql = "Update Produto Set  NomeProduto='" + objeto.NomeProduto + "', CategoriaProduto='" + objeto.CategoriaProduto + "', QuantidadeProduto='" + objeto.QuantidadeProduto + "', where IdProduto=" + objeto.IdProduto;
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string sql = "Delete From Produto Where IdProduto=" + id + "";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
+            con.Close();
         }
     }
 }

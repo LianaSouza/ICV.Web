@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class ColaboradorModel : SuperPessoaAbstract, ICrud<ColaboradorModel>
+    public class ColaboradorModel : SuperPessoaAbstract <ColaboradorModel>
     {
         [Required]
         public string CPF { get; set; }
@@ -20,27 +20,27 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public string Senha { get; set; }
 
-        public ColaboradorModel Buscar(int id)
+        public override ColaboradorModel Buscar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<ColaboradorModel> Buscar()
+        public override List<ColaboradorModel> Buscar()
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(ColaboradorModel objeto)
+        public override void Cadastrar(ColaboradorModel objeto)
         {
             throw new NotImplementedException();
         }
 
-        public void Editar(ColaboradorModel objeto, int id)
+        public override void Editar(ColaboradorModel objeto, int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Remover(int id)
+        public override void Remover(int id)
         {
             throw new NotImplementedException();
         }

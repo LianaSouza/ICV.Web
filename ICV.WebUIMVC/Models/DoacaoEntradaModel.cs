@@ -5,29 +5,29 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class DoacaoEntradaModel : DoacaoAbstract
+    public class DoacaoEntradaModel : DoacaoAbstract<DoacaoEntradaModel>
     {
-        public DoacaoEntradaModel Buscar(int id)
+        public override DoacaoEntradaModel Buscar(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<DoacaoEntradaModel> Buscar()
+        public override List<DoacaoEntradaModel> Buscar()
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(DoacaoEntradaModel objeto)
+        public override void Cadastrar(DoacaoEntradaModel objeto)
         {
             throw new NotImplementedException();
         }
 
-        public void Editar(DoacaoEntradaModel objeto, int id)
+        public override void Editar(DoacaoEntradaModel objeto, int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Remover(int id)
+        public override void Remover(int id)
         {
             throw new NotImplementedException();
         }

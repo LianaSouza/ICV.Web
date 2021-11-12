@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class ItemEntradaModel : ItemAbstract
+    public class ItemEntradaModel : ItemAbstract <ItemEntradaModel>
     {
         string dataAtual = DateTime.Now.ToString();
-        public ItemEntradaModel Buscar(int id)
+
+        public override ItemEntradaModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
@@ -32,7 +33,7 @@ namespace ICV.WebUIMVC.Models
             return Item;
         }
 
-        public List<ItemEntradaModel> Buscar()
+        public override List<ItemEntradaModel> Buscar()
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
@@ -41,7 +42,7 @@ namespace ICV.WebUIMVC.Models
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
-            List< ItemEntradaModel> listaObj = new List<ItemEntradaModel>();
+            List<ItemEntradaModel> listaObj = new List<ItemEntradaModel>();
 
             if (dr.Read())
             {
@@ -59,7 +60,7 @@ namespace ICV.WebUIMVC.Models
             return listaObj;
         }
 
-        public void Cadastrar(ItemEntradaModel objeto)
+        public override void Cadastrar(ItemEntradaModel objeto)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
@@ -72,37 +73,27 @@ namespace ICV.WebUIMVC.Models
             con.Close();
         }
 
-        public void Editar(ItemEntradaModel objeto, int id)
-        {
-            try
-            {
-                SqlConnection con = new SqlConnection(ConecteDb.Connect());
-                con.Open();
-
-                string sql = "Update ItemEntrada Set  QuantidadeItem='" + objeto.QuantidadeItem + "',   where IdPost=" + objeto.IdItem;
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception)
-            {
-
-            }
-
-        }
-
-        public void Remover(int id)
+        public override void Editar(ItemEntradaModel objeto, int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Delete From ItemEntrad Where IdPost=" + id + "";
+            string sql = "Update ItemEntrada Set  QuantidadeItem='" + objeto.QuantidadeItem + "',   where IdPost=" + objeto.IdItem;
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public override void Remover(int id)
+        {
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string sql = "Delete From ItemEntrads Where IdItemEntrada=" + id + "";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
 
             con.Close();
         }
-
-
     }
 }
