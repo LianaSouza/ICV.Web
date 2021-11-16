@@ -10,12 +10,17 @@ namespace ICV.WebUIMVC.Models
     {
         
         [Required]
-        [Display(Name = "Digite o Cpf do Aluno")]
         public string Cpf { get; set; }
 
         [Required]
-        [Display(Name = "Digite o Data de Nascimento Aluno")]
         public string DataNascimento { get; set; }
+
+        [Required]
+        public int FKIdTurma { get; set; }
+
+        [Required]
+        public int FKIdColaborador { get; set; }
+
 
         public override AlunoModel Buscar(int id)
         {

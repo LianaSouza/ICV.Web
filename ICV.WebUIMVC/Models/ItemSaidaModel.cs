@@ -15,7 +15,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From SaidaItem where IdSaidaItem =" + id;
+            string sql = @"Select * From TblSaidaItem where IdSaidaItem =" + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -38,7 +38,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Select * from SaidaItem";
+            string sql = "Select * from TblSaidaItem";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -65,7 +65,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into SaidaItem Values ('" + objeto.IdItem + "','" + objeto.QuantidadeItem + "','" + dataAtual + "','" + objeto.IdProduto + "','" + objeto.IdDoacao + "')";
+            string sql = "Insert Into TblSaidaItem Values ('" + objeto.IdItem + "','" + objeto.QuantidadeItem + "','" + dataAtual + "','" + objeto.IdProduto + "','" + objeto.IdDoacao + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -78,7 +78,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update ItemSaida Set  QuantidadeItem='" + objeto.QuantidadeItem + "',   where IdSaidaDoacao=" + objeto.IdItem;
+            string sql = "Update TblSaidaItem Set  QuantidadeSaidaItem='" + objeto.QuantidadeItem + "',   where IdSaidaItem=" + objeto.IdItem;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -89,7 +89,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Delete From ItemSaida Where IdSaidaDoacao=" + id + "";
+            string sql = "Delete From TblSaidaItem Where IdSaidaItem=" + id + "";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
 

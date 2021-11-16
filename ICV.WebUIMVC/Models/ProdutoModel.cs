@@ -25,6 +25,7 @@ namespace ICV.WebUIMVC.Models
 
         string dataAtual = DateTime.Now.ToString();
 
+
         public ProdutoModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());

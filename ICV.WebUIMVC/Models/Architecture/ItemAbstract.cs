@@ -14,7 +14,10 @@ namespace ICV.WebUIMVC.Models
 
         [Required]
         public string QuantidadeItem { get; set; }
+
         public string DataCadastroItem { get; set; }
+
+        public CategoriaProduto categoriaProduto { get; set; }
 
         [Required]
         public string IdProduto { get; set; }

@@ -12,6 +12,8 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public string DocumentoDoador { get; set; }
 
+        public int FKIdDoador { get; set; }
+
         string dataAtual = DateTime.Now.ToString();
 
         public override DoadorModel Buscar(int id)
@@ -19,7 +21,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From Doador where IdDoador =" + id;
+            string sql = @"Select * From TblDoador where IdDoador =" + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -32,6 +34,7 @@ namespace ICV.WebUIMVC.Models
                 Doador.DocumentoDoador = dr["DocumentoDoador"].ToString();
                 Doador.Status = (Status)Convert.ToInt32(dr["StatusDoador"]);
                 Doador.DataCadastro = dr["DataCadastroDoador"].ToString();
+                Doador.FKIdDoador = Convert.ToInt32(dr["FKIdDoador"]);
             }
 
             return Doador;
@@ -42,7 +45,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From Doador";
+            string sql = @"Select * From TblDoador";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -57,6 +60,7 @@ namespace ICV.WebUIMVC.Models
                 Doador.DocumentoDoador = dr["DocumentoDoador"].ToString();
                 Doador.Status = (Status)Convert.ToInt32(dr["StatusDoador"]);
                 Doador.DataCadastro = dr["DataCadastroDoador"].ToString();
+                Doador.FKIdDoador = Convert.ToInt32(dr["FKIdDoador"]);
 
                 listaObj.Add(Doador);
             }
@@ -69,7 +73,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into Doador Values ('" + objeto.id + "','" + objeto.Nome + "','" + objeto.DocumentoDoador + "','" + objeto.Status + "','" + dataAtual + "',)";
+            string sql = "Insert Into TblDoador Values ('" + objeto.id + "','" + objeto.Nome + "','" + objeto.DocumentoDoador + "','" + objeto.Status + "','" + dataAtual + "', '" + objeto.FKIdDoador+ "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -82,7 +86,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update Doador Set  IdDoador='" + objeto.id + "', NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', StatusDoador='" + objeto.Status + "', where IdDoador=" + objeto.id;
+            string sql = "Update TblDoador Set  IdDoador='" + objeto.id + "', NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', StatusDoador='" + objeto.Status + "', where IdDoador=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -93,7 +97,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Delete From Doador Where IdDoador=" + id + "";
+            string sql = "Delete From TblDoador Where IdDoador=" + id + "";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
 
