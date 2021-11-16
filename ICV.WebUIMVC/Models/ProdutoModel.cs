@@ -30,7 +30,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From Produto where IdProduto =" + id;
+            string sql = @"Select * From TblProduto where IdProduto =" + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -53,7 +53,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Select * from Produto";
+            string sql = "Select * from TblProduto";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -79,7 +79,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into Produto Values ('" + objeto.NomeProduto + "','" + objeto.CategoriaProduto + "','" + objeto.QuantidadeProduto + "','" + dataAtual + "')";
+            string sql = "Insert Into TblProduto Values ('" + objeto.NomeProduto + "','" + objeto.CategoriaProduto + "','" + objeto.QuantidadeProduto + "','" + dataAtual + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -92,7 +92,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update Produto Set  NomeProduto='" + objeto.NomeProduto + "', CategoriaProduto='" + objeto.CategoriaProduto + "', QuantidadeProduto='" + objeto.QuantidadeProduto + "', where IdProduto=" + objeto.IdProduto;
+            string sql = "Update TblProduto Set  NomeProduto='" + objeto.NomeProduto + "', CategoriaProduto='" + objeto.CategoriaProduto + "', QuantidadeProduto='" + objeto.QuantidadeProduto + "', where IdProduto=" + objeto.IdProduto;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -103,7 +103,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Delete From Produto Where IdProduto=" + id + "";
+            string sql = "Delete From TblProduto Where IdProduto=" + id + "";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
 

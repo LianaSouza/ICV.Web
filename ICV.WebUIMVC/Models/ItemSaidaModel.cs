@@ -15,7 +15,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From ItemSaida where IdSaidaDoacao =" + id;
+            string sql = @"Select * From SaidaItem where IdSaidaItem =" + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -23,11 +23,11 @@ namespace ICV.WebUIMVC.Models
 
             if (dr.Read())
             {
-                Item.IdItem = Convert.ToInt32(dr["IdSaidaDoacao"]);
-                Item.QuantidadeItem = dr["QuantidadeItem"].ToString();
-                Item.DataCadastroItem = dr["DataCadastroItem"].ToString();
+                Item.IdItem = Convert.ToInt32(dr["IdSaidaItem"]);
+                Item.QuantidadeItem = dr["QuantidadeSaidaItem"].ToString();
+                Item.DataCadastroItem = dr["DataCadastroSaidaItem"].ToString();
                 Item.IdProduto = dr["FkProduto"].ToString();
-                Item.IdDoacao = dr["FkDoacao"].ToString();
+                Item.IdDoacao = dr["FkDoacao"].ToString(); // Faltou no banco
             }
 
             return Item;
@@ -38,7 +38,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Select * from ItemSaida";
+            string sql = "Select * from SaidaItem";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -48,9 +48,9 @@ namespace ICV.WebUIMVC.Models
             {
                 ItemSaidaModel Item = new ItemSaidaModel();
 
-                Item.IdItem = Convert.ToInt32(dr["IdSaidaDoacao"]);
-                Item.QuantidadeItem = dr["QuantidadeItem"].ToString();
-                Item.DataCadastroItem = dr["DataCadastroItem"].ToString();
+                Item.IdItem = Convert.ToInt32(dr["IdSaidaItem"]);
+                Item.QuantidadeItem = dr["QuantidadeSaidaItem"].ToString();
+                Item.DataCadastroItem = dr["DataCadastroSaidaItem"].ToString();
                 Item.IdProduto = dr["FkProduto"].ToString();
                 Item.IdDoacao = dr["FkDoacao"].ToString();
 
@@ -65,7 +65,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into ItemSaida Values ('" + objeto.IdItem + "','" + objeto.QuantidadeItem + "','" + dataAtual + "','" + objeto.IdProduto + "','" + objeto.IdDoacao + "')";
+            string sql = "Insert Into SaidaItem Values ('" + objeto.IdItem + "','" + objeto.QuantidadeItem + "','" + dataAtual + "','" + objeto.IdProduto + "','" + objeto.IdDoacao + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
