@@ -54,6 +54,7 @@ namespace ICV.WebUIMVC.Models
                 Turma.IdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
             }
+
             return Turma;
         }
 
@@ -87,38 +88,38 @@ namespace ICV.WebUIMVC.Models
 
         public void CadastrarTurma(TurmaModel objeto)
         {
-            SqlConnection con = new SqlConnection(ConecteDb.Connect());
-            con.Open();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
 
             string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + objeto.PeriodoTurma + "','" + objeto.StatusTurma + "','" + dataAtual + "','" + objeto.IdColaborador+ "')";
 
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
 
-            con.Close();
+            conn.Close();
         }
 
-        public void EditarTurma(TurmaModel objeto, int id)
+        public void EditarTurma(int id, TurmaModel objeto)
         {
-            SqlConnection con = new SqlConnection(ConecteDb.Connect());
-            con.Open();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
 
             string sql = "Update TblTurma Set  NomeTurma='" + objeto.NomeTurma + "', DescricaoTurma='" + objeto.DescricaoTurma + "', PeriodoTurma='" + objeto.PeriodoTurma + "', StatusTurma='" + objeto.StatusTurma + "',  where IdTurma=" + id;
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
-            con.Close();
+            conn.Close();
         }
 
         public void RemoverTurma(int id)
         {
-            SqlConnection con = new SqlConnection(ConecteDb.Connect());
-            con.Open();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
 
             string sql = "Delete From TblTurma Where IdTurma=" + id + "";
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
 
-            con.Close();
+            conn.Close();
         }
     }
 }
