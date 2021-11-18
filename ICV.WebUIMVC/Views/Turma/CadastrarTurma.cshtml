@@ -37,70 +37,64 @@
 </head>
 
 <body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-5">
-                <h4 class="p-4" style="color: #068FBB;">Cadastro de alunos</h4>
-                <hr>
-                <div class="row">
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Nome</label>
+    <div style=" margin-top:140px;">
+        <div class="card mb-2 shadow">
+            <div class="card-title p-3">
+                <h4>Cadastrar nova turma</h4>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">Nome da Turma</label>
                             <input type="text" class="form-control" id="nomealuno" placeholder="Nome do aluno">
                         </div>
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="descricaoaluno" placeholder="Digite o Email">
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">Período Turma</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecione o perído</option>
+                                <option value="1">Manhã</option>
+                                <option value="2">Tarde</option>
+                                <option value="3">Noite</option>
+                            </select>
                         </div>
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">Status</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecione o status</option>
+                                <option value="1">Ativo</option>
+                                <option value="2">Inativo</option>
 
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Turma</label>
-                            <input type="text" class="form-control" id="turma" placeholder="Digite a turma">
-                        </div>
-                        <div class="form-check form-switch mb-3">
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Status Aluno</label>
+                            </select>
+
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Telefone</label>
-                            <input type="text" class="form-control" id="statusaluno" placeholder="Digite o Telefone">
+                    <div class="row mt-3">
+                        <div class="col-sm-8">
+                            <label for="formGroupExampleInput" class="form-label">Descrição do Curso</label>
+
+                            <textarea class="form-control" placeholder="" id="floatingTextarea2" style="height: 50px"></textarea>
+
+
                         </div>
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">CPF</label>
-                            <input type="text" class="form-control" id="dataaluno" placeholder="Digite o CPF">
+                        <div class="col-sm-4 text-right">
+                            <div style="margin-top: 45px">
+                                <a href="" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retornar</a>
+                                <a href="" class="btn btn-success">Salvar <i class="fas fa-save"></i></a>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Data de nascimento</label>
-                            <input type="text" class="form-control" id="turma" placeholder="Digite a data de nascimento">
-                        </div>
+
                     </div>
                 </div>
-
-
-
-
-
-                <button type="button" class="btn btn-primary btn btn-block margin-top-5">Cadastrar</button>
-
             </div>
-
-            <div class="col-sm-1" style="background-color: #ffffff;">
-
-
-                <div id="rectangle"></div>
-
+        </div>
+    </div>
 </body>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</html>
 
+
+        
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<div class="form-group">
-    <input type="submit" value="Cadastrar" class="btn btn-primary" />
-</div>
