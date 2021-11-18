@@ -1,12 +1,17 @@
-﻿
+﻿/*      QUERY_CREATE_DATABASE_ICV_V2
+
+PARA RODAR A QUERY, 1° CRIAR DB COM O NOME ICV */
+
+USE ICV
+
 CREATE TABLE TblColaborador
 (
 	IdColaborador INT PRIMARY KEY IDENTITY(1,1), 
     NomeColaborador VARCHAR(150) NOT NULL, 
-    DocumentoColaborador VARCHAR(150) NOT NULL, 
+    DocumentoColaborador VARCHAR(11) NOT NULL, 
     DataNascimentoColaborador DATE NOT NULL, 
     EmailColaborador VARCHAR(150) NOT NULL, 
-    SenhaColaborador VARCHAR(15) NOT NULL, 
+    SenhaColaborador VARCHAR(100) NOT NULL, 
     TelefoneColaborador VARCHAR(13) NOT NULL, 
     TipoColaborador INT NOT NULL, 
     DataCadastroColaborador DATE NOT NULL
@@ -18,9 +23,7 @@ CREATE TABLE TblCurso
     NomeCurso VARCHAR(50) NOT NULL, 
     DescricaoCurso VARCHAR(200) NOT NULL, 
     StatusCurso INT NOT NULL, 
-    DataCadastroCurso DATE NOT NULL, 
-    FKIdColaborador INT NOT NULL
-    FOREIGN KEY (FKIdColaborador) REFERENCES TblColaborador(IdColaborador)
+    DataCadastroCurso DATE NOT NULL
 )
 
 CREATE TABLE TblTurma
@@ -30,17 +33,11 @@ CREATE TABLE TblTurma
     DescricaoTurma VARCHAR(150) NOT NULL, 
     PeriodoTurma INT NOT NULL, 
     StatusTurma INT NOT NULL, 
-    DataCadastroTurma DATE NOT NULL, 
-    FKIdColaborador INT NOT NULL
-    FOREIGN KEY (FKIdColaborador) REFERENCES TblColaborador(IdColaborador)
-)
-
-CREATE TABLE TblAssociativaCursoTurma
-(   IdAssosiciativaCursoTurma INT PRIMARY KEY IDENTITY(1,1),
+    DataCadastroTurma DATE NOT NULL,
     FKIdCurso INT NOT NULL,
-    FKIdTurma INT NOT NULL
+    FKIdColaborador INT NOT NULL,
     FOREIGN KEY (FKIdCurso) REFERENCES TblCurso(IdCurso),
-    FOREIGN KEY (FKIdTurma) REFERENCES TblTurma(IdTurma)
+    FOREIGN KEY (FKIdColaborador) REFERENCES TblColaborador(IdColaborador)
 )
 
 CREATE TABLE TblAluno
@@ -49,7 +46,7 @@ CREATE TABLE TblAluno
     NomeAluno VARCHAR(120) NOT NULL,
     CpfAluno VARCHAR(11) NOT NULL,
     DataNascimentoAluno DATE NOT NULL,
-    EmailAluno  VARCHAR(120) NOT NULL,
+    EmailAluno  VARCHAR(125) NOT NULL,
     TelefoneAluno VARCHAR(13) NOT NULL,
     StatusAluno INT NOT NULL,
     DataCadastroAluno DATE NOT NULL,
@@ -64,7 +61,11 @@ CREATE TABLE TblDoador
     IdDoador INT PRIMARY KEY IDENTITY(1,1),
     NomeDoador VARCHAR(120) NOT NULL,
     DocumentoDoador VARCHAR(25)NOT NULL,
+    TelefoneDoador VARCHAR(13) NOT NULL,
+    EmailDoador VARCHAR(125) NULL,
     StatusDoador INT NOT NULL,
+    AnonimoDoador INT NOT NULL,
+    ObservacaoDoador TEXT NOT NULL,
     DataCadastroDoador DATE NOT NULL,
     FKIdColaborador INT NOT NULL
     FOREIGN KEY (FKIdColaborador) REFERENCES TblColaborador(IdColaborador)
@@ -80,7 +81,7 @@ CREATE TABLE TblBeneficiado
     EmailBeneficiado VARCHAR(120) NULL,
     StatusBeneficiado INT NOT NULL,
     QuantidadesDependentesBeneficiado INT NOT NULL,
-    RendaMensalBeneficiado FLOAT NOT NULL,
+    RendaMensalBeneficiado DECIMAL(10,2) NOT NULL,
     DataCadastroBeneficiado DATE,
     FKIdColaborador INT NOT NULL,
     FOREIGN KEY (FKIdColaborador) REFERENCES TblColaborador(IdColaborador)
@@ -92,16 +93,9 @@ CREATE TABLE TblEntradaDoacao
     TipoEntradoDoacao INT NOT NULL,
     DataCadastroEntradoDoacao DATE NOT NULL,
     FKIdDoador INT NOT NULL,
-    FOREIGN KEY (FKIdDoador) REFERENCES TblDoador(IdDoador)
-)
-
-CREATE TABLE TblEntradaItem
-(
-    IdEntradaItem INT PRIMARY KEY IDENTITY(1,1),
-    TipoEntradoItem INT NOT NULL,
-    DataCadastroEntradoItem DATE NOT NULL,
-    FKIdEntradaDoacao INT NOT NULL,
-    FOREIGN KEY (FKIdEntradaDoacao) REFERENCES TblEntradaDoacao(IdEntradaDoacao)
+    FkIdColaborador INT NOT NULL,
+    FOREIGN KEY (FKIdDoador) REFERENCES TblDoador(IdDoador),
+    FOREIGN KEY (FKIdColaborador) REFERENCES TblColaborador(IdColaborador)
 )
 
 CREATE TABLE TblProduto
@@ -111,17 +105,18 @@ CREATE TABLE TblProduto
     CategoriaProduto INT NOT NULL,
     QuantidadeProduto INT NOT NULL,
     DataCadastroProduto DATE NOT NULL,
-    FKIdEntradaItem INT NOT NULL
-    FOREIGN KEY (FKIdEntradaItem) REFERENCES TblEntradaItem(IdEntradaItem)
 )
 
-CREATE TABLE TblSaidaItem
+CREATE TABLE TblEntradaItem
 (
-    IdSaidaItem INT PRIMARY KEY IDENTITY(1,1),
-    QuantidadeSaidaItem INT NOT NULL,
-    DataCadastroSaidaItem DATE NOT NULL,
+    IdEntradaItem INT PRIMARY KEY IDENTITY(1,1),
+    QuantidadeItem INT NOT NULL,
+    TipoEntradoItem INT NOT NULL,
+    DataCadastroEntradoItem DATE NOT NULL,
+    FKIdEntradaDoacao INT NOT NULL,
     FKIdProduto INT NOT NULL,
-    FOREIGN KEY (FKIdProduto) REFERENCES TblProduto(IdProduto)
+    FOREIGN KEY (FKIdProduto) REFERENCES TblProduto(IdProduto),
+    FOREIGN KEY (FKIdEntradaDoacao) REFERENCES TblEntradaDoacao(IdEntradaDoacao)
 )
 
 CREATE TABLE TblSaidaDoacao
@@ -130,6 +125,18 @@ CREATE TABLE TblSaidaDoacao
     TipoSaidaDoacao INT NOT NULL,
     DataCadastroSaidaDoacao INT NOT NULL,
     FKIdBeneficiado INT NOT NULL,
-    FOREIGN KEY (FKIdBeneficiado) REFERENCES TblBeneficiado(IdBeneficiado)
+    FkIdColaborador INT NOT NULL,
+    FOREIGN KEY (FKIdBeneficiado) REFERENCES TblBeneficiado(IdBeneficiado),
+    FOREIGN KEY (FKIdColaborador) REFERENCES TblColaborador(IdColaborador)
 )
 
+CREATE TABLE TblSaidaItem
+(
+    IdSaidaItem INT PRIMARY KEY IDENTITY(1,1),
+    QuantidadeSaidaItem INT NOT NULL,
+    DataCadastroSaidaItem DATE NOT NULL,
+    FKIdProduto INT NOT NULL,
+    FKIdSaidoDoacao INT NOT NULL,
+    FOREIGN KEY (FKIdProduto) REFERENCES TblProduto(IdProduto),
+    FOREIGN KEY (FKIdSaidoDoacao) REFERENCES TblSaidaDoacao(idSaidaDoacao)
+)
