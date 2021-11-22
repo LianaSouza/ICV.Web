@@ -1,0 +1,111 @@
+﻿@model ICV.WebUIMVC.Models.TurmaModel
+
+@{
+    ViewData["Title"] = "BuscarTurma";
+}
+
+<h1>BuscarTurma</h1>
+
+<h4>TurmaModel</h4>
+<hr />
+
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <form asp-action="BuscarTurma">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="IdTurma" class="control-label"></label>
+                <input asp-for="IdTurma" class="form-control" />
+                <span asp-validation-for="IdTurma" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NomeTurma" class="control-label"></label>
+                <input asp-for="NomeTurma" class="form-control" />
+                <span asp-validation-for="NomeTurma" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DescricaoTurma" class="control-label"></label>
+                <input asp-for="DescricaoTurma" class="form-control" />
+                <span asp-validation-for="DescricaoTurma" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PeriodoTurma" class="control-label"></label>
+                <input asp-for="PeriodoTurma" class="form-control" />
+                <span asp-validation-for="PeriodoTurma" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StatusTurma" class="control-label"></label>
+                <input asp-for="StatusTurma" class="form-control" />
+                <span asp-validation-for="StatusTurma" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdColaborador" class="control-label"></label>
+                <input asp-for="IdColaborador" class="form-control" />
+                <span asp-validation-for="IdColaborador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastroTurma" class="control-label"></label>
+                <input asp-for="DataCadastroTurma" class="form-control" />
+                <span asp-validation-for="DataCadastroTurma" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdCurso" class="control-label"></label>
+                <input asp-for="IdCurso" class="form-control" />
+                <span asp-validation-for="IdCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NomeCurso" class="control-label"></label>
+                <input asp-for="NomeCurso" class="form-control" />
+                <span asp-validation-for="NomeCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DescricaoCurso" class="control-label"></label>
+                <input asp-for="DescricaoCurso" class="form-control" />
+                <span asp-validation-for="DescricaoCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StatusCurso" class="control-label"></label>
+                <input asp-for="StatusCurso" class="form-control" />
+                <span asp-validation-for="StatusCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataCadastroCurso" class="control-label"></label>
+                <input asp-for="DataCadastroCurso" class="form-control" />
+                <span asp-validation-for="DataCadastroCurso" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FKIdColaborador" class="control-label"></label>
+                <input asp-for="FKIdColaborador" class="form-control" />
+                <span asp-validation-for="FKIdColaborador" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
