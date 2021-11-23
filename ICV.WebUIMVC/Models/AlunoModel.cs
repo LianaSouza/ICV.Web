@@ -9,12 +9,13 @@ namespace ICV.WebUIMVC.Models
 {
     public class AlunoModel : SuperPessoaAbstract<AlunoModel>
     {
-        
+        // Revisado 19/11 - De acordo com o Banco
+
         [Required]
         public string CpfAluno { get; set; }
 
         [Required]
-        public string DataNascimento { get; set; }
+        public string DataNascimentoAluno { get; set; }
 
         [Required]
         public int FKIdTurma { get; set; }
@@ -23,6 +24,7 @@ namespace ICV.WebUIMVC.Models
         public int FKIdColaborador { get; set; }
 
         string dataAtual = DateTime.Now.ToString();
+
 
         public override AlunoModel Buscar(int id)
         {
@@ -40,7 +42,7 @@ namespace ICV.WebUIMVC.Models
                 Aluno.id = Convert.ToInt32(dr["IdAluno"]);
                 Aluno.Nome = dr["NomeAluno"].ToString();
                 Aluno.CpfAluno = dr["CpfAluno"].ToString();
-                Aluno.DataNascimento = dr["DataNascimentoAluno"].ToString();
+                Aluno.DataNascimentoAluno = dr["DataNascimentoAluno"].ToString();
                 Aluno.Email = dr["EmailAluno"].ToString();
                 Aluno.Telefone = dr["TelefoneAluno"].ToString();
                 Aluno.Status = (Status) Convert.ToInt32(dr["StatusAluno"]);
@@ -70,7 +72,7 @@ namespace ICV.WebUIMVC.Models
                 Aluno.id = Convert.ToInt32(dr["IdAluno"]);
                 Aluno.Nome = dr["NomeAluno"].ToString();
                 Aluno.CpfAluno = dr["CpfAluno"].ToString();
-                Aluno.DataNascimento = dr["DataNascimentoAluno"].ToString();
+                Aluno.DataNascimentoAluno = dr["DataNascimentoAluno"].ToString();
                 Aluno.Email = dr["EmailAluno"].ToString();
                 Aluno.Telefone = dr["TelefoneAluno"].ToString();
                 Aluno.Status = (Status)Convert.ToInt32(dr["StatusAluno"]);
@@ -90,7 +92,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Insert into TblAluno values('"+objeto.Nome+ "','" + objeto.CpfAluno + "','" + objeto.DataNascimento + "','" + objeto.Email + "','" + objeto.Telefone + "','" + objeto.Status + "','" + dataAtual + "','" + objeto.FKIdTurma + "','" + objeto.FKIdColaborador + "')";
+            string sql = @"Insert into TblAluno values('"+objeto.Nome+ "','" + objeto.CpfAluno + "','" + objeto.DataNascimentoAluno + "','" + objeto.Email + "','" + objeto.Telefone + "','" + objeto.Status + "','" + dataAtual + "','" + objeto.FKIdTurma + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.ExecuteNonQuery();
@@ -102,7 +104,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblAluno Set NomeAluno='" + objeto.Nome + "', CpfAluno='" + objeto.CpfAluno + "', DataNascimentoAluno='" + objeto.DataNascimento + "', EmailAluno='" + objeto.Email + "', TelefoneAluno='" + objeto.Telefone + "',  StatusAluno='" + objeto.Status + "',  where IdAluno=" + objeto.id;
+            string sql = "Update TblAluno Set NomeAluno='" + objeto.Nome + "', CpfAluno='" + objeto.CpfAluno + "', DataNascimentoAluno='" + objeto.DataNascimentoAluno + "', EmailAluno='" + objeto.Email + "', TelefoneAluno='" + objeto.Telefone + "',  StatusAluno='" + objeto.Status + "',  where IdAluno=" + objeto.id;
             
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

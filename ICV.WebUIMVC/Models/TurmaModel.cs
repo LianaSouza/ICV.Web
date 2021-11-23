@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
+    // Revisado 18/11 - De acordo com o Banco
     public class TurmaModel : CursoModel
     {
         [Required]
@@ -26,6 +27,9 @@ namespace ICV.WebUIMVC.Models
 
         [Required]
         public int IdColaborador { get; set; }
+
+        [Required]
+        public int FKIdCurso { get; set; }
 
         public string DataCadastroTurma { get; set; }
 
@@ -51,6 +55,7 @@ namespace ICV.WebUIMVC.Models
                 Turma.PeriodoTurma = (PeriodoTurma)Convert.ToInt32(dr["PeriodoTurma"]);
                 Turma.StatusTurma = (Status)Convert.ToInt32(dr["StatusTurma"]);
                 Turma.DataCadastroTurma = dr["DataCadastroTurma"].ToString();
+                Turma.FKIdCurso = Convert.ToInt32(dr["FKIdCurso"]);
                 Turma.IdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
             }
@@ -75,9 +80,10 @@ namespace ICV.WebUIMVC.Models
                 Turma.IdTurma = Convert.ToInt32(dr["IdTurma"]);
                 Turma.NomeTurma = dr["NomeTurma"].ToString();
                 Turma.DescricaoTurma = dr["DescricaoTurma"].ToString();
-                Turma.PeriodoTurma = (PeriodoTurma) Convert.ToInt32(dr["PeriodoTurma"]);
-                Turma.StatusTurma = (Status) Convert.ToInt32(dr["StatusTurma"]);
+                Turma.PeriodoTurma = (PeriodoTurma)Convert.ToInt32(dr["PeriodoTurma"]);
+                Turma.StatusTurma = (Status)Convert.ToInt32(dr["StatusTurma"]);
                 Turma.DataCadastroTurma = dr["DataCadastroTurma"].ToString();
+                Turma.FKIdCurso = Convert.ToInt32(dr["FKIdCurso"]);
                 Turma.IdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
                 listaObj.Add(Turma);
@@ -90,7 +96,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + objeto.PeriodoTurma + "','" + objeto.StatusTurma + "','" + dataAtual + "','" + objeto.IdColaborador+ "')";
+            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + objeto.PeriodoTurma + "','" + objeto.StatusTurma + "','" + dataAtual + "','" + objeto.FKIdCurso+ "','" + objeto.IdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

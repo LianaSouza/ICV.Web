@@ -9,11 +9,12 @@ namespace ICV.WebUIMVC.Models
 {
     public class BeneficiadoModel : SuperPessoaAbstract <BeneficiadoModel>
     {
+        // ADD No campo CPF/Data Nascimento precisa estar escrito Beneficiado
         [Required]
         public string CpfBeneficiado { get; set; }
 
         [Required]
-        public string DataNascimento { get; set; }
+        public string DataNascimentoBeneficiado { get; set; }
 
         [Required]
         [Display(Name = "Digite a quantidade de pessoas na casa")]
@@ -23,6 +24,7 @@ namespace ICV.WebUIMVC.Models
         [Display(Name = "Digite a renda mensal da familia cadastrada")]
         public string RendaMensalBeneficiado { get; set; }
 
+        [Required]
         public int FKIdColaborador { get; set; }
 
         string dataAtual = DateTime.Now.ToString();
@@ -44,7 +46,8 @@ namespace ICV.WebUIMVC.Models
                 Beneficiado.id = Convert.ToInt32(dr["IdBeneficiado"]);
                 Beneficiado.Nome = dr["NomeBeneficiado "].ToString();
                 Beneficiado.CpfBeneficiado = dr["CpfBeneficiado "].ToString();
-                Beneficiado.DataNascimento = dr["DataNascimentoBeneficiado "].ToString();
+                Beneficiado.DataNascimentoBeneficiado = dr["DataNascimentoBeneficiado "].ToString();
+                Beneficiado.Telefone = dr["TelefoneBeneficiado"].ToString();
                 Beneficiado.Email = dr["EmailBeneficiado"].ToString();
                 Beneficiado.Status = (Status)Convert.ToInt32(dr["StatusBeneficiado"]);
                 Beneficiado.QuantidadeDependentes = Convert.ToInt32(dr["QuantidadeDependentesBeneficiado"]);
@@ -74,7 +77,8 @@ namespace ICV.WebUIMVC.Models
                 Beneficiado.id = Convert.ToInt32(dr["IdBeneficiado"]);
                 Beneficiado.Nome = dr["NomeBeneficiado "].ToString();
                 Beneficiado.CpfBeneficiado = dr["CpfBeneficiado "].ToString();
-                Beneficiado.DataNascimento = dr["DataNascimentoBeneficiado "].ToString();
+                Beneficiado.DataNascimentoBeneficiado = dr["DataNascimentoBeneficiado "].ToString();
+                Beneficiado.Telefone = dr["TelefoneBeneficiado"].ToString();
                 Beneficiado.Email = dr["EmailBeneficiado"].ToString();
                 Beneficiado.Status = (Status)Convert.ToInt32(dr["StatusBeneficiado"]);
                 Beneficiado.QuantidadeDependentes = Convert.ToInt32(dr["QuantidadeDependentesBeneficiado"]);
@@ -93,7 +97,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblBeneficiado Values('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + objeto.DataNascimento + "', '" + objeto.Telefone + "','" + objeto.Email  + "','" + objeto.Status + "','" + objeto.QuantidadeDependentes + "','" + objeto.RendaMensalBeneficiado + "','" + dataAtual + "','" + FKIdColaborador + "')";
+            string sql = "Insert Into TblBeneficiado Values('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + objeto.DataNascimentoBeneficiado + "', '" + objeto.Telefone + "','" + objeto.Email  + "','" + objeto.Status + "','" + objeto.QuantidadeDependentes + "','" + objeto.RendaMensalBeneficiado + "','" + dataAtual + "','" + FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -106,7 +110,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblBeneficiado Set NomeBeneficiado='" + objeto.Nome + "', CpfBeneficiado='" + objeto.CpfBeneficiado + "', DataNascimentoBeneficiado='" + objeto.DataNascimento + "', EmailBeneficiado='" + objeto.Email + "', StatusBeneficiado='" + objeto.Status + "', QuantidadeDependentesBeneficiado='" + objeto.QuantidadeDependentes + "', RendaMensalBeneficiado='" + objeto.RendaMensalBeneficiado + "', where IdBeneficiado=" + objeto.id;
+            string sql = "Update TblBeneficiado Set NomeBeneficiado='" + objeto.Nome + "', CpfBeneficiado='" + objeto.CpfBeneficiado + "', DataNascimentoBeneficiado='" + objeto.DataNascimentoBeneficiado + "', TelefoneBeneficiado='" + objeto.Telefone + "', EmailBeneficiado='" + objeto.Email + "', StatusBeneficiado='" + objeto.Status + "', QuantidadeDependentesBeneficiado='" + objeto.QuantidadeDependentes + "', RendaMensalBeneficiado='" + objeto.RendaMensalBeneficiado + "', where IdBeneficiado=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

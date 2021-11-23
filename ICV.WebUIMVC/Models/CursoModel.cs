@@ -9,6 +9,8 @@ namespace ICV.WebUIMVC.Models
 {
     public class CursoModel: ICrud<CursoModel>
     {
+        // Revisado 19/11 - De acordo com o Banco
+
         [Required]
         public int IdCurso { get; set; }
 
@@ -23,8 +25,6 @@ namespace ICV.WebUIMVC.Models
 
         public string DataCadastroCurso { get; set; }
 
-        [Required]
-        public int FKIdColaborador { get; set; }
 
         public CursoModel Buscar(int id)
         {
@@ -44,7 +44,6 @@ namespace ICV.WebUIMVC.Models
                 Curso.DescricaoCurso = dr["DescricaoCurso"].ToString();
                 Curso.StatusCurso = (Status)Convert.ToInt32(dr["StatusCurso"]);
                 Curso.DataCadastroCurso = dr["DataCadastroCurso"].ToString();
-                Curso.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
             }
             return Curso;
         }
@@ -69,7 +68,6 @@ namespace ICV.WebUIMVC.Models
                 Curso.DescricaoCurso = dr["DescricaoCurso"].ToString();
                 Curso.StatusCurso = (Status)Convert.ToInt32(dr["StatusCurso"]);
                 Curso.DataCadastroCurso = dr["DataCadastroCurso"].ToString();
-                Curso.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
                 listObj.Add(Curso);
             }
@@ -82,7 +80,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblCurso Values ('"+objeto.NomeCurso+"','"+objeto.DescricaoCurso+"','"+objeto.StatusCurso+"','"+objeto.DataCadastroCurso+ "','" + objeto.FKIdColaborador + "')";
+            string sql = "Insert Into TblCurso Values ('"+objeto.NomeCurso+"','"+objeto.DescricaoCurso+"','"+objeto.StatusCurso+"','"+objeto.DataCadastroCurso+ "')";
 
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.ExecuteNonQuery();

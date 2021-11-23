@@ -9,6 +9,7 @@ namespace ICV.WebUIMVC.Models
 {
     public abstract class ItemAbstract<T> : ICrud<T>
     {
+        // Revisado 18/11 - De acordo com o Banco
         [Required]
         public int IdItem { get; set; }
 
@@ -20,10 +21,10 @@ namespace ICV.WebUIMVC.Models
         public CategoriaProduto categoriaProduto { get; set; }
 
         [Required]
-        public string IdProduto { get; set; }
+        public string FKIdProduto { get; set; }
 
         [Required]
-        public string IdDoacao { get; set; }
+        public string FKIdDoacao { get; set; }
 
         public abstract T Buscar(int id);
 
