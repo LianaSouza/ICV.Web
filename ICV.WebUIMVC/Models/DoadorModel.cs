@@ -9,12 +9,21 @@ namespace ICV.WebUIMVC.Models
 {
     public class DoadorModel : SuperPessoaAbstract <DoadorModel>
     {
+        // Revisado 19/11 - De acordo com o Banco
+
         [Required]
         public string DocumentoDoador { get; set; }
 
-        public int FKIdDoador { get; set; }
+        [Required]
+        public int FKIdColaborador { get; set; }
+
+        [Required]
+        public AnonimoDoador AnonimoDoador { get; set; }
+
+        public string ObservacaoDoador { get; set; }
 
         string dataAtual = DateTime.Now.ToString();
+
 
         public override DoadorModel Buscar(int id)
         {
@@ -32,9 +41,13 @@ namespace ICV.WebUIMVC.Models
                 Doador.id = Convert.ToInt32(dr["IdDoador"]);
                 Doador.Nome = dr["NomeDoador"].ToString();
                 Doador.DocumentoDoador = dr["DocumentoDoador"].ToString();
-                Doador.Status = (Status)Convert.ToInt32(dr["StatusDoador"]);
+                Doador.Telefone = dr["TelefoneDoador"].ToString();
+                Doador.Email = dr["EmailDoador"].ToString();
+                Doador.Status = (Status)Convert.ToInt32(dr["StatusDoador"]); 
+                Doador.AnonimoDoador = (AnonimoDoador) Convert.ToInt32(dr["AnonimoDoador"]);
+                Doador.ObservacaoDoador =  dr["ObservacaoDoador"].ToString();
                 Doador.DataCadastro = dr["DataCadastroDoador"].ToString();
-                Doador.FKIdDoador = Convert.ToInt32(dr["FKIdDoador"]);
+                Doador.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
             }
 
             return Doador;
@@ -58,9 +71,13 @@ namespace ICV.WebUIMVC.Models
                 Doador.id = Convert.ToInt32(dr["IdDoador"]);
                 Doador.Nome = dr["NomeDoador"].ToString();
                 Doador.DocumentoDoador = dr["DocumentoDoador"].ToString();
+                Doador.Telefone = dr["TelefoneDoador"].ToString();
+                Doador.Email = dr["EmailDoador"].ToString();
                 Doador.Status = (Status)Convert.ToInt32(dr["StatusDoador"]);
+                Doador.AnonimoDoador = (AnonimoDoador)Convert.ToInt32(dr["AnonimoDoador"]);
+                Doador.ObservacaoDoador = dr["ObservacaoDoador"].ToString();
                 Doador.DataCadastro = dr["DataCadastroDoador"].ToString();
-                Doador.FKIdDoador = Convert.ToInt32(dr["FKIdDoador"]);
+                Doador.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
                 listaObj.Add(Doador);
             }
@@ -73,7 +90,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblDoador Values ('" + objeto.id + "','" + objeto.Nome + "','" + objeto.DocumentoDoador + "','" + objeto.Status + "','" + dataAtual + "', '" + objeto.FKIdDoador+ "')";
+            string sql = "Insert Into TblDoador Values ('" + objeto.Nome + "','" + objeto.DocumentoDoador + "','" + objeto.Telefone + "','" + objeto.Email + "','" + objeto.Status + "','" + objeto.AnonimoDoador + "','" + objeto.ObservacaoDoador + "','" + dataAtual + "', '" + objeto.FKIdColaborador+ "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -86,7 +103,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblDoador Set  IdDoador='" + objeto.id + "', NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', StatusDoador='" + objeto.Status + "', where IdDoador=" + objeto.id;
+            string sql = "Update TblDoador Set  NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', TelefoneDoador='" + objeto.Telefone + "', EmailDoador='" + objeto.Email + "', StatusDoador='" + objeto.Status + "', AnonimoDoador='" + objeto.AnonimoDoador + "', ObservacaoDoador='" + objeto.ObservacaoDoador + "', where IdDoador=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

@@ -2,30 +2,35 @@
 {
     public enum Status
     {
-        Ativo,
-        Inativo
+        Ativo=1,
+        Inativo=2
     }
 
     public enum TipoColaborador
     {
-        Voluntario,
-        Funcionario
+        Voluntario=1,
+        Funcionario=2
     }
     public enum PeriodoTurma
     {
-        Manha,
-        Tarde,
-        Noite
+        Manha=1,
+        Tarde=2,
+        Noite=3
     }
     public enum CategoriaProduto
     {
-        Alimento,
-        Roupa,
-        Brinquedo
+        Alimento=1,
+        Roupa=2,
+        Brinquedo=3
     }
     public enum TipoItem
     {
-        Entrada,
-        Saida
+        Entrada=1,
+        Saida=2
+    }
+    public enum AnonimoDoador
+    {
+        True = 1,
+        False= 2
     }
 }

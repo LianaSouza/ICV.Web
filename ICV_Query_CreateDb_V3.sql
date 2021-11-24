@@ -1,4 +1,4 @@
-﻿/*      QUERY_CREATE_DATABASE_ICV_V2
+﻿/*      QUERY_CREATE_DATABASE_ICV_V3
 
 PARA RODAR A QUERY, 1° CRIAR DB COM O NOME ICV */
 
@@ -77,9 +77,9 @@ CREATE TABLE TblBeneficiado
     IdBeneficiado INT PRIMARY KEY IDENTITY(1,1),
     NomeBeneficiado VARCHAR(120) NOT NULL,
     CpfBeneficiario VARCHAR(11) UNIQUE NOT NULL,
-    DataNascimentoBeneficiario DATE,
+    DataNascimentoBeneficiado DATE,
     TelefoneBeneficiado VARCHAR(13) NOT NULL,
-    EmailBeneficiado VARCHAR(120) NULL,
+    EmailBeneficiado VARCHAR(120) UNIQUE NULL,
     StatusBeneficiado INT NOT NULL,
     QuantidadesDependentesBeneficiado INT NOT NULL,
     RendaMensalBeneficiado DECIMAL(10,2) NOT NULL,
