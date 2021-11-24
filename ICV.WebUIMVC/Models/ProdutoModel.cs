@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
+    // Revisado 18/11 - De acordo com o Banco
     public class ProdutoModel : ICrud <ProdutoModel>
     {
         [Required]
