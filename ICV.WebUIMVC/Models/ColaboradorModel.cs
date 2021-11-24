@@ -126,24 +126,5 @@ namespace ICV.WebUIMVC.Models
             con.Close();
         }
 
-        public bool Login(ColaboradorModel objeto)
-        {
-            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
-            conn.Open();
-            //@"Select * From TblColaborador where EmailColaborador ='" + objeto.Email + "' and SenhaColaborador = '" + objeto.SenhaColaborador + "'";
-            string sql = @"Select * From TblColaborador where EmailColaborador ='" + objeto.Email + "'and " + "SenhaColaborador='" + objeto.SenhaColaborador;
-
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            if (dr.Read())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }

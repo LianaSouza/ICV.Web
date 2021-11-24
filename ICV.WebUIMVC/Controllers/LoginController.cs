@@ -28,14 +28,14 @@ namespace ICV.WebUIMVC.Controllers
         {
             try
             {
-                var colaboradorModel = new ColaboradorModel();
+                var loginModel = new LoginModel();
 
-                colaboradorModel.Email = email;
-                colaboradorModel.SenhaColaborador = senha;
+                loginModel.Email = email;
+                loginModel.Senha = senha;
 
-                colaboradorModel.Login(colaboradorModel);
+                loginModel.Login(loginModel);
 
-                if (colaboradorModel.Login(colaboradorModel) == true)
+                if (loginModel.Login(loginModel) == true)
                 {
                     //Create the identity for the user  
                     var identity = new ClaimsIdentity(new[] {
@@ -50,10 +50,9 @@ namespace ICV.WebUIMVC.Controllers
                 }
 
             }
-            catch (Exception)
+            catch (Exception erro)
             {
-                ViewBag.Error = true;
-                return View();
+                return View(erro);
             }
             return View();
         }

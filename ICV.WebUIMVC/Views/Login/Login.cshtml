@@ -7,42 +7,28 @@
 <h1>Instituto Coruja Veiculos</h1>
 <hr />
 <div class="container-fluid">
-    <div class= "row align-items-center">
-        <div class="col-sm-6" style="background-color: #04A0D2;">
-            <img src="Imagens/Celular.png" Class="img-fluid">
+    <div class="row align-items-center">
+        <div class="col-sm-6 text-center">
+            <img src="~/img/Celular.png" Class="img-fluid" style="background-color: #04A0D2;" width="800" height="300">
         </div>
         <div class="col-sm-6">
-            <div class="row" style="padding-top: 15%">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <div id="titulo" class="text-start">
-                        <h4>Login</h4>
-                    </div>
-                </div>
-                <div class="col-sm-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <hr id="linhaladodireito" size="4">
-                </div>
-                <div class="col-sm-3"></div>
-            </div>
-            <div class="col-sm-6 " style="margin-top: 50px;">
+            <h4 class="text-center">Login</h4>
+            <hr id="linhaladodireito" size="4">
+            <div class="col-sm-6 align-center " style="margin-top: 50px;">
                 <form asp-action="Login" class="align-center">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control d-sm-inline-flex p-2 bd-highlight" placeholder="Administrador@gmail.com" type="email" required />
+                        <input asp-for="Email" class="form-control d-sm-inline-flex p-2 bd-highlight" type="email" required />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Senha" class="control-label"></label>
-                        <input asp-for="Senha" class="form-control d-sm-inline-flex p-2 bd-highlight" placeholder="*********" type="password" required />
+                        <input asp-for="Senha" class="form-control d-sm-inline-flex p-2 bd-highlight" type="password" required />
                         <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn-lg btn-primary" />
+                        <input type="submit" value="Logar" class="btn btn-outline-success" />
                     </div>
                 </form>
             </div>
