@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class ColaboradorModel : SuperPessoaAbstract <ColaboradorModel>
+    public class ColaboradorModel : SuperPessoaAbstract<ColaboradorModel>
     {
         //Colocar no banco o email como unico, faltou o status na tabela 
 
@@ -24,6 +24,7 @@ namespace ICV.WebUIMVC.Models
         public string SenhaColaborador { get; set; }
 
         string dataAtual = DateTime.Now.ToString();
+
 
 
         public override ColaboradorModel Buscar(int id)
@@ -46,10 +47,10 @@ namespace ICV.WebUIMVC.Models
                 Colaborador.Email = dr["EmailColaborador"].ToString();
                 Colaborador.SenhaColaborador = dr["SenhaColaborador"].ToString();
                 Colaborador.Telefone = dr["TelefoneColaborador"].ToString();
-                Colaborador.Status = (Status) Convert.ToInt32(dr["StatusColaborador"]);
+                Colaborador.Status = (Status)Convert.ToInt32(dr["StatusColaborador"]);
                 Colaborador.TipoColaborador = (TipoColaborador)Convert.ToInt32(dr["TipoColaborador"]);
                 Colaborador.DataCadastro = dr["DataCadastroColaborador"].ToString();
-                
+
             }
 
             return Colaborador;
@@ -94,7 +95,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblColaborador Values('"+objeto.Nome+"','"+objeto.DocumentoColaborador+"','"+objeto.DataNascimentoColaborador+"', '"+objeto.Email+"','"+SenhaColaborador+"','"+objeto.Telefone+"','"+objeto.Status+"','"+objeto.TipoColaborador+"','"+dataAtual+"')";
+            string sql = "Insert Into TblColaborador Values('" + objeto.Nome + "','" + objeto.DocumentoColaborador + "','" + objeto.DataNascimentoColaborador + "', '" + objeto.Email + "','" + SenhaColaborador + "','" + objeto.Telefone + "','" + objeto.Status + "','" + objeto.TipoColaborador + "','" + dataAtual + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -107,7 +108,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblColaborador Set NomeColaborador='" + objeto.Nome + "', DocumentoColaborador='" + objeto.DocumentoColaborador + "', DataNascimentoColaborador='" + objeto.DataNascimentoColaborador + "', EmailColaborador='" + objeto.Email + "', SenhaColaborador='" + objeto.SenhaColaborador + "', TelefoneColaborador='" + objeto.Telefone+ "', StatusColaborador='" + objeto.Status + "', TipoColaborador='" + objeto.TipoColaborador + "',   where IdColaborador=" + objeto.id;
+            string sql = "Update TblColaborador Set NomeColaborador='" + objeto.Nome + "', DocumentoColaborador='" + objeto.DocumentoColaborador + "', DataNascimentoColaborador='" + objeto.DataNascimentoColaborador + "', EmailColaborador='" + objeto.Email + "', SenhaColaborador='" + objeto.SenhaColaborador + "', TelefoneColaborador='" + objeto.Telefone + "', StatusColaborador='" + objeto.Status + "', TipoColaborador='" + objeto.TipoColaborador + "',   where IdColaborador=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -123,6 +124,26 @@ namespace ICV.WebUIMVC.Models
             cmd.ExecuteNonQuery();
 
             con.Close();
+        }
+
+        public bool Login(ColaboradorModel objeto)
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+            //@"Select * From TblColaborador where EmailColaborador ='" + objeto.Email + "' and SenhaColaborador = '" + objeto.SenhaColaborador + "'";
+            string sql = @"Select * From TblColaborador where EmailColaborador ='" + objeto.Email + "'and " + "SenhaColaborador='" + objeto.SenhaColaborador;
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

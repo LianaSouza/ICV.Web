@@ -19,43 +19,50 @@ namespace ICV.WebUIMVC.Controllers
         public ActionResult Login()
         {
             return View();
+            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(string userName, string password)
+        public IActionResult Login(string email, string senha)
         {
-            if (!string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(password))
+            try
             {
-                return RedirectToAction("Login");
+                var colaboradorModel = new ColaboradorModel();
+
+                colaboradorModel.Email = email;
+                colaboradorModel.SenhaColaborador = senha;
+
+                colaboradorModel.Login(colaboradorModel);
+
+                if (colaboradorModel.Login(colaboradorModel) == true)
+                {
+                    //Create the identity for the user  
+                    var identity = new ClaimsIdentity(new[] {
+                    new Claim(ClaimTypes.Name, email)
+                    }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    var principal = new ClaimsPrincipal(identity);
+
+                    var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                    return RedirectToAction("Home");
+                }
+
             }
-
-            //Check the user name and password  
-            //Here can be implemented checking logic from the database  
-
-            if (userName == "Admin" && password == "password")
+            catch (Exception)
             {
-
-                //Create the identity for the user  
-                var identity = new ClaimsIdentity(new[] {
-                    new Claim(ClaimTypes.Name, userName)
-                }, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                var principal = new ClaimsPrincipal(identity);
-
-                var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                return RedirectToAction("Index", "Home");
+                ViewBag.Error = true;
+                return View();
             }
-
             return View();
         }
 
         [Authorize]
         public ActionResult Logout()
         {
-
-            return View();
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction(nameof(Login));
         }
     }
 }
