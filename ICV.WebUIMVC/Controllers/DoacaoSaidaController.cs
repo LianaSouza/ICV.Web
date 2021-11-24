@@ -8,30 +8,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
-    public class BeneficiadoController : Controller
+    public class DoacaoSaidaController : Controller
     {
-        // GET: Beneficiado
+        // GET: DoacaoSaida
         public ActionResult Index()
         {
-            return View(new BeneficiadoModel().Buscar());
+            return View(new DoacaoSaidaModel().Buscar());
         }
 
-        // GET: Beneficiado/Details/5
+        // GET: DoacaoSaida/Details/5
         public ActionResult Detalhes(int id)
         {
-            return View(new BeneficiadoModel().Buscar(id));
+            return View(new DoacaoSaidaModel().Buscar(id));
         }
 
-        // GET: Beneficiado/Create
+        // GET: DoacaoSaida/Create
         public ActionResult Cadastrar()
         {
             return View();
         }
 
-        // POST: Beneficiado/Create
+        // POST: DoacaoSaida/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(BeneficiadoModel objeto)
+        public ActionResult Cadastrar(DoacaoSaidaModel objeto)
         {
             try
             {
@@ -45,21 +45,21 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Beneficiado/Edit/5
+        // GET: DoacaoSaida/Edit/5
         public ActionResult Editar(int id)
         {
-            return View(new BeneficiadoModel().Buscar(id));
+            return View(new DoacaoSaidaModel().Buscar(id));
         }
 
-        // POST: Beneficiado/Edit/5
+        // POST: DoacaoSaida/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, BeneficiadoModel objeto)
+        public ActionResult Editar(int id, DoacaoSaidaModel objeto)
         {
             try
             {
                 // TODO: Add update logic here
-                new BeneficiadoModel().Editar(objeto, id);
+                new DoacaoSaidaModel().Editar(objeto, id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -69,21 +69,21 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Beneficiado/Delete/5
+        // GET: DoacaoSaida/Delete/5
         public ActionResult Excluir(int id)
         {
-            return View(new BeneficiadoModel().Buscar(id));
+            return View(new DoacaoSaidaModel().Buscar(id));
         }
 
-        // POST: Beneficiado/Delete/5
+        // POST: DoacaoSaida/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Excluir(int id, BeneficiadoModel objeto)
+        public ActionResult Excluir(int id, DoacaoSaidaModel objeto)
         {
             try
             {
                 // TODO: Add delete logic here
-                new BeneficiadoModel().Remover(id);
+                new DoacaoSaidaModel().Remover(id);
 
                 return RedirectToAction(nameof(Index));
             }
