@@ -4,34 +4,62 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ICV.WebApi.Context;
+using ICV.WebApi.Entity;
 
 namespace ICV.WebApi.Controllers
 {
-    [Route("ICV.API/[controller]")]
+    [Route("ICV/[controller]")]
     [ApiController]
     public class DashboardController : ControllerBase
     {
-        // GET: api/Dashboard
+        // GET: ICV/Dashboard
         [HttpGet]
-        public Models.Dashboard Get()
+        public IEnumerable<string> Get()
         {
-            var lista = new List<int>();
+            var listColaborador = new List<Colaborador>();
 
-            for (int i = 0; i < 10; i++)
+
+
+            using (var context = new ICVContext())
             {
-                lista.Add(i+22);
+                foreach (var item in context.Colaborador)
+                {
+
+                }
+                
             }
 
-            var dashboard = new Models.Dashboard()
-            {
-                DataInicio = "22/01/2022",
-                DataFim = "23/01/2022",
-                QtdEntradaDoacao = lista,
-                QtdSaidaDoacao = lista
-            };
 
-            return dashboard;
+
+
+
+                return new string[] { "value1", "value2" };
         }
 
+        // GET: api/Dashboard/5
+        [HttpGet("{id}", Name = "Get")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST: api/Dashboard
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT: api/Dashboard/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
     }
 }
