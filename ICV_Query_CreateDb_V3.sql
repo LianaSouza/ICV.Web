@@ -76,7 +76,7 @@ CREATE TABLE TblBeneficiado
 (
     IdBeneficiado INT PRIMARY KEY IDENTITY(1,1),
     NomeBeneficiado VARCHAR(120) NOT NULL,
-    CpfBeneficiario VARCHAR(11) UNIQUE NOT NULL,
+    CpfBeneficiado VARCHAR(11) UNIQUE NOT NULL,
     DataNascimentoBeneficiado DATE,
     TelefoneBeneficiado VARCHAR(13) NOT NULL,
     EmailBeneficiado VARCHAR(120) UNIQUE NULL,
