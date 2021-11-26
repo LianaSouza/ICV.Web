@@ -112,7 +112,7 @@ CREATE TABLE TblEntradaItem
 (
     IdEntradaItem INT PRIMARY KEY IDENTITY(1,1),
     QuantidadeItem INT NOT NULL,
-    TipoEntradoItem INT NOT NULL,
+    TipoEntradaItem INT NOT NULL,
     DataCadastroEntradoItem DATE NOT NULL,
     FKIdEntradaDoacao INT NOT NULL,
     FKIdProduto INT NOT NULL,

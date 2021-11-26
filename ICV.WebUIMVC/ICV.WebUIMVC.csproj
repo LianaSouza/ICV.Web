@@ -1,15 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Home\Index.cshtml" />
+    <Compile Remove="Views\Cursos\**" />
+    <Content Remove="Views\Cursos\**" />
+    <EmbeddedResource Remove="Views\Cursos\**" />
+    <None Remove="Views\Cursos\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Views\Home\Index.cshtml" />
+    <Content Remove="Views\Curso\CadastrarCurso.cshtml" />
+    <Content Remove="Views\Turma\RemoverTurma.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
