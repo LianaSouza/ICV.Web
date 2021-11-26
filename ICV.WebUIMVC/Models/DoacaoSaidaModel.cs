@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +9,16 @@ namespace ICV.WebUIMVC.Models
 {
     public class DoacaoSaidaModel : DoacaoAbstract<DoacaoSaidaModel>
     {
+        // Revisado 19/11 - De acordo com o Banco
+
+        [Required]
+        public int FKIdBeneficiado { get; set; }
+
+        [Required]
+        public int FKIdSaidaDoacao { get; set; }
+
         string dataAtual = DateTime.Now.ToString();
+
 
         public override DoacaoSaidaModel Buscar(int id)
         {
@@ -27,6 +37,7 @@ namespace ICV.WebUIMVC.Models
                 Doacao.CategoriaDoacao= (CategoriaProduto) Convert.ToInt32(dr["TipoSaidaDoacao"]);
                 Doacao.DataCadastroDoacao = dr["DataCadastroSaidaDoacao"].ToString();
                 Doacao.FKIdBeneficiado = Convert.ToInt32(dr["FKIdBeneficiado"]);
+                Doacao.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
             }
             return Doacao;
         }
@@ -51,6 +62,7 @@ namespace ICV.WebUIMVC.Models
                 Doacao.CategoriaDoacao = (CategoriaProduto)Convert.ToInt32(dr["TipoSaidaDoacao"]);
                 Doacao.DataCadastroDoacao = dr["DataCadastroSaidaDoacao"].ToString();
                 Doacao.FKIdBeneficiado = Convert.ToInt32(dr["FKIdBeneficiado"]);
+                Doacao.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
                 listaObj.Add(Doacao);
             }
@@ -62,7 +74,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblSaidaDoacao Values ('" + objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdBeneficiado + "')";
+            string sql = "Insert Into TblSaidaDoacao Values ('" + objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdBeneficiado + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

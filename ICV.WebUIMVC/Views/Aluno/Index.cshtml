@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ICV.WebUIMVC.Models.AlunoModel>
+    <div style=" margin-top:70px;">
+        <div class="card mb-2 shadow">
+            <div class="card-title p-3">
+              
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row mt-2">
+                        <div>
+                            <p>
+                                <a asp-action="Cadastrar" class="btn btn-success">Cadastrar novo</a>
+                            </p>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CpfAluno)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DataNascimento)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FKIdTurma)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FKIdColaborador)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.id)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Nome)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Telefone)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DataCadastro)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CpfAluno)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DataNascimento)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FKIdTurma)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FKIdColaborador)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.id)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Nome)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Telefone)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DataCadastro)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Editar", "Editar", new { id = item.id }) |
+                                                @Html.ActionLink("Detailhes", "Detailhes", new { id = item.id }) |
+                                                @Html.ActionLink("Remover", "Remover", new { id = item.id })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

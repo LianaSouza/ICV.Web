@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ICV.WebUIMVC.Models.BeneficiadoModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CpfBeneficiado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimentoBeneficiado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeDependentes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RendaMensalBeneficiado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FKIdColaborador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CpfBeneficiado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimentoBeneficiado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeDependentes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RendaMensalBeneficiado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FKIdColaborador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id=item.id }) |
+                @Html.ActionLink("Detalhes", "Detalhes", new { id=item.id }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id=item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

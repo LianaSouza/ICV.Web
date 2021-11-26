@@ -1,0 +1,72 @@
+﻿@model ICV.WebUIMVC.Models.ColaboradorModel
+
+<h4>ColaboradorModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DocumentoColaborador" class="control-label"></label>
+                <input asp-for="DocumentoColaborador" class="form-control" />
+                <span asp-validation-for="DocumentoColaborador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataNascimentoColaborador" class="control-label"></label>
+                <input asp-for="DataNascimentoColaborador" class="form-control" />
+                <span asp-validation-for="DataNascimentoColaborador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoColaborador" class="control-label"></label>
+                <input asp-for="TipoColaborador" class="form-control" />
+                <span asp-validation-for="TipoColaborador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SenhaColaborador" class="control-label"></label>
+                <input asp-for="SenhaColaborador" class="form-control" />
+                <span asp-validation-for="SenhaColaborador" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label"></label>
+                <input asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

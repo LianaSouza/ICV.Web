@@ -1,0 +1,113 @@
+﻿@model ICV.WebUIMVC.Models.AlunoModel
+
+@{
+    ViewData["Title"] = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style=" margin-top:140px;">
+    <div class="card mb-2 shadow">
+        <div class="card-title p-3">
+            <h4>Cadastrar Alunos</h4>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row mt-1">
+                    <div class="col-sm-4">
+                        <label for="formGroupExampleInput" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nomealuno" placeholder="Nome e sobrenome">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="formGroupExampleInput" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="emailaluno" placeholder="email@email.com">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="formGroupExampleInput" class="form-label">Telefone</label>
+                        <input type="text" class="form-control" id="telefonealuno" placeholder="(DDD)xxxxx-xxxx">
+                    </div>
+                </div>
+                    <div class="row mt-1">
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="cpfaluno">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">Data de Cadastro</label>
+                            <input type="date" class="form-control" id="datacadastro">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">Turma</label>
+                            <input type="text" class="form-control" id="turmaaluno" placeholder="Turma do aluno">
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">Período Turma</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecione o perído</option>
+                                <option value="1">Manhã</option>
+                                <option value="2">Tarde</option>
+                                <option value="3">Noite</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="formGroupExampleInput" class="form-label">Status</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Selecione o status</option>
+                                <option value="1">Ativo</option>
+                                <option value="2">Inativo</option>
+
+
+
+                            </select>
+
+
+
+                        </div>
+                    </div>
+                            <div class="row mt-3">
+                                <div class="col-sm-8">
+
+
+
+
+
+
+
+
+                                </div>
+                                <div class="col-sm-4 text-right">
+
+
+
+                                    <div style="margin-top: 45px">
+                                        <a href="" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retornar</a>
+                                        <a href="" value="Cadastrar" class="btn btn-success">Salvar <i class="fas fa-save"></i></a>
+                                    </div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
