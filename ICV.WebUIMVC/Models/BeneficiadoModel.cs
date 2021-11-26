@@ -9,7 +9,7 @@ namespace ICV.WebUIMVC.Models
 {
     public class BeneficiadoModel : SuperPessoaAbstract <BeneficiadoModel>
     {
-        // ADD No campo CPF/Data Nascimento precisa estar escrito Beneficiado
+        // Revisado e de acordo com o banco - 26/11
         [Required]
         public string CpfBeneficiado { get; set; }
 

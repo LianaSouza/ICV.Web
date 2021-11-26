@@ -1,0 +1,55 @@
+﻿@model ICV.WebUIMVC.Models.DoadorModel
+
+@{
+    ViewData["Title"] = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style=" margin-top:140px;">
+    <div class="card mb-2 shadow">
+        <div class="card-title p-3">
+            <h4>Cadastrar Doador</h4>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="formGroupExampleInput" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nomecolaborador" placeholder="Nome e sobrenome">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="formGroupExampleInput" class="form-label">RG</label>
+                        <input type="text" class="form-control" id="numerodocumentocolaborador">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="formGroupExampleInput" class="form-label">Status</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Selecione o status</option>
+                            <option value="1">Ativo</option>
+                            <option value="2">Inativo</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="formGroupExampleInput" class="form-label">Data de Cadastro</label>
+                        <input type="date" class="form-control" id="datacadastrocolaborador">
+                    </div>
+                    <div class="col-sm-4">
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        <div style="margin-top: 31px">
+                            <a href="" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retornar</a>
+                            <a href="" class="btn btn-success">Salvar <i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

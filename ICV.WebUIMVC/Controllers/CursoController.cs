@@ -8,65 +8,57 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
-    public class AlunoController : Controller
+    public class CursoController : Controller
     {
-        // GET: Aluno
+        // GET: Curso
         public ActionResult Index()
         {
-            AlunoModel Colaborador = new AlunoModel();
-            return View(Colaborador.Buscar());
+            return View(new CursoModel().Buscar());
         }
 
-        // GET: Aluno/Details/5
-        public ActionResult Detalhes(int id)
+        // GET: Curso/Detalhes/5
+        public ActionResult Buscar(int id)
         {
-           AlunoModel Colaborador = new AlunoModel();
-            return View(Colaborador.Buscar(id));
+            return View(new CursoModel().Buscar(id));
         }
 
-        // GET: Aluno/Create
+        // GET: Curso/Cadastrar
         public ActionResult Cadastrar()
         {
             return View();
         }
 
-        // POST: Aluno/Create
+        // POST: Curso/Cadastrar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(AlunoModel objeto)
+        public ActionResult Cadastrar(CursoModel objeto)
         {
             try
             {
-                // TODO: Add insert logic here
-                new Models.AlunoModel().Cadastrar(objeto);
-
+                new CursoModel().Cadastrar(objeto);
 
                 return RedirectToAction(nameof(Index));
-
             }
             catch
             {
-                ViewBag.Error = true;
                 return View();
             }
         }
 
-        // GET: Aluno/Edit/5
+        // GET: Curso/Editar/5
         public ActionResult Editar(int id)
         {
-            return View();
+            return View(new CursoModel().Buscar(id));
         }
 
-        // POST: Aluno/Edit/5
+        // POST: Curso/Editar/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, AlunoModel objeto)
+        public ActionResult Editar(int id, CursoModel objeto)
         {
             try
             {
-                // TODO: Add update logic here
-                new AlunoModel().Editar(objeto, id);
-
+                new CursoModel().Editar(objeto, id);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,22 +67,20 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Aluno/Delete/5
+        // GET: Curso/Delete/5
         public ActionResult Remover(int id)
         {
-            return View();
+            return View(new CursoModel().Buscar(id)); ;
         }
 
-        // POST: Aluno/Delete/5
+        // POST: Curso/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Remover(int id, AlunoModel objeto)
+        public ActionResult Remover(int id, CursoModel objeto)
         {
             try
             {
-                DoadorModel Doador = new DoadorModel();
-                Doador.Remover(id);
-
+                new CursoModel().Remover(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

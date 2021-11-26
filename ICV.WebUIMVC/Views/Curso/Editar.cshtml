@@ -1,9 +1,11 @@
-﻿@model ICV.WebUIMVC.Models.TurmaModel
+﻿@model ICV.WebUIMVC.Models.CursoModel
 
 @{
-    ViewData["Title"] = "EditarTurma";
+    ViewData["Title"] = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h1>Editar</h1>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,32 +45,17 @@
 
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                        <div class="col-sm-4">
-
-                            <label asp-for="IdTurma" class="control-label"></label>
-                            <input asp-for="IdTurma" class="form-control" />
-                            <span asp-validation-for="IdTurma" class="text-danger"></span>
-
+                        <div class="form-group">
+                            <label asp-for="NomeCurso" class="control-label"></label>
+                            <input asp-for="NomeCurso" class="form-control" />
+                            <span asp-validation-for="NomeCurso" class="text-danger"></span>
                         </div>
-
-                        <div class="col-sm-4">
-
-                            <label asp-for="NomeTurma" class="control-label"></label>
-                            <input asp-for="NomeTurma" class="form-control" />
-                            <span asp-validation-for="NomeTurma" class="text-danger"></span>
-
+                        <div class="form-group">
+                            <label asp-for="DescricaoCurso" class="control-label"></label>
+                            <input asp-for="DescricaoCurso" class="form-control" />
+                            <span asp-validation-for="DescricaoCurso" class="text-danger"></span>
                         </div>
-
-                        <div class="col-sm-4">
-
-                            <label asp-for="DescricaoTurma" class="control-label"></label>
-                            <input asp-for="DescricaoTurma" class="form-control" />
-                            <span asp-validation-for="DescricaoTurma" class="text-danger"></span>
-
-                        </div>
-
-                        <div class="col-sm-4">
-
+                        <div class="form-group">
                             <label for="formGroupExampleInput" class="form-label">Período do Curso</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected>Selecione o perído</option>
@@ -76,26 +63,14 @@
                                 <option value="2">Tarde</option>
                                 <option value="3">Noite</option>
                             </select>
-
-                        </div>
-
-                        <div class="col-sm-4">
-
-                            <label for="formGroupExampleInput" class="form-label">Status</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecione o status</option>
-                                <option value="1">Ativo</option>
-                                <option value="2">Inativo</option>
-
-                            </select>
-
                         </div>
 
                         <div class="col-sm-4 text-right">
 
                             <div style="margin-top: 31px">
-                                <a href="http://localhost:58404/Turma" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retornar</a>
-                                <a href="" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Editar </a>
+
+                                <a href="" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retornar</a>
+                                <input type="submit" value="Editar" class="btn btn-danger" />
                             </div>
 
                         </div>
@@ -113,7 +88,17 @@
 </body>
 
 </html>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+        </form>
+    </div>
+</div>
 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
