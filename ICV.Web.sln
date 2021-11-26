@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICV.Libary", "ICV.Libary\IC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICV.WebUIMVC", "ICV.WebUIMVC\ICV.WebUIMVC.csproj", "{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICV.WebApi", "ICV.WebApi\ICV.WebApi.csproj", "{3EFBF46B-93F7-4C26-AB45-C6C3C0CC7E34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICV.WebApi", "ICV.WebApi\ICV.WebApi.csproj", "{3EFBF46B-93F7-4C26-AB45-C6C3C0CC7E34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

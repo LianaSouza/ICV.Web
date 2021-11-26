@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace ICV.WebUIMVC.Models
 {
-    public class ColaboradorModel : SuperPessoaAbstract <ColaboradorModel>
+    public class ColaboradorModel : SuperPessoaAbstract<ColaboradorModel>
     {
+        //Colocar no banco o email como unico, faltou o status na tabela 
+
         [Required]
         public string DocumentoColaborador { get; set; }
 
@@ -22,6 +24,8 @@ namespace ICV.WebUIMVC.Models
         public string SenhaColaborador { get; set; }
 
         string dataAtual = DateTime.Now.ToString();
+
+
 
         public override ColaboradorModel Buscar(int id)
         {
@@ -42,11 +46,11 @@ namespace ICV.WebUIMVC.Models
                 Colaborador.DataNascimentoColaborador = dr["DataNascimentoColaborador"].ToString();
                 Colaborador.Email = dr["EmailColaborador"].ToString();
                 Colaborador.SenhaColaborador = dr["SenhaColaborador"].ToString();
-                Colaborador.Telefone = dr["telefoneColaborador"].ToString();
-                Colaborador.Status = (Status) Convert.ToInt32(dr["StatusColaborador"]);
-                Colaborador.TipoColaborador = (TipoColaborador)Convert.ToInt32(dr["StatusColaborador"]);
-                Colaborador.DataCadastro = dr["DataCadastroDoador"].ToString();
-                
+                Colaborador.Telefone = dr["TelefoneColaborador"].ToString();
+                Colaborador.Status = (Status)Convert.ToInt32(dr["StatusColaborador"]);
+                Colaborador.TipoColaborador = (TipoColaborador)Convert.ToInt32(dr["TipoColaborador"]);
+                Colaborador.DataCadastro = dr["DataCadastroColaborador"].ToString();
+
             }
 
             return Colaborador;
@@ -74,10 +78,10 @@ namespace ICV.WebUIMVC.Models
                 Colaborador.DataNascimentoColaborador = dr["DataNascimentoColaborador"].ToString();
                 Colaborador.Email = dr["EmailColaborador"].ToString();
                 Colaborador.SenhaColaborador = dr["SenhaColaborador"].ToString();
-                Colaborador.Telefone = dr["telefoneColaborador"].ToString();
+                Colaborador.Telefone = dr["TelefoneColaborador"].ToString();
                 Colaborador.Status = (Status)Convert.ToInt32(dr["StatusColaborador"]);
-                Colaborador.TipoColaborador = (TipoColaborador)Convert.ToInt32(dr["StatusColaborador"]);
-                Colaborador.DataCadastro = dr["DataCadastroDoador"].ToString();
+                Colaborador.TipoColaborador = (TipoColaborador)Convert.ToInt32(dr["TipoColaborador"]);
+                Colaborador.DataCadastro = dr["DataCadastroColaborador"].ToString();
 
                 listaObj.Add(Colaborador);
 
@@ -91,7 +95,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblColaborador Values('"+objeto.Nome+"','"+objeto.DocumentoColaborador+"','"+objeto.DataNascimentoColaborador+"', '"+objeto.Email+"','"+SenhaColaborador+"','"+objeto.Telefone+"','"+objeto.Status+"','"+objeto.TipoColaborador+"','"+dataAtual+"')";
+            string sql = "Insert Into TblColaborador Values('" + objeto.Nome + "','" + objeto.DocumentoColaborador + "','" + objeto.DataNascimentoColaborador + "', '" + objeto.Email + "','" + SenhaColaborador + "','" + objeto.Telefone + "','" + objeto.Status + "','" + objeto.TipoColaborador + "','" + dataAtual + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -104,7 +108,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblColaborador Set NomeColaborador='" + objeto.Nome + "', DocumentoColaborador='" + objeto.DocumentoColaborador + "', DataNascimentoColaborador='" + objeto.DataNascimentoColaborador + "', EmailColaborador='" + objeto.Email + "', SenhaColaborador='" + objeto.SenhaColaborador + "', TelefoneColaborador='" + objeto.Telefone+ "', TipoColaborador='" + objeto.TipoColaborador + "',  StatusColaborador='" + objeto.Status + "', where IdColaborador=" + objeto.id;
+            string sql = "Update TblColaborador Set NomeColaborador='" + objeto.Nome + "', DocumentoColaborador='" + objeto.DocumentoColaborador + "', DataNascimentoColaborador='" + objeto.DataNascimentoColaborador + "', EmailColaborador='" + objeto.Email + "', SenhaColaborador='" + objeto.SenhaColaborador + "', TelefoneColaborador='" + objeto.Telefone + "', StatusColaborador='" + objeto.Status + "', TipoColaborador='" + objeto.TipoColaborador + "',   where IdColaborador=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -121,5 +125,6 @@ namespace ICV.WebUIMVC.Models
 
             con.Close();
         }
+
     }
 }

@@ -8,6 +8,7 @@ namespace ICV.WebUIMVC.Models
 {
     public class ItemEntradaModel : ItemAbstract <ItemEntradaModel>
     {
+        //Falta alterar para TipoEntradaItem
     
         string dataAtual = DateTime.Now.ToString();
 
@@ -26,9 +27,10 @@ namespace ICV.WebUIMVC.Models
             {
                 Item.IdItem = Convert.ToInt32(dr["IdEntradaItem"]);
                 Item.QuantidadeItem = dr["QuantidadeEntradaItem"].ToString();
+                Item.categoriaProduto = (CategoriaProduto) Convert.ToInt32( dr["QuantidadeEntradaItem"]);
                 Item.DataCadastroItem = dr["DataCadastroEntradaItem"].ToString();
-                Item.IdProduto = dr["FkIdProduto"].ToString();
-                Item.IdDoacao = dr["FkIdEntradaDoacao"].ToString();
+                Item.FKIdDoacao = dr["FkIdEntradaDoacao"].ToString();
+                Item.FKIdProduto = dr["FkIdProduto"].ToString(); 
             }
 
             return Item;
@@ -51,9 +53,10 @@ namespace ICV.WebUIMVC.Models
 
                 Item.IdItem = Convert.ToInt32(dr["IdEntradaItem"]);
                 Item.QuantidadeItem = dr["QuantidadeEntradaItem"].ToString();
+                Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["QuantidadeEntradaItem"]);
                 Item.DataCadastroItem = dr["DataCadastroEntradaItem"].ToString();
-                Item.IdProduto = dr["FkIdProduto"].ToString();
-                Item.IdDoacao = dr["FkIdEntradaDoacao"].ToString();
+                Item.FKIdDoacao = dr["FkIdEntradaDoacao"].ToString();
+                Item.FKIdProduto = dr["FkIdProduto"].ToString();
 
                 listaObj.Add(Item);
             }
@@ -66,7 +69,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblEntradaItem Values ('" + objeto.IdItem + "','" + objeto.QuantidadeItem + "','" + objeto.categoriaProduto + "','" + dataAtual + "','" + objeto.IdProduto + "','" + objeto.IdDoacao + "')";
+            string sql = "Insert Into TblEntradaItem Values ('" + objeto.QuantidadeItem + "','" + objeto.categoriaProduto + "','" + dataAtual + "','" + objeto.FKIdDoacao + "','" + objeto.FKIdProduto + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

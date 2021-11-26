@@ -8,6 +8,7 @@ namespace ICV.WebUIMVC.Models
 {
     public class ItemSaidaModel : ItemAbstract <ItemSaidaModel>
     {
+        // Revisado 18/11 - De acordo com o Banco
         string dataAtual = DateTime.Now.ToString();
 
         public override ItemSaidaModel Buscar(int id)
@@ -26,8 +27,8 @@ namespace ICV.WebUIMVC.Models
                 Item.IdItem = Convert.ToInt32(dr["IdSaidaItem"]);
                 Item.QuantidadeItem = dr["QuantidadeSaidaItem"].ToString();
                 Item.DataCadastroItem = dr["DataCadastroSaidaItem"].ToString();
-                Item.IdProduto = dr["FkProduto"].ToString();
-                Item.IdDoacao = dr["FkDoacao"].ToString(); // Faltou no banco
+                Item.FKIdProduto = dr["FkIdProduto"].ToString();
+                Item.FKIdDoacao = dr["FkIdSaidaDoacao"].ToString(); 
             }
 
             return Item;
@@ -51,8 +52,8 @@ namespace ICV.WebUIMVC.Models
                 Item.IdItem = Convert.ToInt32(dr["IdSaidaItem"]);
                 Item.QuantidadeItem = dr["QuantidadeSaidaItem"].ToString();
                 Item.DataCadastroItem = dr["DataCadastroSaidaItem"].ToString();
-                Item.IdProduto = dr["FkProduto"].ToString();
-                Item.IdDoacao = dr["FkDoacao"].ToString();
+                Item.FKIdProduto = dr["FkIdProduto"].ToString();
+                Item.FKIdDoacao = dr["FkIdSaidaDoacao"].ToString();
 
                 listaObj.Add(Item);
             }
@@ -65,7 +66,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblSaidaItem Values ('" + objeto.IdItem + "','" + objeto.QuantidadeItem + "','" + dataAtual + "','" + objeto.IdProduto + "','" + objeto.IdDoacao + "')";
+            string sql = "Insert Into TblSaidaItem Values ('" + objeto.QuantidadeItem + "','" + dataAtual + "','" + objeto.FKIdProduto + "','" + objeto.FKIdDoacao + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

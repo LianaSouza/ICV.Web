@@ -3,37 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ICV.WebUIMVC.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class BeneficiadoController : Controller
+    public class DoacaoEntradaController : Controller
     {
-        // GET: Beneficiado
+        // GET: DoacaoEntrada
         public ActionResult Index()
         {
-            return View(new BeneficiadoModel().Buscar());
+            return View(new DoacaoEntradaModel().Buscar());
         }
 
-        // GET: Beneficiado/Details/5
+        // GET: DoacaoEntrada/Details/5
         public ActionResult Detalhes(int id)
         {
-            return View(new BeneficiadoModel().Buscar(id));
+            return View(new DoacaoEntradaModel().Buscar(id));
         }
 
-        // GET: Beneficiado/Create
+        // GET: DoacaoEntrada/Create
         public ActionResult Cadastrar()
         {
             return View();
         }
 
-        // POST: Beneficiado/Create
+        // POST: DoacaoEntrada/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(BeneficiadoModel objeto)
+        public ActionResult Cadastrar(DoacaoEntradaModel objeto)
         {
             try
             {
@@ -47,21 +45,21 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Beneficiado/Edit/5
+        // GET: DoacaoEntrada/Edit/5
         public ActionResult Editar(int id)
         {
-            return View(new BeneficiadoModel().Buscar(id));
+            return View(new DoacaoEntradaModel().Buscar(id));
         }
 
-        // POST: Beneficiado/Edit/5
+        // POST: DoacaoEntrada/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, BeneficiadoModel objeto)
+        public ActionResult Editar(int id, DoacaoEntradaModel objeto)
         {
             try
             {
                 // TODO: Add update logic here
-                new BeneficiadoModel().Editar(objeto, id);
+                new DoacaoEntradaModel().Editar(objeto, id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -71,21 +69,21 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Beneficiado/Delete/5
+        // GET: DoacaoEntrada/Delete/5
         public ActionResult Excluir(int id)
         {
-            return View(new BeneficiadoModel().Buscar(id));
+            return View(new DoacaoEntradaModel().Buscar(id));
         }
 
-        // POST: Beneficiado/Delete/5
+        // POST: DoacaoEntrada/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Excluir(int id, BeneficiadoModel objeto)
+        public ActionResult Excluir(int id, DoacaoEntradaModel objeto)
         {
             try
             {
                 // TODO: Add delete logic here
-                new BeneficiadoModel().Remover(id);
+                new DoacaoEntradaModel().Remover(id);
 
                 return RedirectToAction(nameof(Index));
             }
