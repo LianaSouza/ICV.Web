@@ -22,7 +22,7 @@ namespace ICV.WebUIMVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Beneficiado");
         }
 
         public IActionResult Privacy()

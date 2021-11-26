@@ -69,7 +69,7 @@ namespace ICV.WebUIMVC.Controllers
                 else
                 {
                     ViewBag.retorno = "Erro";
-                    return RedirectToAction(nameof(Login));
+                    return View();
                 }
             }
             catch (Exception erro)

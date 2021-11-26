@@ -8,7 +8,7 @@ namespace ICV.WebUIMVC.Models
 {
     public class ItemEntradaModel : ItemAbstract <ItemEntradaModel>
     {
-        //Falta alterar para TipoEntradaItem
+        //Revisado com o banco - 26/11
     
         string dataAtual = DateTime.Now.ToString();
 
