@@ -13,13 +13,15 @@ namespace ICV.WebUIMVC.Controllers
         // GET: Aluno
         public ActionResult Index()
         {
-            return View();
+            AlunoModel Colaborador = new AlunoModel();
+            return View(Colaborador.Buscar());
         }
 
         // GET: Aluno/Details/5
         public ActionResult Detalhes(int id)
         {
-            return View();
+           AlunoModel Colaborador = new AlunoModel();
+            return View(Colaborador.Buscar(id));
         }
 
         // GET: Aluno/Create
@@ -36,12 +38,15 @@ namespace ICV.WebUIMVC.Controllers
             try
             {
                 // TODO: Add insert logic here
-               
+                new Models.AlunoModel().Cadastrar(objeto);
+
 
                 return RedirectToAction(nameof(Index));
+
             }
             catch
             {
+                ViewBag.Error = true;
                 return View();
             }
         }
@@ -55,11 +60,12 @@ namespace ICV.WebUIMVC.Controllers
         // POST: Aluno/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, IFormCollection collection)
+        public ActionResult Editar(int id, AlunoModel objeto)
         {
             try
             {
                 // TODO: Add update logic here
+                new AlunoModel().Editar(objeto, id);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -70,7 +76,7 @@ namespace ICV.WebUIMVC.Controllers
         }
 
         // GET: Aluno/Delete/5
-        public ActionResult Deletar(int id)
+        public ActionResult Remover(int id)
         {
             return View();
         }
@@ -78,11 +84,12 @@ namespace ICV.WebUIMVC.Controllers
         // POST: Aluno/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Remover(int id, AlunoModel objeto)
         {
             try
             {
-                // TODO: Add delete logic here
+                DoadorModel Doador = new DoadorModel();
+                Doador.Remover(id);
 
                 return RedirectToAction(nameof(Index));
             }

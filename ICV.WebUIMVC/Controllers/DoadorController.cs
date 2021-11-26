@@ -8,42 +8,38 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
-    public class ColaboradorController : Controller
+    public class DoadorController : Controller
     {
-        // GET: Colaborador
+        // GET: Doador
         public ActionResult Index()
         {
-            ColaboradorModel Colaborador = new ColaboradorModel();
-            return View(Colaborador.Buscar());
-
-           
+            return View(new DoadorModel().Buscar());
 
         }
 
-        // GET: Colaborador/Details/5
+        // GET: Doador/Details/5
         public ActionResult Detalhes(int id)
         {
-            ColaboradorModel Colaborador = new ColaboradorModel();
-            return View(Colaborador.Buscar(id));
+            
+            return View( new DoadorModel().Buscar(id));
         }
 
-        // GET: Colaborador/Create
+        // GET: Doador/Create
         public ActionResult Cadastrar()
         {
             return View();
         }
 
-        // POST: Colaborador/Create
+        // POST: Doador/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(ColaboradorModel objeto)
+        public ActionResult Cadastrar(DoadorModel objeto)
         {
             try
             {
                 // TODO: Add insert logic here
-                new Models.ColaboradorModel().Cadastrar(objeto);
+                new Models.DoadorModel().Cadastrar(objeto);
 
-              
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -53,22 +49,21 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Colaborador/Edit/5
+        // GET: Doador/Edit/5
         public ActionResult Editar(int id)
         {
             return View();
         }
 
-        // POST: Colaborador/Edit/5
+        // POST: Doador/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, ColaboradorModel objeto)
+        public ActionResult Editar(int id, DoadorModel objeto)
         {
             try
             {
                 // TODO: Add update logic here
-                new ColaboradorModel().Editar(objeto , id);
-                
+                new DoadorModel().Editar(objeto, id);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -77,25 +72,26 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Colaborador/Delete/5
+        // GET: Doador/Delete/5
         public ActionResult Remover(int id)
         {
             return View();
         }
 
-        // POST: Colaborador/Delete/5
+        // POST: Doador/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Remover(int id, ColaboradorModel objeto)
+        public ActionResult Remover(int id, DoadorModel objeto)
         {
             try
             {
                 // TODO: Add delete logic here
-                ColaboradorModel Colaborador = new ColaboradorModel();
-                Colaborador.Remover(id);
+                DoadorModel Doador = new DoadorModel();
+                Doador.Remover(id);
 
                 return RedirectToAction(nameof(Index));
-               
+
+              
             }
             catch
             {
