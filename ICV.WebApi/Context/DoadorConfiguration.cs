@@ -9,10 +9,10 @@ namespace ICV.WebApi.Context
         public void Configure(EntityTypeBuilder<Doador> builder)
         {
             builder
-                            .ToTable("TblDoador");
+                 .ToTable("TblDoador");
 
             builder
-                            .HasKey(c => c.IdDoador);
+                 .HasKey(c => c.IdDoador);
         }
     }
 }

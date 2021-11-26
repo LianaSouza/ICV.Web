@@ -13,53 +13,40 @@ namespace ICV.WebApi.Controllers
     [ApiController]
     public class DashboardController : ControllerBase
     {
-        // GET: ICV/Dashboard
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<EntradaDoacao> Get()
         {
-            var listColaborador = new List<Colaborador>();
-
-
+            var listaEntradaDoacoes = new List<EntradaDoacao>();
 
             using (var context = new ICVContext())
             {
-                foreach (var item in context.Colaborador)
-                {
-
-                }
-                
+                var query = context.EntradaDoacao
+                    .Where(a => a.DataCadastroEntradoDoacao.Contains("2021-11-26"));
             }
 
 
 
 
 
-                return new string[] { "value1", "value2" };
-        }
+            //using (var context = new ICVContext())
+            //{
+            //    foreach (var item in context.EntradaDoacao)
+            //    {
+            //        var doacao = new EntradaDoacao
+            //        {
+            //            IdEntradaDoacao = item.IdEntradaDoacao,
+            //            DataCadastroEntradoDoacao = item.DataCadastroEntradoDoacao
+            //        };
 
-        // GET: api/Dashboard/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+            //        listaEntradaDoacoes.Add(doacao);
+            //    }
+            //}
 
-        // POST: api/Dashboard
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
-        // PUT: api/Dashboard/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+
+
+            return listaEntradaDoacoes;
         }
     }
 }
