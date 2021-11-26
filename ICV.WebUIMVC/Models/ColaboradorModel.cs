@@ -9,7 +9,7 @@ namespace ICV.WebUIMVC.Models
 {
     public class ColaboradorModel : SuperPessoaAbstract<ColaboradorModel>
     {
-        //Colocar no banco o email como unico, faltou o status na tabela 
+        //Revisado e de acordo com o banco - 26/11
 
         [Required]
         public string DocumentoColaborador { get; set; }

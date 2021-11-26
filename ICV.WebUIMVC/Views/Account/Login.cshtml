@@ -24,6 +24,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.2.0/dist/sweetalert2.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -37,107 +38,46 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.2.0/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
-    <main class="pb-3">
-        <div class="card mb-2 p-4 shadow">
-            <div class="card-title p-1 align-center">
-                <h4>Instituto Coruja Veiculos</h4>
-            </div>
-            <div class="card-body">
-                <div class="container-fluid">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <img src="~/img/Celular.png" Class="img-fluid" style="background-color: #04A0D2;">
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card-body p-2">
-                                <form asp-action="Login" class="align-center">
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                    <div class="form-group">
-                                        <label asp-for="Email" class="control-label"></label>
-                                        <input asp-for="Email" class="form-control d-sm-inline-flex p-2 bd-highlight" type="email" required />
-                                        <span asp-validation-for="Email" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="Senha" class="control-label"></label>
-                                        <input asp-for="Senha" class="form-control d-sm-inline-flex p-2 bd-highlight" type="password" required />
-                                        <span asp-validation-for="Senha" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <input id="btnLogin" type="submit" value="Logar" class="btn btn-outline-success" />
+    <main class="pb-3" style="padding:30px">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="card mb-2 p-4" style="border:hidden ; padding-top:20px">
+                    <div class="card-title p-1" style="text-align:center">
+                    </div>
+                    <div class="card-body">
+                        <div class="container-fluid">
+                            <div class="row align-items-center" style="align-content:center">
+                                <div class="col-md-4" style="background-color: #04A0D2; padding:10px">
+                                    <img src="~/img/Celular.png" Class="img-fluid">
+                                </div>
+                                <div class="col-md-4">
 
+                                    <div class="card-body p-2 col align-self-center">
+                                        <h4 class="text-center">Login</h4>
+                                        <form asp-action="Login" class="align-center">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <div class="form-group">
+                                                <label asp-for="Email" class="control-label"></label>
+                                                <input asp-for="Email" class="form-control d-sm-inline-flex p-2 bd-highlight" type="email" required />
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Senha" class="control-label"></label>
+                                                <input asp-for="Senha" class="form-control d-sm-inline-flex p-2 bd-highlight" type="password" required />
+                                                <span asp-validation-for="Senha" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group" style="text-align:center">
+                                                <input id="btnLogin" type="submit" value="Logar" class="btn btn-outline-success" data-myValue="@ViewBag.retorno" />
+
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    @*<div class="row">
-            <div class="col-sm-5 col-md-6">
-                <img src="~/img/Celular.png" Class="img-fluid" style="background-color: #04A0D2;">
-            </div>
-            <div class="col-sm-5 col-md-6">
-                <h4 class="text-center">Login</h4>
-                <hr id="linhaladodireito" size="4">
-                <div class="col-sm-6 align-center " style="margin-top: 50px;">
-                    <form asp-action="Login" class="align-center">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control d-sm-inline-flex p-2 bd-highlight" type="email" required />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Senha" class="control-label"></label>
-                            <input asp-for="Senha" class="form-control d-sm-inline-flex p-2 bd-highlight" type="password" required />
-                            <span asp-validation-for="Senha" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input id="btnLogin" type="submit" value="Logar" class="btn btn-outline-success" />
-
-                        </div>
-                    </form>
-                </div>
-                <div class="col-sm-5 col-md-6">
-                    <button id="btnLoginInvalido">Erro login</button>
                 </div>
             </div>
-        </div>*@
-                </div>
-            </div>
-            @*<div class="container-fluid">
-                <h1>Instituto Coruja Veiculos</h1>
-                <hr />
-                <div class="row justify-content-center">
-                    <div class="col-sm-5 col-md-6">
-                        <img src="~/img/Celular.png" Class="img-fluid" style="background-color: #04A0D2;">
-                    </div>
-                    <div class="col-sm-5 col-md-6">
-                        <h4 class="text-center">Login</h4>
-                        <hr id="linhaladodireito" size="4">
-                        <div class="col-sm-6 align-center " style="margin-top: 50px;">
-                            <form asp-action="Login" class="align-center">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group">
-                                    <label asp-for="Email" class="control-label"></label>
-                                    <input asp-for="Email" class="form-control d-sm-inline-flex p-2 bd-highlight" type="email" required />
-                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Senha" class="control-label"></label>
-                                    <input asp-for="Senha" class="form-control d-sm-inline-flex p-2 bd-highlight" type="password" required />
-                                    <span asp-validation-for="Senha" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <input id="btnLogin" type="submit" value="Logar" class="btn btn-outline-success" />
-
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-sm-5 col-md-6">
-                            <button id="btnLoginInvalido">Erro login</button>
-                        </div>
-                    </div>
-
-                </div>*@
         </div>
     </main>
 </body>
@@ -145,14 +85,12 @@
 
 
 <script>
+    var retorno = "@ViewBag.retorno";
+    console.log(retorno);
 
     $(document).ready(function () {
 
-        Console.log(@ViewBag.retorno);
-        var retorno = @ViewBag.retorno;
-        Console.log(retorno);
-
-            if (retorno == "retorno" ) {
+            if (retorno == "Erro" ) {
                 const Toast = Swal.mixin({
 
                     toast: true,
