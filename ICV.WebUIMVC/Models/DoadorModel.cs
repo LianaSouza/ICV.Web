@@ -90,7 +90,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblDoador Values ('" + objeto.Nome + "','" + objeto.DocumentoDoador + "','" + objeto.Telefone + "','" + objeto.Email + "','" + objeto.Status + "','" + objeto.AnonimoDoador + "','" + objeto.ObservacaoDoador + "','" + dataAtual + "', '" + objeto.FKIdColaborador+ "')";
+            string sql = "Insert Into TblDoador Values ('" + objeto.Nome + "','" + objeto.DocumentoDoador + "','" + objeto.Telefone + "','" + objeto.Email + "','" + (int)objeto.Status + "','" + (int)objeto.AnonimoDoador + "','" + objeto.ObservacaoDoador + "','" + dataAtual + "', '" + objeto.FKIdColaborador+ "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -103,7 +103,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblDoador Set  NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', TelefoneDoador='" + objeto.Telefone + "', EmailDoador='" + objeto.Email + "', StatusDoador='" + objeto.Status + "', AnonimoDoador='" + objeto.AnonimoDoador + "', ObservacaoDoador='" + objeto.ObservacaoDoador + "', where IdDoador=" + objeto.id;
+            string sql = "Update TblDoador Set  NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', TelefoneDoador='" + objeto.Telefone + "', EmailDoador='" + objeto.Email + "', StatusDoador='" + (int)objeto.Status + "', AnonimoDoador='" + (int)objeto.AnonimoDoador + "', ObservacaoDoador='" + objeto.ObservacaoDoador + "', where IdDoador=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

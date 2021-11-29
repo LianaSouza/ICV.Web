@@ -80,7 +80,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblCurso Values ('"+objeto.NomeCurso+"','"+objeto.DescricaoCurso+"','"+objeto.StatusCurso+"','"+objeto.DataCadastroCurso+ "')";
+            string sql = "Insert Into TblCurso Values ('"+objeto.NomeCurso+"','"+objeto.DescricaoCurso+"','"+(int)objeto.StatusCurso+"','"+objeto.DataCadastroCurso+ "')";
 
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.ExecuteNonQuery();
@@ -92,7 +92,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
            
-            string sql = "Update TblCurso Set NomeCurso='"+objeto.NomeCurso+"', DescricaoCurso='"+objeto.DataCadastroCurso+"', StatusTurma='"+objeto.StatusCurso+"', where IdCurso="+ id;
+            string sql = "Update TblCurso Set NomeCurso='"+objeto.NomeCurso+"', DescricaoCurso='"+objeto.DataCadastroCurso+"', StatusTurma='"+ (int)objeto.StatusCurso+"', where IdCurso="+ id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

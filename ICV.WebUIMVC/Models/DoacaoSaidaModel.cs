@@ -74,7 +74,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblSaidaDoacao Values ('" + objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdBeneficiado + "','" + objeto.FKIdColaborador + "')";
+            string sql = "Insert Into TblSaidaDoacao Values ('" + (int)objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdBeneficiado + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -87,7 +87,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblSaidaDoacao Set  TipoSaidaDoacao='" + objeto.CategoriaDoacao + "', where IdSaidaDoacao=" + objeto.IdDoacao;
+            string sql = "Update TblSaidaDoacao Set  TipoSaidaDoacao='" + (int)objeto.CategoriaDoacao + "', where IdSaidaDoacao=" + objeto.IdDoacao;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

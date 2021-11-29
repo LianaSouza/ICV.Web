@@ -81,7 +81,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblProduto Values ('" + objeto.NomeProduto + "','" + objeto.CategoriaProduto + "','" + objeto.QuantidadeProduto + "','" + dataAtual + "')";
+            string sql = "Insert Into TblProduto Values ('" + objeto.NomeProduto + "','" + (int)objeto.CategoriaProduto + "','" + objeto.QuantidadeProduto + "','" + dataAtual + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -94,7 +94,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblProduto Set  NomeProduto='" + objeto.NomeProduto + "', CategoriaProduto='" + objeto.CategoriaProduto + "', QuantidadeProduto='" + objeto.QuantidadeProduto + "', where IdProduto=" + objeto.IdProduto;
+            string sql = "Update TblProduto Set  NomeProduto='" + objeto.NomeProduto + "', CategoriaProduto='" + (int)objeto.CategoriaProduto + "', QuantidadeProduto='" + objeto.QuantidadeProduto + "', where IdProduto=" + objeto.IdProduto;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

@@ -97,7 +97,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblBeneficiado Values('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + objeto.DataNascimentoBeneficiado + "', '" + objeto.Telefone + "','" + objeto.Email  + "','" + objeto.Status + "','" + objeto.QuantidadeDependentes + "','" + objeto.RendaMensalBeneficiado + "','" + dataAtual + "','" + FKIdColaborador + "')";
+            string sql = "Insert Into TblBeneficiado Values('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" +Convert.ToDateTime(objeto.DataNascimentoBeneficiado) + "', '" + objeto.Telefone + "','" + objeto.Email  + "','" +(int) objeto.Status + "','" + objeto.QuantidadeDependentes + "','" + objeto.RendaMensalBeneficiado + "','" + dataAtual + "','" + FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -110,7 +110,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblBeneficiado Set NomeBeneficiado='" + objeto.Nome + "', CpfBeneficiado='" + objeto.CpfBeneficiado + "', DataNascimentoBeneficiado='" + objeto.DataNascimentoBeneficiado + "', TelefoneBeneficiado='" + objeto.Telefone + "', EmailBeneficiado='" + objeto.Email + "', StatusBeneficiado='" + objeto.Status + "', QuantidadeDependentesBeneficiado='" + objeto.QuantidadeDependentes + "', RendaMensalBeneficiado='" + objeto.RendaMensalBeneficiado + "', where IdBeneficiado=" + objeto.id;
+            string sql = "Update TblBeneficiado Set NomeBeneficiado='" + objeto.Nome + "', CpfBeneficiado='" + objeto.CpfBeneficiado + "', DataNascimentoBeneficiado='" + Convert.ToDateTime(objeto.DataNascimentoBeneficiado) + "', TelefoneBeneficiado='" + objeto.Telefone + "', EmailBeneficiado='" + objeto.Email + "', StatusBeneficiado='" + (int)objeto.Status + "', QuantidadeDependentesBeneficiado='" + objeto.QuantidadeDependentes + "', RendaMensalBeneficiado='" + objeto.RendaMensalBeneficiado + "', where IdBeneficiado=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

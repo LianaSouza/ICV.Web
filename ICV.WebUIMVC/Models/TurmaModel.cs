@@ -97,7 +97,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + objeto.PeriodoTurma + "','" + objeto.StatusTurma + "','" + dataAtual + "','" + objeto.FKIdCurso+ "','" + objeto.IdColaborador + "')";
+            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + (int)objeto.PeriodoTurma + "','" + (int)objeto.StatusTurma + "','" + dataAtual + "','" + objeto.FKIdCurso+ "','" + objeto.IdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
@@ -110,7 +110,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Update TblTurma Set  NomeTurma='" + objeto.NomeTurma + "', DescricaoTurma='" + objeto.DescricaoTurma + "', PeriodoTurma='" + objeto.PeriodoTurma + "', StatusTurma='" + objeto.StatusTurma + "',  where IdTurma=" + id;
+            string sql = "Update TblTurma Set  NomeTurma='" + objeto.NomeTurma + "', DescricaoTurma='" + objeto.DescricaoTurma + "', PeriodoTurma='" + (int)objeto.PeriodoTurma + "', StatusTurma='" + (int)objeto.StatusTurma + "',  where IdTurma=" + id;
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
