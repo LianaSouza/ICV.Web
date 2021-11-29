@@ -3,7 +3,7 @@
     public enum Status
     {
         Ativo=1,
-        Inativo=2
+        Inativo=0
     }
 
     public enum TipoColaborador
