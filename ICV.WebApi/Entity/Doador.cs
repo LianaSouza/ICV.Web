@@ -8,16 +8,26 @@ namespace ICV.WebApi.Entity
 {
     public class Doador
     {
-        [Key]
         public int IdDoador { get; set; }
-        public int NomeDoador { get; set; }
-        public int DocumentoDoador { get; set; }
-        public int TelefoneDoador { get; set; }
-        public int EmailDoador { get; set; }
+
+        public string NomeDoador { get; set; }
+
+        public string DocumentoDoador { get; set; }
+
+        public string TelefoneDoador { get; set; }
+
+        public string EmailDoador { get; set; }
+
         public int StatusDoador { get; set; }
+
         public int AnonimoDoador { get; set; }
-        public int ObservacaoDoador { get; set; }
-        public int DataCadastroDoador { get; set; }
+
+        public string ObservacaoDoador { get; set; }
+
+        public DateTime DataCadastroDoador { get; set; }
+
         public int FkIdColaborador { get; set; }
+
+        public virtual Colaborador Colaborador { get; set; }
     }
 }
