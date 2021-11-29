@@ -54,7 +54,7 @@ namespace ICV.WebUIMVC.Models
            
             List<DoacaoSaidaModel> listaObj = new List<DoacaoSaidaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 DoacaoSaidaModel Doacao = new DoacaoSaidaModel();
 

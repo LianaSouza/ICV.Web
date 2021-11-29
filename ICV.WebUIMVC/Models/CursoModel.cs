@@ -59,7 +59,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<CursoModel> listObj = new List<CursoModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 CursoModel Curso = new CursoModel();
 

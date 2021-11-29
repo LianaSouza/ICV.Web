@@ -70,7 +70,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<BeneficiadoModel> listObj = new List<BeneficiadoModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 BeneficiadoModel Beneficiado = new BeneficiadoModel();
 

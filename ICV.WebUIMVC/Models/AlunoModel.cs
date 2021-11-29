@@ -65,7 +65,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<AlunoModel> listaObj = new List<AlunoModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 AlunoModel Aluno = new AlunoModel();
 

@@ -68,7 +68,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<ColaboradorModel> listaObj = new List<ColaboradorModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 ColaboradorModel Colaborador = new ColaboradorModel();
 

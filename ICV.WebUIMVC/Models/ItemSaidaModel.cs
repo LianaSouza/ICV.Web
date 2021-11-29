@@ -45,7 +45,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<ItemSaidaModel> listaObj = new List<ItemSaidaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 ItemSaidaModel Item = new ItemSaidaModel();
 

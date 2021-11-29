@@ -53,7 +53,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<DoacaoEntradaModel> listaObj = new List<DoacaoEntradaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 DoacaoEntradaModel Doacao = new DoacaoEntradaModel();
 

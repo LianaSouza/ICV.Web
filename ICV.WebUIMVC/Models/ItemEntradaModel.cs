@@ -47,7 +47,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<ItemEntradaModel> listaObj = new List<ItemEntradaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 ItemEntradaModel Item = new ItemEntradaModel();
 

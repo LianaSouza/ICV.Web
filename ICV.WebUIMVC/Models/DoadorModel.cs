@@ -64,7 +64,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<DoadorModel> listaObj = new List<DoadorModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 DoadorModel Doador = new DoadorModel();
 

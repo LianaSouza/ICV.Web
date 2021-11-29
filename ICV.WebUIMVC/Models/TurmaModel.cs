@@ -74,7 +74,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<TurmaModel> listaObj = new List<TurmaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 TurmaModel Turma = new TurmaModel();
 

@@ -61,7 +61,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<ProdutoModel> listaObj = new List<ProdutoModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 ProdutoModel Produto = new ProdutoModel();
 
