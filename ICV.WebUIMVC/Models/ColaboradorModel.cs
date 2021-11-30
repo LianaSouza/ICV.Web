@@ -68,7 +68,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<ColaboradorModel> listaObj = new List<ColaboradorModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 ColaboradorModel Colaborador = new ColaboradorModel();
 
@@ -95,7 +95,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblColaborador Values('" + objeto.Nome + "','" + objeto.DocumentoColaborador + "','" + objeto.DataNascimentoColaborador + "', '" + objeto.Email + "','" + SenhaColaborador + "','" + objeto.Telefone + "','" + objeto.Status + "','" + objeto.TipoColaborador + "','" + dataAtual + "')";
+            string sql = "Insert Into TblColaborador Values('" + objeto.Nome + "','" + objeto.DocumentoColaborador + "','" + objeto.DataNascimentoColaborador + "', '" + objeto.Email + "','" + SenhaColaborador + "','" + objeto.Telefone + "','" + (int)objeto.Status + "','" + (int)objeto.TipoColaborador + "','" + dataAtual + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -108,7 +108,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblColaborador Set NomeColaborador='" + objeto.Nome + "', DocumentoColaborador='" + objeto.DocumentoColaborador + "', DataNascimentoColaborador='" + objeto.DataNascimentoColaborador + "', EmailColaborador='" + objeto.Email + "', SenhaColaborador='" + objeto.SenhaColaborador + "', TelefoneColaborador='" + objeto.Telefone + "', StatusColaborador='" + objeto.Status + "', TipoColaborador='" + objeto.TipoColaborador + "',   where IdColaborador=" + objeto.id;
+            string sql = "Update TblColaborador Set NomeColaborador='" + objeto.Nome + "', DocumentoColaborador='" + objeto.DocumentoColaborador + "', DataNascimentoColaborador='" + objeto.DataNascimentoColaborador + "', EmailColaborador='" + objeto.Email + "', SenhaColaborador='" + objeto.SenhaColaborador + "', TelefoneColaborador='" + objeto.Telefone + "', StatusColaborador='" + (int)objeto.Status + "', TipoColaborador='" + (int)objeto.TipoColaborador + "',   where IdColaborador=" + objeto.id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

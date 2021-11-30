@@ -47,7 +47,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<ItemEntradaModel> listaObj = new List<ItemEntradaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 ItemEntradaModel Item = new ItemEntradaModel();
 
@@ -69,7 +69,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblEntradaItem Values ('" + objeto.QuantidadeItem + "','" + objeto.categoriaProduto + "','" + dataAtual + "','" + objeto.FKIdDoacao + "','" + objeto.FKIdProduto + "')";
+            string sql = "Insert Into TblEntradaItem Values ('" + objeto.QuantidadeItem + "','" + (int)objeto.categoriaProduto + "','" + dataAtual + "','" + objeto.FKIdDoacao + "','" + objeto.FKIdProduto + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -82,7 +82,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblEntradaItem Set  QuantidadeEntradaItem='" + objeto.QuantidadeItem + "', TipoEntradaItem='" + objeto.categoriaProduto + "',   where IdEntradaItem=" + objeto.IdItem;
+            string sql = "Update TblEntradaItem Set  QuantidadeEntradaItem='" + objeto.QuantidadeItem + "', TipoEntradaItem='" + (int)objeto.categoriaProduto + "',   where IdEntradaItem=" + objeto.IdItem;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
