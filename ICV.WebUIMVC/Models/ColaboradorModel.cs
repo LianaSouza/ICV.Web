@@ -23,7 +23,7 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public string SenhaColaborador { get; set; }
 
-        string dataAtual = DateTime.Now.ToString();
+        string dataAtual = DateTime.Now.ToString("yyyy-mm-dd");
 
 
 
@@ -68,7 +68,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<ColaboradorModel> listaObj = new List<ColaboradorModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 ColaboradorModel Colaborador = new ColaboradorModel();
 
@@ -95,7 +95,11 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblColaborador Values('" + objeto.Nome + "','" + objeto.DocumentoColaborador + "','" + objeto.DataNascimentoColaborador + "', '" + objeto.Email + "','" + SenhaColaborador + "','" + objeto.Telefone + "','" + objeto.Status + "','" + objeto.TipoColaborador + "','" + dataAtual + "')";
+            string dataNascimento = Convert.ToString( objeto.DataNascimentoColaborador);
+            string dataAtual = DateTime.Now.ToString("yyyy-MM-dd");
+            
+                
+            string sql = $"Insert Into TblColaborador Values('{objeto.Nome}','" + objeto.DocumentoColaborador + "','" +  dataNascimento + "', '" + objeto.Email + "','" + objeto.SenhaColaborador + "','" + objeto.Telefone + "','" + (int) objeto.TipoColaborador + "','" + (int)objeto.Status + "','" + dataAtual + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

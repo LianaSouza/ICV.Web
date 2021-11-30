@@ -53,7 +53,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<DoacaoEntradaModel> listaObj = new List<DoacaoEntradaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 DoacaoEntradaModel Doacao = new DoacaoEntradaModel();
 
@@ -74,7 +74,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblEntradaDoacao Values ('" + objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdDoador + "','" + objeto.FKIdColaborador + "')";
+            string sql = "Insert Into TblEntradaDoacao Values ('" + (int)objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdDoador + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
@@ -87,7 +87,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblEntradaDoacao Set  TipoEntradaDoacao='" + objeto.CategoriaDoacao + "', where IdEntradaDoacao=" + objeto.IdDoacao;
+            string sql = "Update TblEntradaDoacao Set  TipoEntradaDoacao='" + (int)objeto.CategoriaDoacao + "', where IdEntradaDoacao=" + objeto.IdDoacao;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

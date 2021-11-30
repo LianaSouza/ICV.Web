@@ -7,6 +7,7 @@ namespace ICV.WebApi.Context
     {
         public DbSet<Colaborador> Colaborador { get; set; }
         public DbSet<Doador> Doador { get; set; }
+        public DbSet<EntradaDoacao> EntradaDoacao { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -15,7 +16,9 @@ namespace ICV.WebApi.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.ApplyConfiguration(new ColaboradorConfiguration());
+            modelBuilder.ApplyConfiguration(new DoadorConfiguration());
+            modelBuilder.ApplyConfiguration(new EntradaDoacaoConfiguration());
         }
     }       
 }

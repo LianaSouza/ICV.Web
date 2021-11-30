@@ -38,19 +38,8 @@ namespace ICV.WebUIMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(ColaboradorModel objeto)
         {
-            try
-            {
-                // TODO: Add insert logic here
-                new Models.ColaboradorModel().Cadastrar(objeto);
-
-              
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                ViewBag.Error = true;
-                return View();
-            }
+            new Models.ColaboradorModel().Cadastrar(objeto);
+            return View();
         }
 
         // GET: Colaborador/Edit/5
