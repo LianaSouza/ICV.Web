@@ -71,3 +71,10 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+/*--------------------------------------------------- */
+
+@media only screen and (max-width: 600px) {
+    .retira-responsivo {
+        display: none;
+    }
+}

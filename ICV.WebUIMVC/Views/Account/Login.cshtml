@@ -37,40 +37,55 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.2.0/dist/sweetalert2.all.min.js"></script>
 </head>
-<body>
+
+<body style="background-color: lightgray">
     <main class="pb-3" style="padding:30px">
         <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="card mb-2 p-4" style="border:hidden ; padding-top:20px">
-                    <div class="card-title p-1" style="text-align:center">
-                    </div>
+            <div class="row justify-content-center p-5">
+                <div class="card mb-2 p-4 shadow" style="margin-top:35px">
+
                     <div class="card-body">
                         <div class="container-fluid">
-                            <div class="row align-items-center" style="align-content:center">
-                                <div class="col-md-4" style="background-color: #04A0D2; padding:10px">
-                                    <img src="~/img/Celular.png" Class="img-fluid">
+                            <div class="row">
+
+                                <div class="col-sm-6 text-center retira-responsivo" style="padding:10px; margin-top: 15px">
+                                    <div>
+                                        <h1><b>Instituto Coruja Veículos</b></h1>
+
+                                        <div class="p-lg-5">
+                                            <img src="~/img/Logocoruja2.png" class="img-fluid rounded" height="65%" width="65%">
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
 
-                                    <div class="card-body p-2 col align-self-center">
-                                        <h4 class="text-center">Login</h4>
-                                        <form asp-action="Login" class="align-center">
-                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                            <div class="form-group">
-                                                <label asp-for="Email" class="control-label"></label>
-                                                <input asp-for="Email" class="form-control d-sm-inline-flex p-2 bd-highlight" type="email" required />
-                                                <span asp-validation-for="Email" class="text-danger"></span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="Senha" class="control-label"></label>
-                                                <input asp-for="Senha" class="form-control d-sm-inline-flex p-2 bd-highlight" type="password" required />
-                                                <span asp-validation-for="Senha" class="text-danger"></span>
-                                            </div>
-                                            <div class="form-group" style="text-align:center">
-                                                <input id="btnLogin" type="submit" value="Logar" class="btn btn-outline-success" data-myValue="@ViewBag.retorno" />
+                                <div class="col-sm-6" style="margin-top:35px;">
+                                    <div class=" p-6">
 
-                                            </div>
-                                        </form>
+                                        <div id="titulo" class="text-center" style="margin-top: 15px">
+
+                                            <h3><b>Faça seu Login</b></h3>
+                                        </div>
+                                        <hr />
+                                        <div class="p-2">
+                                            <form asp-action="Login" class="align-center">
+                                                <div class="form-group">
+                                                    <label for="InputEmail" class="form-label fs-4">Email</label>
+                                                    <input asp-for="Email" type="email" style="width: 100%" class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputEmail" placeholder="Administrador@senac.sp" required>
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="InputPassword" class="form-label fs-4">Senha</label>
+                                                    <input asp-for="Senha" type="password" style="width: 100%" class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputPassword" placeholder="**********" required />
+                                                    <span asp-validation-for="Senha" class="text-danger"></span>
+                                                </div>
+
+                                                <div class="form-group" style="text-align:center; padding-top: 10px">
+                                                    <input id="btnLogin" type="submit" value="Acessar" style="width: 100%" class="btn btn-primary rounded-pill" data-myValue="@ViewBag.retorno" />
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -123,4 +138,3 @@
 
     });
 </script>
-
