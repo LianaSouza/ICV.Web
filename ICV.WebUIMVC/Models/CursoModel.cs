@@ -19,6 +19,8 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public Status StatusCurso { get; set; }
 
+        public List<TurmaModel> Cursos { set; get; }
+
         public string DataCadastroCurso { get; set; }
 
 
@@ -69,6 +71,34 @@ namespace ICV.WebUIMVC.Models
             }
 
             return listObj;
+        }
+
+        public List<TurmaModel> BuscarCursoSelect()
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = "Select * from TblCurso";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<TurmaModel> lista = new List<TurmaModel>();
+
+            while (dr.Read())
+            {
+                TurmaModel Turma = new TurmaModel();
+
+                Turma.IdTurma = Convert.ToInt32(dr["IdCurso"]);
+                Turma.NomeTurma = dr["NomeCurso"].ToString();
+
+                lista.Add(Turma);
+            }
+
+            return lista;
+
+
         }
 
         public void Cadastrar(CursoModel objeto)

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ICV.WebUIMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ICV.WebUIMVC.Controllers
 {
@@ -21,18 +22,22 @@ namespace ICV.WebUIMVC.Controllers
             return View(new TurmaModel().BuscarTurma(id));
         }
 
-        public ActionResult CadastrarTurma()
+        public ActionResult Cadastrar()
         {
-            return View();
+            var vm = new CursoModel();
+            vm.Cursos = new CursoModel().BuscarCursoSelect();
+            return View(vm);
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CadastrarTurma(TurmaModel objeto)
+        public ActionResult Cadastrar(TurmaModel objeto)
         {
             try
             {
                 new TurmaModel().CadastrarTurma(objeto);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

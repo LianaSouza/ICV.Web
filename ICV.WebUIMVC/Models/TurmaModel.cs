@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
@@ -26,12 +27,13 @@ namespace ICV.WebUIMVC.Models
         public Status StatusTurma { get; set; }
 
         [Required]
-        public int IdColaborador { get; set; }
+        public int FKIdColaborador { get; set; }
 
         [Required]
         public int FKIdCurso { get; set; }
 
         public string DataCadastroTurma { get; set; }
+
 
         string dataAtual = DateTime.Now.ToString();  
         
@@ -56,7 +58,7 @@ namespace ICV.WebUIMVC.Models
                 Turma.StatusTurma = (Status)Convert.ToInt32(dr["StatusTurma"]);
                 Turma.DataCadastroTurma = dr["DataCadastroTurma"].ToString();
                 Turma.FKIdCurso = Convert.ToInt32(dr["FKIdCurso"]);
-                Turma.IdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
+                Turma.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
             }
 
@@ -85,7 +87,7 @@ namespace ICV.WebUIMVC.Models
                 Turma.StatusTurma = (Status)Convert.ToInt32(dr["StatusTurma"]);
                 Turma.DataCadastroTurma = dr["DataCadastroTurma"].ToString();
                 Turma.FKIdCurso = Convert.ToInt32(dr["FKIdCurso"]);
-                Turma.IdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
+                Turma.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
 
                 listaObj.Add(Turma);
             }
@@ -97,7 +99,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + (int)objeto.PeriodoTurma + "','" + (int)objeto.StatusTurma + "','" + dataAtual + "','" + objeto.FKIdCurso+ "','" + objeto.IdColaborador + "')";
+            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + (int)objeto.PeriodoTurma + "','" + (int)objeto.StatusTurma + "','" + dataAtual + "','" + objeto.FKIdCurso+ "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
