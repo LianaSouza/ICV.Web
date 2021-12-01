@@ -36,6 +36,8 @@ namespace ICV.WebUIMVC.Controllers
             try
             {
                 // TODO: Add insert logic here
+                new Models.DoacaoSaidaModel().Cadastrar(objeto);
+
 
                 return RedirectToAction(nameof(Index));
             }
