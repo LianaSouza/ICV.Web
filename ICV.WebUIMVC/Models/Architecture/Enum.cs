@@ -2,14 +2,14 @@
 {
     public enum Status
     {
-        Ativo=1,
-        Inativo=2
+        Ativo=0,
+        Inativo=1
     }
 
     public enum TipoColaborador
     {
-        Voluntario=1,
-        Funcionario=2
+        Voluntario=0,
+        Funcionario=1
     }
     public enum PeriodoTurma
     {
