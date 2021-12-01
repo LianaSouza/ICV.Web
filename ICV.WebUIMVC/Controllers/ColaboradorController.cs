@@ -39,7 +39,7 @@ namespace ICV.WebUIMVC.Controllers
         public ActionResult Cadastrar(ColaboradorModel objeto)
         {
             new Models.ColaboradorModel().Cadastrar(objeto);
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Colaborador/Edit/5

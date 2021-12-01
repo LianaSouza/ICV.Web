@@ -1,9 +1,93 @@
 ﻿@model ICV.WebUIMVC.Models.ColaboradorModel
 
-<div class="container-fluid mt-3">
-    <h2 class="text-center">Cadastrar Colaborador</h2>
-    <hr />
-    <form asp-action="Cadastrar mt-3">
+@{
+    ViewData["Title"] = "Cadastrar Curso";
+    Layout = "~/Views/Shared/_Layout_New.cshtml";
+}
+
+<section class="row justify-content-center">
+
+    <div class="col-sm-8 text-center mt-5">
+
+        <h1 class="h3">Coruja Veículos - Cadastrar Colaborador</h1>
+
+        <p>Para voltar para lista de Colaboradores <a asp-action="Index">Clique aqui</a>.</p>
+
+    </div>
+
+    <article class="col-sm-8">
+
+        <form asp-action="Cadastrar" class="mt-3">
+
+            <div class="row justify-content-center">
+
+                <div class="col-6 mt-3">
+                    <input asp-for="Nome" class="form-control" placeholder="Insira o nome" required />
+                </div>
+
+                <div class="col-6 mt-3">
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Digite um E-mail valido." required />
+                     
+                    
+                </div>
+
+                <div class="col-4 mt-3">
+
+                    <input asp-for="DataNascimentoColaborador" type="date" class="form-control" required />
+                    
+                    <div class="form-text ms-2">
+                        Data de nascimento.
+                    </div>
+
+                </div>
+
+                <div class="col-4 mt-3">
+
+                    <select asp-for="TipoColaborador" class="form-select" aria-label="Default select example">
+                        <option selected>Selecione uma opção</option>
+                        <option value="0">Voluntario</option>
+                        <option value="1">Funcionario</option>
+                    </select>
+
+                    <div class="form-text ms-2">
+                    Selecione o tipo de colaborador.
+                </div>
+
+                </div>
+
+                <div class="col-4 mt-3">
+                    <input asp-for="Telefone" type="tel" class="form-control" placeholder="Insira o Telefone" required />
+                </div>
+
+                <div class="col-4 mt-3">
+                    <select asp-for="Status" class="form-select" aria-label="Default select example">
+                        <option selected>Selecione uma opção</option>
+                        <option value="0">Ativo</option>
+                        <option value="1">Inativo</option>
+                    </select>
+                    <div class="form-text ms-2">
+                        Selecione o Status.
+                    </div>
+                </div>
+
+                <div class="col-4 mt-3">
+                    <input asp-for="DocumentoColaborador" class="form-control" placeholder="RG" required />
+                </div>
+
+                <div class="col-4 mt-3">
+                    <input asp-for="SenhaColaborador" type="password" class="form-control" placeholder="Insira uma senha" required />
+                </div>
+
+            </div>
+            <input asp-action="Cadastrar" type="submit" value="Create" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
+        </form>
+
+    </article>
+
+</section>
+
+
+@*<form asp-action="Cadastrar" class="mt-2">
         <div class="row justify-content-md-center">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group col-sm-4 ">
@@ -13,7 +97,7 @@
             </div>
             <div class="form-group col-sm-4 ">
                 <label asp-for="DocumentoColaborador" class="control-label">Documento</label>
-                <input asp-for="DocumentoColaborador" class="form-control" required  />
+                <input asp-for="DocumentoColaborador" class="form-control" required />
                 <span asp-validation-for="DocumentoColaborador" class="text-danger"></span>
             </div>
         </div>
@@ -35,7 +119,7 @@
         <div class="row justify-content-md-center">
             <div class="form-group col-sm-4 ">
                 <label asp-for="Telefone" class="control-label">Telefone</label>
-                <input asp-for="Telefone" type="tel" class="form-control" required  />
+                <input asp-for="Telefone" type="tel" class="form-control" required />
                 <span asp-validation-for="Telefone" class="text-danger"></span>
             </div>
             <div class="form-group col-sm-4 ">
@@ -51,7 +135,7 @@
         <div class="row justify-content-md-center">
             <div class="form-group col-sm-4 ">
                 <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="Email" type="email" class="form-control" required  />
+                <input asp-for="Email" type="email" class="form-control" required />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group col-sm-4 ">
@@ -64,10 +148,6 @@
         <div class="form-group text-center mt-3">
             <input type="submit" value="Cadastrar" class="btn btn-outline-success" />
         </div>
-    </form>
-</div>
+    </form>*@
 
-    <div class="row justify-content-md-center">
-        <a asp-action="Index">Back to List</a>
-    </div>
 
