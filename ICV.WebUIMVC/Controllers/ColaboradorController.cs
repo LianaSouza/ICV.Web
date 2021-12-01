@@ -13,11 +13,7 @@ namespace ICV.WebUIMVC.Controllers
         // GET: Colaborador
         public ActionResult Index()
         {
-            ColaboradorModel Colaborador = new ColaboradorModel();
-            return View(Colaborador.Buscar());
-
-           
-
+            return View(new ColaboradorModel().Buscar());
         }
 
         // GET: Colaborador/Details/5
