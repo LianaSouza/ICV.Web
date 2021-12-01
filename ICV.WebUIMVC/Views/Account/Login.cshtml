@@ -8,30 +8,65 @@
 
 
 <body style="background-color: lightgray">
-    <main class="pb-3" style="padding:30px">
-        <div class="container-fluid">
-            <div class="row justify-content-center p-5">
-                <div class="card mb-2 p-4 shadow" style="margin-top:35px">
 
+    <main style="margin-top: 90px">
+        <center>
+            <div class="col-sm-4">
+                <div class="card shadow" style="border-radius: 20px;">
                     <div class="card-body">
-                        <div class="container-fluid">
+                        <div class="text-center">
+                            <img src="~/img/Logocoruja2.png" class="img-fluid rounded" height="50%" width="50%">
+
+                        </div>
+                        <form asp-action="Login">
+                            <div class="form-group">
+                                <br />
+                                <div class="text-left">
+                                    <label for="InputEmail" class="form-label"><b>Email</b></label>
+                                </div>
+                                <input asp-for="Email" type="email" class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputEmail" placeholder="" required>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="text-left">
+                                    <label for="InputPassword" class="form-label mt-3"><b>Senha</b></label>
+                                </div>
+                                <input asp-for="Senha" type="password" class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputPassword" placeholder="" required />
+                                <span asp-validation-for="Senha" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group" style="text-align:center; padding-top: 10px">
+                                <br/>
+                                <input id="btnLogin" type="submit" value="Acessar" class="btn btn-primary btn-block rounded-pill" data-myValue="@ViewBag.retorno" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!--
+    <div class="container-fluid">
+        <div class="p-5">
+            <div class="card p-5 shadow" style="margin-top:55px">
+                <div>
+                    <div class="card-body">
+                        <div>
                             <div class="row">
-
-                                <div class="col-sm-6 text-center retira-responsivo" style="padding:10px; margin-top: 15px">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-4 text-center retira-responsivo">
                                     <div>
-                                        <h1><b>Instituto Coruja Veículos</b></h1>
-
-                                        <div class="p-lg-5">
-                                            <img src="~/img/Logocoruja2.png" class="img-fluid rounded" height="65%" width="65%">
+                                        <div>
+                                            <img src="~/img/Logocoruja2.png" class="img-fluid rounded" style="margin-top: 5px">
                                         </div>
-
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6" style="margin-top:35px;">
-                                    <div class=" p-6">
-
-                                        <div id="titulo" class="text-center" style="margin-top: 15px">
+                                <div class="col-sm-4" style="margin-top:35px;">
+                                    <div>
+                                        <div id="titulo" class="text-start" style="margin-top: 15px">
 
                                             <h3><b>Faça seu Login</b></h3>
                                         </div>
@@ -39,14 +74,14 @@
                                         <div class="p-2">
                                             <form asp-action="Login" class="align-center">
                                                 <div class="form-group">
-                                                    <label for="InputEmail" class="form-label fs-4">Email</label>
-                                                    <input asp-for="Email" type="email" style="width: 100%" class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputEmail" placeholder="Administrador@senac.sp" required>
+                                                    <label for="InputEmail" class="form-label">Email</label>
+                                                    <input asp-for="Email" type="email"  class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputEmail" placeholder="" required>
                                                     <span asp-validation-for="Email" class="text-danger"></span>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="InputPassword" class="form-label fs-4">Senha</label>
-                                                    <input asp-for="Senha" type="password" style="width: 100%" class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputPassword" placeholder="**********" required />
+                                                    <label for="InputPassword" class="form-label">Senha</label>
+                                                    <input asp-for="Senha" type="password"  class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputPassword" placeholder="" required />
                                                     <span asp-validation-for="Senha" class="text-danger"></span>
                                                 </div>
 
@@ -57,13 +92,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-2">
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>-->
+        </center>
     </main>
+
 </body>
 
 

@@ -9,49 +9,81 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
 </head>
-<body>
+<body style="background-color:#f0f0f0;">
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            
-            <div class="container-fluid text-white">
-                <a class="navbar-brand ms-5 text-white " asp-controller="Curso" asp-action="Index" >Coruja Veículos</a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+        <nav class="navbar navbar-light bg-white shadow fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="margin-left:25px" width="30%" height="30%" href=""><img src="~/img/navbar-brand (1).png"/> <b>Coruja Veículos</b></a>
+                <button class="navbar-toggler" style="margin-right:25px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-
-                        <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" asp-controller="Curso" asp-action="Index">Home</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Sessão Curso
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" asp-controller="Curso" asp-action="Index">Lista de Curso</a></li>
-                                <li><a class="dropdown-item" asp-controller="Curso" asp-action="Cadastrar">Cadastrar Curso</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Portal do Colaborador</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><b>Institucional</b><hr /></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-users"></i> Doadores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-hands-helping"></i> Beneficiados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-controller="Colaborador" asp-action="Index" aria-current="page"><i class="fas fa-people-carry"></i> Colaboradores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-chart-bar"></i> Dashboard</a>
+                            </li>
+                            <li class="nav-item mt-2">
+                                <a class="nav-link active" aria-current="page" href="#"><b>Ensino</b><hr /></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-controller="Curso" asp-action="Index" aria-current="page"><i class="far fa-list-alt"></i> Cursos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-chalkboard-teacher"></i> Turmas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-user-graduate"></i> Alunos</a>
+                            </li>
+                            <li class="nav-item mt-2">
+                                <a class="nav-link active" aria-current="page" href="#"><b>Controle de Doações</b><hr /></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-arrow-right"></i> Entrada de Doações</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-arrow-left"></i> Saída de Doações</a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <a class="btn btn-outline-danger" asp-controller="Account" asp-action="Logout" style="width:100%" >Sair <i class="fas fa-sign-out-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
 
     <div class="container-fluid">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" style="margin-top:100px">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted mt-3">
+    <footer class="border-top footer bg-light text-center text-muted mt-3">
         <div class="container">
-            &copy; 2021 - ICV.WebUIMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - Instituto Coruja Veículos | Portal do Colaborador
         </div>
     </footer>
 

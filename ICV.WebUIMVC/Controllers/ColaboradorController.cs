@@ -13,11 +13,7 @@ namespace ICV.WebUIMVC.Controllers
         // GET: Colaborador
         public ActionResult Index()
         {
-            ColaboradorModel Colaborador = new ColaboradorModel();
-            return View(Colaborador.Buscar());
-
-           
-
+            return View(new ColaboradorModel().Buscar());
         }
 
         // GET: Colaborador/Details/5
@@ -39,7 +35,7 @@ namespace ICV.WebUIMVC.Controllers
         public ActionResult Cadastrar(ColaboradorModel objeto)
         {
             new Models.ColaboradorModel().Cadastrar(objeto);
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Colaborador/Edit/5
