@@ -4,94 +4,75 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
-<section class="row justify-content-center">
 
-    <div class="col-sm-8 text-center mt-5">
+<section class="p-3">
 
-        <h1 class="h3">Coruja Veículos - Lista de Colaboradores</h1>
+    <div class="card shadow p-4">
 
-        <p>Para voltar para cadastrar um colaborador <a asp-action="Cadastrar">Clique aqui</a>.</p>
+        <div class="card-body">
+            <section>
+                <h2>Gerenciamento de Colaboradores</h2>
+                <hr />
+                <a class="btn btn-secondary" asp-action="Home"><i class="fas fa-arrow-left"></i> Retornar</a>
+                <a class="btn btn-primary" asp-action="Cadastrar"><i class="fas fa-plus"></i> Novo</a>
+            </section>
 
-    </div>
+            <section class="row justify-content-center mt-3">
+                <div class="table-responsive rounded">
+                    <div class="table-responsive rounded">
+                        <table class="table text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">RG</th>
+                                    @*<th scope="col">Data Nascimento</th>*@
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Tipo Colaborador</th>
+                                    @*<th scope="col">Data Cadastro</th>*@
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
 
-</section>
-
-<section class="row justify-content-center">
-   
-    <div class="col-sm-8">
-
-        <div class="table-responsive rounded">
-
-            <div class="table-responsive rounded">
-                
-                <table class="table text-center">
-
-                    <thead class="table-dark">
-
-                        <tr>
-
-                            <th scope="col">Nome</th>
-                            <th scope="col">Documento</th>
-                            <th scope="col">Data Nascimento</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Tipo Colaborador</th>
-                            <th scope="col">Data Cadastro</th>
-                            <th scope="col">#</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nome)
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DocumentoColaborador)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DataNascimentoColaborador)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Telefone)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TipoColaborador)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DataCadastro)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Editar", "Editar", new { /* id=item.PrimaryKey */ })
-                                    @Html.ActionLink("Detalhes", "Detailhes", new { /* id=item.PrimaryKey */ })
-                                </td>
-                            </tr>
-                        }
-
-                    </tbody>
-
-                </table>
-
-            </div>              
-
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DocumentoColaborador)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.DataNascimentoColaborador)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Telefone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TipoColaborador)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.DataCadastro)
+                                        </td>*@
+                                        <td>
+                                            <a class="text-primary" asp-action="Editar" asp-route-id="@item.id"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
         </div>
-
     </div>
-
 </section>
-
-    
-            
