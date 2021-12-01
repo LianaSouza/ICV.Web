@@ -5,17 +5,17 @@
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
-<section class="row justify-content-center">
+    <section class="row justify-content-center">
 
-    <div class="col-sm-8 text-center mt-5">
+        <div class="col-sm-8 text-center mt-5">
 
-        <h1 class="h3">Coruja Veículos - Lista de Alunos</h1>
+            <h1 class="h3">Coruja Veículos - Lista de Alunos</h1>
 
-        <p>Para cadastrar um novo Aluno <a asp-action="Cadastrar">Clique aqui</a>.</p>
+            <p>Para cadastrar um novo aluno <a asp-action="Cadastrar">Clique aqui</a>.</p>
 
-    </div>
+        </div>
 
-</section>
+    </section>
 
 <section class="row justify-content-center">
 
@@ -28,57 +28,47 @@
                 <thead class="table-dark">
 
                     <tr>
-
-                        <th scope="col">Nome do Aluno</th>
-                        <th scope="col">Cpf do Aluno</th>
-                        <th scope="col">Data de Nascimento</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Cpf</th>
+                        <th scope="col">Data Nascimento</th>
                         <th scope="col">Email</th>
                         <th scope="col">Telefone</th>
                         <th scope="col">Status</th>
-
+                        <th scope="col">Ações</th>
                     </tr>
 
                 </thead>
 
                 <tbody>
-
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CpfAluno)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataNascimentoAluno)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FKIdTurma)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FKIdColaborador)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Telefone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataCadastro)
-                            </td>
-                            <td>                               
-                                <a class="text-primary" asp-action="Editar" asp-route-id="@item.id"><i class="fas fa-edit"></i></a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CpfAluno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataNascimentoAluno)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                        <td>
+                            <a class="text-primary" asp-action="Editar" asp-route-id="@item.id"><i class="fas fa-edit"></i></a>
+                        </td>
+                    </tr>
                     }
 
                 </tbody>
@@ -90,46 +80,3 @@
     </div>
 </section>
 
-
-@*body>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CpfAluno)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataNascimentoAluno)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FKIdTurma)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FKIdColaborador)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DataCadastro)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
-    </tbody>*@
