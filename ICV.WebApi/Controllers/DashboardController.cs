@@ -23,11 +23,6 @@ namespace ICV.WebApi.Controllers
                 var query = context.EntradaDoacao
                     .Where(a => a.DataCadastroEntradoDoacao.Contains("2021-11-26"));
             }
-
-
-
-
-
             //using (var context = new ICVContext())
             //{
             //    foreach (var item in context.EntradaDoacao)
@@ -41,12 +36,22 @@ namespace ICV.WebApi.Controllers
             //        listaEntradaDoacoes.Add(doacao);
             //    }
             //}
-
-
-
-
-
             return listaEntradaDoacoes;
+        }
+
+
+        [HttpGet]
+        public IEnumerable<EntradaDoacao> GetEntrada()
+        {
+            var listaEntradaDoacoes = new List<EntradaDoacao>();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "DELETE FROM [Blogs]";
+                    var result = await command.ExecuteNonQueryAsync();
+                }
+            
         }
     }
 }
+
