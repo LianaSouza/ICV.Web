@@ -47,12 +47,13 @@
                     </select>
                 </div>
 
-                <input asp-action="Cadastrar" type="submit" value="Create" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
+                <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
 
             </div>
         </form>
     </article>
 </section>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

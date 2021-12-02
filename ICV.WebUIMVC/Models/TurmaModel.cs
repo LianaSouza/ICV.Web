@@ -32,10 +32,7 @@ namespace ICV.WebUIMVC.Models
         public int FKIdCurso { get; set; }
 
         public string DataCadastroTurma { get; set; }
-
-        string dataAtual = DateTime.Now.ToString();  
         
-
         public TurmaModel BuscarTurma(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
@@ -97,7 +94,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + (int)objeto.PeriodoTurma + "','" + (int)objeto.StatusTurma + "','" + dataAtual + "','" + objeto.FKIdCurso+ "','" + objeto.IdColaborador + "')";
+            string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + (int)objeto.PeriodoTurma + "','" + (int)objeto.StatusTurma + "','" + DateTime.Now + "','" + objeto.FKIdCurso+ "','" + objeto.IdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
