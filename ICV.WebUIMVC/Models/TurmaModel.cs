@@ -36,15 +36,11 @@ namespace ICV.WebUIMVC.Models
 
         public List<CursoModel> Cursos { set; get; }
 
-        public string Colaborador { get; set; }
+        public List<LoginModel> LoginColaborador { get; set; }
 
         public string DataCadastroTurma { get; set; }
 
-        public string stored { get; set; }
-
         string dataAtual = DateTime.Now.ToString();
-
-       
 
         public List<TurmaModel> BuscarTurmaCurso()
         {
@@ -57,7 +53,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<TurmaModel> listaObj = new List<TurmaModel>();
 
-            while (dr.Read())
+            if (dr.Read())
             {
                 TurmaModel Turma = new TurmaModel();
 
@@ -80,10 +76,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            //string sql = @" SELECT * FROM TblTurma INNER JOIN TblCurso ON TblTurma.FkIdCurso = TblCurso.IdCurso where IdTurma = " + id;
-            string sql = @"  SELECT  NomeTurma , DescricaoTurma , PeriodoTurma, StatusTurma , DataCadastroTurma , FkIdCurso ,FkIdColaborador , NomeCurso , NomeColaborador  FROM TblTurma 
-                               INNER JOIN TblCurso ON TblTurma.FkIdCurso = TblCurso.IdCurso 
-                               INNER JOIN TblColaborador  ON TblTurma.FkIdColaborador = TblColaborador.IdColaborador where TblTurma.IdTurma =" + id;
+            string sql = @"Select * From TblTurma where IdTurma =" + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -91,7 +84,7 @@ namespace ICV.WebUIMVC.Models
 
             if (dr.Read())
             {
-                Turma.IdTurma = id;
+                Turma.IdTurma = Convert.ToInt32(dr["IdTurma"]);
                 Turma.NomeTurma = dr["NomeTurma"].ToString();
                 Turma.DescricaoTurma = dr["DescricaoTurma"].ToString();
                 Turma.PeriodoTurma = (PeriodoTurma)Convert.ToInt32(dr["PeriodoTurma"]);
@@ -99,9 +92,9 @@ namespace ICV.WebUIMVC.Models
                 Turma.DataCadastroTurma = dr["DataCadastroTurma"].ToString();
                 Turma.FKIdCurso = Convert.ToInt32(dr["FKIdCurso"]);
                 Turma.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
-                Turma.Curso = dr["NomeCurso"].ToString();
-                Turma.Colaborador = dr["NomeColaborador"].ToString();
+
             }
+
             return Turma;
         }
 

@@ -111,8 +111,8 @@ namespace ICV.WebUIMVC.Models
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
-
-            string sql = "Update TblColaborador Set NomeColaborador='" + objeto.Nome + "', DocumentoColaborador='" + objeto.DocumentoColaborador + "', DataNascimentoColaborador='" + objeto.DataNascimentoColaborador + "', EmailColaborador='" + objeto.Email + "', SenhaColaborador='" + objeto.SenhaColaborador + "', TelefoneColaborador='" + objeto.Telefone + "', StatusColaborador='" + objeto.Status + "', TipoColaborador='" + objeto.TipoColaborador + "',   where IdColaborador=" + objeto.id;
+            //Update TblColaborador set NomeColaborador='1', DocumentoColaborador='2', DataNascimentoColaborador='2002-01-02', EmailColaborador='"+objeto.Email+"', TelefoneColaborador='"+objfone+"', TipoColaborador=0, StatusColaborador=1
+            string sql = $"Update TblColaborador set NomeColaborador='{objeto.Nome}', DocumentoColaborador='{objeto.DocumentoColaborador}', EmailColaborador='{objeto.Email}', TelefoneColaborador='{objeto.Telefone}', TipoColaborador={(int)objeto.TipoColaborador}, StatusColaborador={(int)objeto.Status} where IdColaborador = {id}";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
