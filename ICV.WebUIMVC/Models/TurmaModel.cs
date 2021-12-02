@@ -32,11 +32,46 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public int FKIdCurso { get; set; }
 
+        public string Curso { get; set; }
+
+
+        public List<CursoModel> Cursos { set; get; }
+
+        public List<LoginModel> LoginColaborador { get; set; }
+
         public string DataCadastroTurma { get; set; }
 
 
-        string dataAtual = DateTime.Now.ToString();  
-        
+        string dataAtual = DateTime.Now.ToString();
+
+        public List<TurmaModel> BuscarTurmaCurso()
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = @" SELECT * FROM TblTurma INNER JOIN TblCurso ON TblTurma.FkIdCurso = TblCurso.IdCurso ";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<TurmaModel> listaObj = new List<TurmaModel>();
+
+            if (dr.Read())
+            {
+                TurmaModel Turma = new TurmaModel();
+
+                Turma.IdTurma = Convert.ToInt32(dr["IdTurma"]);
+                Turma.NomeTurma = dr["NomeTurma"].ToString();
+                Turma.DescricaoTurma = dr["DescricaoTurma"].ToString();
+                Turma.PeriodoTurma = (PeriodoTurma)Convert.ToInt32(dr["PeriodoTurma"]);
+                Turma.StatusTurma = (Status)Convert.ToInt32(dr["StatusTurma"]);
+                Turma.DataCadastroTurma = dr["DataCadastroTurma"].ToString(); 
+                Turma.Curso = dr["NomeCurso"].ToString();
+
+                listaObj.Add(Turma);
+                
+            }
+            return listaObj;
+        }
 
         public TurmaModel BuscarTurma(int id)
         {
