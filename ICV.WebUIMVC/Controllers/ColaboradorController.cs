@@ -41,7 +41,7 @@ namespace ICV.WebUIMVC.Controllers
         // GET: Colaborador/Edit/5
         public ActionResult Editar(int id)
         {
-            return View();
+            return View(new ColaboradorModel().Buscar(id));
         }
 
         // POST: Colaborador/Edit/5
