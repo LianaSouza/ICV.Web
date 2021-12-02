@@ -1,64 +1,90 @@
 ﻿@model ICV.WebUIMVC.Models.DoacaoSaidaModel
 
-@{
-    ViewData["Title"] = "Editar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h1>Editar</h1>
 
-<h4>DoacaoSaidaModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Editar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FKIdBeneficiado" class="control-label"></label>
-                <input asp-for="FKIdBeneficiado" class="form-control" />
-                <span asp-validation-for="FKIdBeneficiado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FKIdSaidaDoacao" class="control-label"></label>
-                <input asp-for="FKIdSaidaDoacao" class="form-control" />
-                <span asp-validation-for="FKIdSaidaDoacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdDoacao" class="control-label"></label>
-                <input asp-for="IdDoacao" class="form-control" />
-                <span asp-validation-for="IdDoacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QuantidadeItem" class="control-label"></label>
-                <input asp-for="QuantidadeItem" class="form-control" />
-                <span asp-validation-for="QuantidadeItem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoriaDoacao" class="control-label"></label>
-                <input asp-for="CategoriaDoacao" class="form-control" />
-                <span asp-validation-for="CategoriaDoacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataCadastroDoacao" class="control-label"></label>
-                <input asp-for="DataCadastroDoacao" class="form-control" />
-                <span asp-validation-for="DataCadastroDoacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FKIdColaborador" class="control-label"></label>
-                <input asp-for="FKIdColaborador" class="form-control" />
-                <span asp-validation-for="FKIdColaborador" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+    <section>
+        <div class="p-3">
+            <div class="card shadow p-4">
+                <div class="card-body">
+                    <section>
+                        <h2>Editar Saida de doações</h2>
+                        <hr />
+                        <section class="row justify-content-center mt-3">
+                            <div class="table-responsive rounded">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                                <table class="table table-bordered text-center">
+                                    <thead class="table-dark">
 
+                                        <tr>
+                                            <th scope="col">Categoria</th>                                      
+                                        </tr>
+
+                                    </thead>
+                                </table>
+
+                            </div>
+
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </div>
+</section>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+
+@*<h4>DoacaoSaidaModel</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Editar">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FKIdBeneficiado" class="control-label"></label>
+                    <input asp-for="FKIdBeneficiado" class="form-control" />
+                    <span asp-validation-for="FKIdBeneficiado" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FKIdSaidaDoacao" class="control-label"></label>
+                    <input asp-for="FKIdSaidaDoacao" class="form-control" />
+                    <span asp-validation-for="FKIdSaidaDoacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IdDoacao" class="control-label"></label>
+                    <input asp-for="IdDoacao" class="form-control" />
+                    <span asp-validation-for="IdDoacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="QuantidadeItem" class="control-label"></label>
+                    <input asp-for="QuantidadeItem" class="form-control" />
+                    <span asp-validation-for="QuantidadeItem" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoriaDoacao" class="control-label"></label>
+                    <input asp-for="CategoriaDoacao" class="form-control" />
+                    <span asp-validation-for="CategoriaDoacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataCadastroDoacao" class="control-label"></label>
+                    <input asp-for="DataCadastroDoacao" class="form-control" />
+                    <span asp-validation-for="DataCadastroDoacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FKIdColaborador" class="control-label"></label>
+                    <input asp-for="FKIdColaborador" class="form-control" />
+                    <span asp-validation-for="FKIdColaborador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+

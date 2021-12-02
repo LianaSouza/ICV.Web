@@ -22,12 +22,7 @@ namespace ICV.WebUIMVC.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("Cadastrar", "Curso");
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return View("Index", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
