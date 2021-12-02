@@ -47,6 +47,14 @@
                     </select>
                 </div>
 
+                <div class="col-12 mt-2">
+
+                    <select asp-for="FKIdTurma"
+                            asp-items="@(new SelectList(Model.Turmas, nameof(AlunoModel.FKIdTurma), nameof(AlunoModel.NomeTurma)))" class="form-select" required>
+                    </select>
+
+                </div>
+
                 <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
 
             </div>
@@ -59,3 +67,11 @@
 }
 
 
+/*Select * from tblAluno Inner Join TblTurma on TblAluno.FKIdTurma = TblTurma.IdTurma
+
+
+SELECT * FROM TblTurma INNER JOIN TblCurso ON TblTurma.FkIdCurso = TblCurso.IdCurso
+
+--Select IdTurma, IdAluno, NomeTurma, NomeAluno from TblAluno Inner join TblTurma on TblAluno.IdAluno = TblTurma.IdTurma
+
+Select IdTurma ,NomeTurma from TblTurma

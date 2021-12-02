@@ -27,7 +27,9 @@ namespace ICV.WebUIMVC.Controllers
         // GET: Aluno/Create
         public ActionResult Cadastrar()
         {
-            return View();
+            var vm = new AlunoModel();
+            vm.Turmas = vm.BuscarAlunoTurma();
+            return View(vm);
         }
 
         // POST: Aluno/Create

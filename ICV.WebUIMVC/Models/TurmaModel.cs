@@ -34,13 +34,11 @@ namespace ICV.WebUIMVC.Models
 
         public string Curso { get; set; }
 
-
         public List<CursoModel> Cursos { set; get; }
 
         public List<LoginModel> LoginColaborador { get; set; }
 
         public string DataCadastroTurma { get; set; }
-
 
         string dataAtual = DateTime.Now.ToString();
 
