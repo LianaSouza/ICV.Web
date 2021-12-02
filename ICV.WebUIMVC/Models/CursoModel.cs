@@ -74,6 +74,35 @@ namespace ICV.WebUIMVC.Models
             return listObj;
         }
 
+       
+        public List<CursoModel> BuscarCursoSelect(int id)
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = "Select * from TblCurso where IdCurso =" +id;
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<CursoModel> lista = new List<CursoModel>();
+
+            while (dr.Read())
+            {
+                CursoModel Curso = new CursoModel();
+
+                Curso.IdCurso = id;
+                Curso.NomeCurso = dr["NomeCurso"].ToString();
+
+                lista.Add(Curso);
+            }
+
+            return lista;
+
+
+        }
+
         public List<CursoModel> BuscarCursoSelect()
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
