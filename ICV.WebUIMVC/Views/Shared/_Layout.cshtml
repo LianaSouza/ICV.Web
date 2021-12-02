@@ -20,23 +20,23 @@
     <header>
         <nav class="navbar navbar-expand-lg font ps-5" style="color:white; background-color:#04A0D2">
             <div class="container-fluid">
-                <a class="navbar-brand ms-5 ps-5">Coruja Veículos</a>
+                <a class="navbar-brand ms-5 ps-5" style="margin-left:25px" width="30%" height="30%" ><img src="~/img/navbar-brand (1).png" /> Coruja Veículos</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page">Home</a>
+                            <a class="nav-link active font link-light" aria-current="page" href="#idhome" >Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Doações</a>
+                            <a class="nav-link link-light " aria-current="page"  href="#iddoacao">Doações</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Sobre</a>
+                            <a class="nav-link link-light" aria-current="page"  href="#idsobre" >Sobre</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Portal do colaborador</a>
+                        <li class="nav-item"> 
+                            <a class="nav-link link-light" href="Account/Login" >Portal do colaborador</a>
                         </li>
                     </ul>
                 </div>
@@ -44,11 +44,11 @@
         </nav>
     </header>
 
-    <div class="container">
+ 
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+
 
     <footer class="border-top footer text-muted mt-3">
         <div class="container">
