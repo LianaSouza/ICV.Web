@@ -23,8 +23,48 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public int FKIdColaborador { get; set; }
 
-        string dataAtual = DateTime.Now.ToString();
+        public string NomeTurma { get; set; }
 
+        public List<AlunoModel> Turmas { get; set; }
+
+        public List<AlunoModel> BuscarAlunoTurma()
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+
+            conn.Open();
+
+            string sql = "Select IdTurma ,NomeTurma from TblTurma";
+            //string sql = "Select * from tblAluno Inner Join TblTurma on TblAluno.FKIdTurma = TblTurma.IdTurma";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            var lista = new List<AlunoModel>();
+
+            while (dr.Read())
+            {
+                var aluno = new AlunoModel
+                {
+                    //Nome = (string)dr["NomeAluno"],
+                    //CpfAluno = (string)dr["CpfAluno"],
+                    ////DataNascimentoAluno = (string)dr["DataNascimentoAluno"],
+                    //Email = (string)dr["EmailAluno"],
+                    //Telefone = (string)dr["TelefoneAluno"],
+                    //Status = (Status)dr["StatusAluno"],
+                    //DataCadastro = (string)dr["DataCadastroAluno"],
+                    FKIdTurma = (int)dr["IdTurma"],
+                    NomeTurma = (string)dr["NomeTurma"],
+                    //FKIdColaborador = (int)dr["FkIdColaborador"],
+                    
+                };
+
+
+                lista.Add(aluno);
+            }
+
+            return lista;
+        }
 
         public override AlunoModel Buscar(int id)
         {
@@ -92,7 +132,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Insert into TblAluno values('"+objeto.Nome+ "','" + objeto.CpfAluno + "','" + Convert.ToDateTime(objeto.DataNascimentoAluno)+ "','" + objeto.Email + "','" + objeto.Telefone + "','" +(int) objeto.Status + "','" + dataAtual + "','" + objeto.FKIdTurma + "','" + objeto.FKIdColaborador + "')";
+            string sql = @"Insert into TblAluno values('"+objeto.Nome+ "','" + objeto.CpfAluno + "','" + Convert.ToDateTime(objeto.DataNascimentoAluno)+ "','" + objeto.Email + "','" + objeto.Telefone + "','" +(int) objeto.Status + "','" + DateTime.Now + "','" + objeto.FKIdTurma + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.ExecuteNonQuery();

@@ -19,6 +19,7 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public Status StatusCurso { get; set; }
 
+
         public string DataCadastroCurso { get; set; }
 
 
@@ -43,6 +44,8 @@ namespace ICV.WebUIMVC.Models
             }
             return Curso;
         }
+
+       
 
         public List<CursoModel> Buscar()
         {
@@ -69,6 +72,34 @@ namespace ICV.WebUIMVC.Models
             }
 
             return listObj;
+        }
+
+        public List<CursoModel> BuscarCursoSelect()
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = "Select * from TblCurso";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<CursoModel> lista = new List<CursoModel>();
+
+            while (dr.Read())
+            {
+                CursoModel Curso = new CursoModel();
+
+                Curso.IdCurso = Convert.ToInt32(dr["IdCurso"]);
+                Curso.NomeCurso = dr["NomeCurso"].ToString();
+
+                lista.Add(Curso);
+            }
+
+            return lista;
+
+
         }
 
         public void Cadastrar(CursoModel objeto)

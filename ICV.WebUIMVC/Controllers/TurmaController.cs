@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ICV.WebUIMVC.Models;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace ICV.WebUIMVC.Controllers
 {
@@ -13,32 +16,38 @@ namespace ICV.WebUIMVC.Controllers
 
         public ActionResult Index()
         {
-            return View(new TurmaModel().BuscarTurma());
+            return View( new TurmaModel().BuscarTurmaCurso());
         }
 
-        public ActionResult BuscarTurma(int id)
+        public ActionResult Editar(int id)
         {
             return View(new TurmaModel().BuscarTurma(id));
         }
 
-        public ActionResult CadastrarTurma()
+        public ActionResult Cadastrar()
         {
-            return View();
+            var vm = new TurmaModel();
+            vm.Cursos = new CursoModel().BuscarCursoSelect();
+            return View(vm);
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CadastrarTurma(TurmaModel objeto)
+        public ActionResult Cadastrar(TurmaModel objeto)
         {
-            try
-            {
-                new TurmaModel().CadastrarTurma(objeto);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            TurmaModel turma = new TurmaModel();
+
+            //string email = context.HttpContext.User.Identity.Name;
+
+            //turma.LoginColaborador = new LoginModel().BuscarLoginColaborador(email);
+
+
+
+
+            new TurmaModel().CadastrarTurma(objeto);
+
+            return RedirectToAction(nameof(Index));
         }
 
 
