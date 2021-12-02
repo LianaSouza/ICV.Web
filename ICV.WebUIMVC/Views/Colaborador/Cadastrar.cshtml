@@ -16,68 +16,51 @@
                 </section>
                 <section class="row justify-content-center mt-3">
                     <form asp-action="Cadastrar">
-                        <div class="row justify-content-center">
-
-                            <div class="col-6 mt-3">
+                        <div class="row mt-3">
+                            <div class="col-sm-6 mt-3">
                                 <input asp-for="Nome" class="form-control" placeholder="Insira o nome" required />
                             </div>
 
-                            <div class="col-4 mt-3">
-                                <input asp-for="Email" type="email" class="form-control" placeholder="rafael-santos@gmail.com" required />
+                            <div class="col-sm-4 mt-3">
+                                <input asp-for="Email" type="email" class="form-control" placeholder="email@gmail.com" required />
                             </div>
 
-                            <div class="col-2 mt-3">
-
+                            <div class="col-sm-2 mt-3">
                                 <input asp-for="DataNascimentoColaborador" type="date" class="form-control" required />
 
-                                <div class="form-text ms-2">
-                                    Insira a data de nascimento
-                                </div>
-
                             </div>
-
-                            <div class="col-4 mt-3">
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-4 mt-3">
                                 <input asp-for="Telefone" type="tel" class="form-control" placeholder="(11)95140-7863" required />
                             </div>
 
-                            <div class="col-4 mt-3">
-
-                                <div class="form-text ms-2">
-                                    Selecione o tipo de colaborador
-                                </div>
-
+                            <div class="col-sm-4 mt-3">
                                 <select asp-for="TipoColaborador" class="form-select" aria-label="Default select example">
                                     <option value="0" selected>Voluntario</option>
                                     <option value="1">Funcionario</option>
                                 </select>
-
                             </div>
 
-
-
-                            <div class="col-4 mt-3">
-
+                            <div class="col-sm-4 mt-3">
                                 <select asp-for="Status" class="form-select" aria-label="Default select example">
                                     <option value="0">Ativo</option>
                                     <option value="1">Inativo</option>
                                 </select>
-
-                                <div class="form-text ms-2">
-                                    Selecione o Status.
-                                </div>
-
                             </div>
-
-                            <div class="col-4 mt-3">
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-4 mt-3">
                                 <input asp-for="DocumentoColaborador" class="form-control" placeholder="RG" required />
                             </div>
-
-                            <div class="col-4 mt-3">
+                            <div class="col-sm-4 mt-3">
                                 <input asp-for="SenhaColaborador" type="password" class="form-control" placeholder="Insira uma senha" required />
                             </div>
-
+                            <div class="col-sm-4 mt-3 text-end">
+                                <a class="btn btn-secondary" /><i class="fas fa-arrow-left"></i> Retornar</a>
+                                <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success">
+                            </div>
                         </div>
-                        <input asp-action="Cadastrar" type="submit" value="Create" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
                     </form>
                 </section>
             </div>
