@@ -38,6 +38,8 @@ namespace ICV.WebUIMVC.Models
 
         public List<LoginModel> LoginColaborador { get; set; }
 
+        public string Colaborador { get; set; }
+
         public string DataCadastroTurma { get; set; }
 
         string dataAtual = DateTime.Now.ToString();
@@ -53,7 +55,7 @@ namespace ICV.WebUIMVC.Models
             SqlDataReader dr = cmd.ExecuteReader();
             List<TurmaModel> listaObj = new List<TurmaModel>();
 
-            if (dr.Read())
+            while (dr.Read())
             {
                 TurmaModel Turma = new TurmaModel();
 
@@ -76,7 +78,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From TblTurma where IdTurma =" + id;
+            string sql = @"  SELECT  NomeTurma , DescricaoTurma , PeriodoTurma, StatusTurma , DataCadastroTurma , FkIdCurso ,FkIdColaborador , NomeCurso , NomeColaborador  FROM TblTurma 
+                               INNER JOIN TblCurso ON TblTurma.FkIdCurso = TblCurso.IdCurso 
+                               INNER JOIN TblColaborador  ON TblTurma.FkIdColaborador = TblColaborador.IdColaborador where TblTurma.IdTurma = "+ id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -84,14 +88,16 @@ namespace ICV.WebUIMVC.Models
 
             if (dr.Read())
             {
-                Turma.IdTurma = Convert.ToInt32(dr["IdTurma"]);
+                Turma.IdTurma = id;
                 Turma.NomeTurma = dr["NomeTurma"].ToString();
                 Turma.DescricaoTurma = dr["DescricaoTurma"].ToString();
                 Turma.PeriodoTurma = (PeriodoTurma)Convert.ToInt32(dr["PeriodoTurma"]);
                 Turma.StatusTurma = (Status)Convert.ToInt32(dr["StatusTurma"]);
                 Turma.DataCadastroTurma = dr["DataCadastroTurma"].ToString();
                 Turma.FKIdCurso = Convert.ToInt32(dr["FKIdCurso"]);
-                Turma.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
+                Turma.Curso = dr["NomeCurso"].ToString();
+                Turma.FKIdColaborador = Convert.ToInt32(dr["FkIdColaborador"]);
+                Turma.Colaborador = dr["NomeColaborador"].ToString();
 
             }
 
@@ -145,7 +151,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Update TblTurma Set  NomeTurma='" + objeto.NomeTurma + "', DescricaoTurma='" + objeto.DescricaoTurma + "', PeriodoTurma='" + (int)objeto.PeriodoTurma + "', StatusTurma='" + (int)objeto.StatusTurma + "',  where IdTurma=" + id;
+            string sql = "Update TblTurma Set  NomeTurma='" + objeto.NomeTurma + "', DescricaoTurma='" + objeto.DescricaoTurma + "', PeriodoTurma='" + (int)objeto.PeriodoTurma + "', StatusTurma='" + (int)objeto.StatusTurma + "'  where IdTurma=" + id;
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
