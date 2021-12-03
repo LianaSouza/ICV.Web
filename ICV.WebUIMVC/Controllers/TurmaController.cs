@@ -16,12 +16,15 @@ namespace ICV.WebUIMVC.Controllers
 
         public ActionResult Index()
         {
+
             return View( new TurmaModel().BuscarTurmaCurso());
         }
 
         public ActionResult Editar(int id)
         {
-            return View(new TurmaModel().BuscarTurma(id));
+            var vm = new TurmaModel().BuscarTurma(id);
+            vm.Cursos = new CursoModel().BuscarCursoSelect(id);
+            return View(vm);
         }
 
         public ActionResult Cadastrar()
@@ -36,16 +39,15 @@ namespace ICV.WebUIMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(TurmaModel objeto)
         {
-            TurmaModel turma = new TurmaModel();
+            TurmaModel turma = objeto;
 
-            //string email = context.HttpContext.User.Identity.Name;
+            string email = User.Identity.Name;
 
-            //turma.LoginColaborador = new LoginModel().BuscarLoginColaborador(email);
+            LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
 
+            turma.FKIdColaborador = Login.Id;
 
-
-
-            new TurmaModel().CadastrarTurma(objeto);
+            turma.CadastrarTurma(turma);
 
             return RedirectToAction(nameof(Index));
         }

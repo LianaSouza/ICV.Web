@@ -42,7 +42,7 @@ namespace ICV.WebUIMVC.Models
             }
         }
 
-        public List<LoginModel> BuscarLoginColaborador(string email)
+        public LoginModel BuscarLoginColaborador(string email)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
@@ -53,19 +53,15 @@ namespace ICV.WebUIMVC.Models
 
             SqlDataReader dr = cmd.ExecuteReader();
 
-            List<LoginModel> lista = new List<LoginModel>();
+            LoginModel login = new LoginModel();
 
             while (dr.Read())
             {
-                LoginModel Login = new LoginModel();
-
-                Login.Id = Convert.ToInt32(dr["IdColaborador"]);
-                Login.Nome = dr["NomeColaborador"].ToString();
-
-                lista.Add(Login);
+                login.Id = Convert.ToInt32(dr["IdColaborador"]);
+                login.Nome = dr["NomeColaborador"].ToString();
             }
 
-            return lista;
+            return login;
 
 
         }
