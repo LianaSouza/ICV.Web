@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Curso\CadastrarCurso.cshtml" />
+    <Content Remove="Views\Turma\EditarTurma.cshtml" />
     <Content Remove="Views\Turma\RemoverTurma.cshtml" />
   </ItemGroup>
 

@@ -47,6 +47,14 @@
                     </select>
                 </div>
 
+                <div class="col-12 mt-2">
+
+                    <select asp-for="FKIdTurma"
+                            asp-items="@(new SelectList(Model.Turmas, nameof(AlunoModel.FKIdTurma), nameof(AlunoModel.NomeTurma)))" class="form-select" required>
+                    </select>
+
+                </div>
+
                 <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
 
             </div>
@@ -57,5 +65,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-

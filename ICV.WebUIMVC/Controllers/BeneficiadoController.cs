@@ -30,14 +30,16 @@ namespace ICV.WebUIMVC.Controllers
             return View();
         }
 
-        // POST: Beneficiado/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(BeneficiadoModel objeto)
         {
             try
             {
-                // TODO: Add insert logic here
+                var obj = new BeneficiadoModel();
+
+                obj.Cadastrar(objeto);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -47,7 +49,7 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Beneficiado/Edit/5
+        
         public ActionResult Editar(int id)
         {
             return View(new BeneficiadoModel().Buscar(id));
@@ -60,10 +62,10 @@ namespace ICV.WebUIMVC.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                
                 new BeneficiadoModel().Editar(objeto, id);
-
                 return RedirectToAction(nameof(Index));
+
             }
             catch
             {
@@ -71,22 +73,21 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Beneficiado/Delete/5
+        
         public ActionResult Excluir(int id)
         {
             return View(new BeneficiadoModel().Buscar(id));
         }
 
-        // POST: Beneficiado/Delete/5
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Excluir(int id, BeneficiadoModel objeto)
         {
             try
             {
-                // TODO: Add delete logic here
+               
                 new BeneficiadoModel().Remover(id);
-
                 return RedirectToAction(nameof(Index));
             }
             catch
