@@ -65,13 +65,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-
-/*Select * from tblAluno Inner Join TblTurma on TblAluno.FKIdTurma = TblTurma.IdTurma
-
-
-SELECT * FROM TblTurma INNER JOIN TblCurso ON TblTurma.FkIdCurso = TblCurso.IdCurso
-
---Select IdTurma, IdAluno, NomeTurma, NomeAluno from TblAluno Inner join TblTurma on TblAluno.IdAluno = TblTurma.IdTurma
-
-Select IdTurma ,NomeTurma from TblTurma
