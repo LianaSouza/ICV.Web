@@ -58,7 +58,7 @@ namespace ICV.WebUIMVC.Controllers
                     {
                         var principal = new ClaimsPrincipal(identity);
                         var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                        return RedirectToAction ("Index", "Curso");
+                        return RedirectToAction ("Index", "HomePortal");
                     }
                     ////Create the identity for the user  
                     //var identity = new ClaimsIdentity(new[] {

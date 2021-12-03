@@ -6,12 +6,10 @@
 
 <style>
     .animation-up {
-
-    }
-    .animation-up:hover {
-        
     }
 
+        .animation-up:hover {
+        }
 </style>
 <section>
     <section class="p-3">
@@ -28,6 +26,7 @@
                 </div>
             </div>
             <div class="col-sm-3">
+
                 <div class="card shadow">
                     <div class="card-body">
                         <i class="fas fa-users"></i><h3>Doadores</h3>
@@ -42,11 +41,13 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-people-carry"></i><h3> Colaboradores</h3>
+                <a asp-controller="Colaborador" asp-action="Index">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <i class="fas fa-people-carry"></i><h3> Colaboradores</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-sm-3">
                 <div class="card shadow">
@@ -62,18 +63,22 @@
                 <hr />
             </div>
             <div class="col-sm-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="far fa-list-alt"></i><h3> Cursos</h3>
+                <a asp-controller="Curso" asp-action="Index">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <i class="far fa-list-alt"></i><h3> Cursos</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-sm-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-chalkboard-teacher"></i><h3> Turmas</h3>
+                <a asp-controller="Turma" asp-action="Index">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <i class="fas fa-chalkboard-teacher"></i><h3> Turmas</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-sm-4">
                 <div class="card shadow">
