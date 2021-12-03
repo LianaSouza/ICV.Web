@@ -30,27 +30,27 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.NomeTurma)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.DescricaoTurma)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.PeriodoTurma)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.StatusTurma)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Curso)
-                                        </td>
-                                        <td class="text-center">
-                                            <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdTurma"><i class="fas fa-edit"></i></a>
-                                        </td>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NomeTurma)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DescricaoTurma)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PeriodoTurma)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StatusTurma)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Curso)
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdTurma"><i class="fas fa-edit"></i></a>
+                                    </td>
 
-                                    </tr>
+                                </tr>
                                 }
                             </tbody>
                         </table>
