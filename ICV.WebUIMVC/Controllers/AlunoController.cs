@@ -39,9 +39,15 @@ namespace ICV.WebUIMVC.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                new Models.AlunoModel().Cadastrar(objeto);
+                var aluno = objeto;
 
+                string email = User.Identity.Name;
+
+                LoginModel login = new LoginModel().BuscarLoginColaborador(email);
+
+                aluno.FKIdColaborador = login.Id;
+
+                new Models.AlunoModel().Cadastrar(aluno);
 
                 return RedirectToAction(nameof(Index));
 
@@ -56,7 +62,11 @@ namespace ICV.WebUIMVC.Controllers
         // GET: Aluno/Edit/5
         public ActionResult Editar(int id)
         {
-            return View();
+            //return View(new CursoModel().Buscar(id));
+
+            var vm = new AlunoModel();
+            vm.Turmas = vm.BuscarAlunoTurma();
+            return View(new AlunoModel().Buscar(id));
         }
 
         // POST: Aluno/Edit/5
@@ -66,8 +76,16 @@ namespace ICV.WebUIMVC.Controllers
         {
             try
             {
+                var aluno = objeto;
+
+                string email = User.Identity.Name;
+
+                LoginModel login = new LoginModel().BuscarLoginColaborador(email);
+
+                aluno.FKIdColaborador = login.Id;
+
                 // TODO: Add update logic here
-                new AlunoModel().Editar(objeto, id);
+                aluno.Editar(aluno, id);
 
                 return RedirectToAction(nameof(Index));
             }

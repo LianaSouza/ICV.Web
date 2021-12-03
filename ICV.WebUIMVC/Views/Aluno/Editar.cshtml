@@ -80,7 +80,7 @@
 
             <div class="row justify-content-center">
 
-                <div class="col-8 mt-2">
+                <div class="col-6 mt-2">
                     <input asp-for="Nome" class="form-control" placeholder="Insira o nome do aluno..." required />
                 </div>
 
@@ -88,27 +88,32 @@
                     <input asp-for="CpfAluno" class="form-control" placeholder="xxx.xxx.xxx-xx" required />
                 </div>
 
-                <div class="col-2 mt-2">
+                <div class="col-4 mt-2">
                     <input asp-for="DataNascimentoAluno" class="form-control" placeholder="xx/xx/xxxx" required />
                 </div>
 
-                <div class="col-2 mt-2">
+                <div class="col-4 mt-2">
                     <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
                 </div>
 
-                <div class="col-2 mt-2">
+                <div class="col-4 mt-2">
                     <input asp-for="Telefone" class="form-control" placeholder="(xx)xxxxx-xxxx" required />
                 </div>
 
-                <div class="col-2 mt-2">
+                <div class="col-4 mt-2">
                     <select asp-for="Status" class="form-select" required>
                         <option value="1" selected>Ativo</option>
                         <option value="0">Inativo</option>
                     </select>
                 </div>
-            </div>
 
-            <input asp-action="Editar" type="submit" value="Editar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
+                @*<select asp-for="FKIdTurma"
+                    asp-items="@(new SelectList(Model.Turmas, nameof(AlunoModel.FKIdTurma), nameof(AlunoModel.NomeTurma)))" class="form-select" required>
+            </select>*@
+
+            </div>
+           
+            <input type="submit" value="Editar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
 
         </form>
 

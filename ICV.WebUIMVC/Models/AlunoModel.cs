@@ -132,7 +132,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Insert into TblAluno values('"+objeto.Nome+ "','" + objeto.CpfAluno + "','" + Convert.ToDateTime(objeto.DataNascimentoAluno)+ "','" + objeto.Email + "','" + objeto.Telefone + "','" +(int) objeto.Status + "','" + DateTime.Now + "','" + objeto.FKIdTurma + "','" + objeto.FKIdColaborador + "')";
+            string sql = @"Insert into TblAluno values('"+objeto.Nome+ "','" + objeto.CpfAluno + "','" + Convert.ToDateTime(objeto.DataNascimentoAluno)+ "','" + objeto.Email + "','" + objeto.Telefone + "','" +(int) objeto.Status + "','" + DateTime.Now + "'," + objeto.FKIdTurma + "," + objeto.FKIdColaborador + ")";
 
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.ExecuteNonQuery();
