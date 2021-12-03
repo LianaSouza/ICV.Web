@@ -20,11 +20,11 @@ namespace ICV.WebUIMVC.Controllers
             return View( new TurmaModel().BuscarTurmaCurso());
         }
 
-        public ActionResult Editar(int id)
+        public ActionResult Buscar(int id)
         {
-            var vm = new TurmaModel().BuscarTurma(id);
-            vm.Cursos = new CursoModel().BuscarCursoSelect(id);
-            return View(vm);
+            //var vm = new TurmaModel().BuscarTurma(id);
+            //vm.Cursos = new CursoModel().BuscarCursoSelect(id);
+            return View();
         }
 
         public ActionResult Cadastrar()
@@ -53,18 +53,23 @@ namespace ICV.WebUIMVC.Controllers
         }
 
 
-        public ActionResult EditarTurma(int id)
+        public ActionResult Editar(int id)
         {
-            return View(new TurmaModel().BuscarTurma(id));
+            var vm = new TurmaModel().BuscarTurma(id);
+            vm.Cursos = new CursoModel().BuscarCursoSelect(id);
+            return View(vm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditarTurma(int id, TurmaModel objeto)
+        public ActionResult Editar(int id, TurmaModel objeto)
         {
             try
             {
-                new TurmaModel().EditarTurma(id, objeto);
+                TurmaModel turma = objeto;
+
+                turma.EditarTurma(id, objeto);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -74,7 +79,7 @@ namespace ICV.WebUIMVC.Controllers
         }
 
         // GET: Turma/Delete/5
-        public ActionResult RemoverTurma(int id)
+        public ActionResult Remover(int id)
         {
             return View(new TurmaModel().BuscarTurma(id));
         }
@@ -82,7 +87,7 @@ namespace ICV.WebUIMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RemoverTurma(int id, TurmaModel Obj)
+        public ActionResult Remover(int id, TurmaModel Obj)
         {
             try
             {
