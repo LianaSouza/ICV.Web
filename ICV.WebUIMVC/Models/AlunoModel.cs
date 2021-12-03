@@ -25,6 +25,8 @@ namespace ICV.WebUIMVC.Models
 
         public string NomeTurma { get; set; }
 
+        public string Colaborador { get; set; }
+
         public List<AlunoModel> Turmas { get; set; }
 
         public List<AlunoModel> BuscarAlunoTurma()

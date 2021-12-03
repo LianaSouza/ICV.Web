@@ -64,9 +64,15 @@ namespace ICV.WebUIMVC.Controllers
         {
             //return View(new CursoModel().Buscar(id));
 
-            var vm = new AlunoModel();
-            vm.Turmas = vm.BuscarAlunoTurma();
-            return View(new AlunoModel().Buscar(id));
+            var vm = new AlunoModel().Buscar(id);
+
+            string email = User.Identity.Name;
+
+            LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+
+            vm.Colaborador = Login.Nome;
+
+            return View(vm);
         }
 
         // POST: Aluno/Edit/5
