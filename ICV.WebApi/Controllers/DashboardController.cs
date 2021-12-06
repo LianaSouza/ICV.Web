@@ -40,18 +40,18 @@ namespace ICV.WebApi.Controllers
         }
 
 
-        [HttpGet]
-        public IEnumerable<EntradaDoacao> GetEntrada()
-        {
-            var listaEntradaDoacoes = new List<EntradaDoacao>();
+        //[HttpGet]
+        //public IEnumerable<EntradaDoacao> GetEntrada()
+        //{
+        //    var listaEntradaDoacoes = new List<EntradaDoacao>();
 
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText = "DELETE FROM [Blogs]";
-                    var result = await command.ExecuteNonQueryAsync();
-                }
+        //        using (var command = connection.CreateCommand())
+        //        {
+        //            command.CommandText = "DELETE FROM [Blogs]";
+        //            var result = await command.ExecuteNonQueryAsync();
+        //        }
             
-        }
+        //}
     }
 }
 
