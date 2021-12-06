@@ -124,7 +124,7 @@ CREATE TABLE TblSaidaDoacao
 (
     IdSaidaDoacao INT PRIMARY KEY IDENTITY(1,1),
     TipoSaidaDoacao INT NOT NULL,
-    DataCadastroSaidaDoacao INT NOT NULL,
+    DataCadastroSaidaDoacao Date NOT NULL,
     FKIdBeneficiado INT NOT NULL,
     FkIdColaborador INT NOT NULL,
     FOREIGN KEY (FKIdBeneficiado) REFERENCES TblBeneficiado(IdBeneficiado),

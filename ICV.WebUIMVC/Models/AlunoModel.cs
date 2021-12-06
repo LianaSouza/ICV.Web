@@ -73,7 +73,8 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From TblAluno where IdAluno =" + id;
+           
+            string sql = @" SELECT * FROM TblAluno INNER JOIN TblTurma ON TblAluno.FkIdColaborador = TblTurma.IdTurma where TblAluno.IdAluno= "+ id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -91,6 +92,7 @@ namespace ICV.WebUIMVC.Models
                 Aluno.DataCadastro = dr["DataCadastroAluno"].ToString();
                 Aluno.FKIdTurma = Convert.ToInt32(dr["FkIdTurma"]);
                 Aluno.FKIdColaborador = Convert.ToInt32(dr["FkIdColaborador"]);
+                Aluno.NomeTurma =  dr["NomeTurma"].ToString();
             }
 
             return Aluno;
@@ -134,7 +136,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Insert into TblAluno values('"+objeto.Nome+ "','" + objeto.CpfAluno + "','" + Convert.ToDateTime(objeto.DataNascimentoAluno)+ "','" + objeto.Email + "','" + objeto.Telefone + "','" +(int) objeto.Status + "','" + DateTime.Now + "'," + objeto.FKIdTurma + "," + objeto.FKIdColaborador + ")";
+            string dataNascimento = Convert.ToString(objeto.DataNascimentoAluno);
+            string dataAtual = DateTime.Now.ToString("yyyy-MM-dd");
+            string sql = @"Insert into TblAluno values('" + objeto.Nome + "','" + objeto.CpfAluno + "','" + Convert.ToDateTime(objeto.DataNascimentoAluno) + "','" + objeto.Email + "','" + objeto.Telefone + "','" + (int) objeto.Status + "','" + DateTime.Now + "'," + objeto.FKIdTurma + "," + objeto.FKIdColaborador + ")";
 
             SqlCommand cmd = new SqlCommand(sql,conn);
             cmd.ExecuteNonQuery();
@@ -146,7 +150,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblAluno Set NomeAluno='" + objeto.Nome + "', CpfAluno='" + objeto.CpfAluno + "', DataNascimentoAluno='" + Convert.ToDateTime(objeto.DataNascimentoAluno) + "', EmailAluno='" + objeto.Email + "', TelefoneAluno='" + objeto.Telefone + "',  StatusAluno='" + (int)objeto.Status + "',  where IdAluno=" + objeto.id;
+            string sql = "Update TblAluno Set NomeAluno='" + objeto.Nome + "', CpfAluno='" + objeto.CpfAluno + "', DataNascimentoAluno='" + Convert.ToDateTime(objeto.DataNascimentoAluno) + "', EmailAluno='" + objeto.Email + "', TelefoneAluno='" + objeto.Telefone + "',  StatusAluno='" + (int)objeto.Status + "'  where IdAluno=" + objeto.id;
             
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
