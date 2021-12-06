@@ -1,0 +1,39 @@
+﻿@model ICV.WebUIMVC.Models.ProdutoModel
+
+<h4>ProdutoModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Cadastrar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>          
+            <div class="form-group">
+                <label asp-for="NomeProduto" class="control-label"></label>
+                <input asp-for="NomeProduto" class="form-control" />
+                <span asp-validation-for="NomeProduto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaProduto" class="control-label"></label>
+                <input asp-for="CategoriaProduto" class="form-control" />
+                <span asp-validation-for="CategoriaProduto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantidadeProduto" class="control-label"></label>
+                <input asp-for="QuantidadeProduto" class="form-control" />
+                <span asp-validation-for="QuantidadeProduto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastroProduto" class="control-label"></label>
+                <input asp-for="DataCadastroProduto" class="form-control" />
+                <span asp-validation-for="DataCadastroProduto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
