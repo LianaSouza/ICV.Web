@@ -50,17 +50,13 @@ namespace ICV.WebUIMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id, ProdutoModel objeto)
         {
-            try
-            {
+           
                 // TODO: Add update logic here
                 new ProdutoModel().Editar(objeto, id);
 
                 return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+          
+        
         }
 
         // GET: Produto/Delete/5
