@@ -9,8 +9,6 @@ namespace ICV.WebUIMVC.Models
     public class ItemEntradaModel : ItemAbstract <ItemEntradaModel>
     {
         //Revisado com o banco - 26/11
-    
-        string dataAtual = DateTime.Now.ToString();
 
         public override ItemEntradaModel Buscar(int id)
         {
@@ -26,11 +24,11 @@ namespace ICV.WebUIMVC.Models
             if (dr.Read())
             {
                 Item.IdItem = Convert.ToInt32(dr["IdEntradaItem"]);
-                Item.QuantidadeItem = dr["QuantidadeEntradaItem"].ToString();
+                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeEntradaItem"]);
                 Item.categoriaProduto = (CategoriaProduto) Convert.ToInt32( dr["QuantidadeEntradaItem"]);
                 Item.DataCadastroItem = dr["DataCadastroEntradaItem"].ToString();
-                Item.FKIdDoacao = dr["FkIdEntradaDoacao"].ToString();
-                Item.FKIdProduto = dr["FkIdProduto"].ToString(); 
+                Item.FKIdDoacao = Convert.ToInt32(dr["FkIdEntradaDoacao"]);
+                Item.FKIdProduto = Convert.ToInt32(dr["FkIdProduto"]); 
             }
 
             return Item;
@@ -52,11 +50,11 @@ namespace ICV.WebUIMVC.Models
                 ItemEntradaModel Item = new ItemEntradaModel();
 
                 Item.IdItem = Convert.ToInt32(dr["IdEntradaItem"]);
-                Item.QuantidadeItem = dr["QuantidadeEntradaItem"].ToString();
+                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeEntradaItem"]);
                 Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["QuantidadeEntradaItem"]);
                 Item.DataCadastroItem = dr["DataCadastroEntradaItem"].ToString();
-                Item.FKIdDoacao = dr["FkIdEntradaDoacao"].ToString();
-                Item.FKIdProduto = dr["FkIdProduto"].ToString();
+                Item.FKIdDoacao = Convert.ToInt32(dr["FkIdEntradaDoacao"]);
+                Item.FKIdProduto = Convert.ToInt32(dr["FkIdProduto"]);
 
                 listaObj.Add(Item);
             }
@@ -69,7 +67,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblEntradaItem Values ('" + objeto.QuantidadeItem + "','" + (int)objeto.categoriaProduto + "','" + dataAtual + "','" + objeto.FKIdDoacao + "','" + objeto.FKIdProduto + "')";
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string sql = "Insert Into TblEntradaItem Values ('" + objeto.QuantidadeItem + "','" + (int)objeto.categoriaProduto + "','" + date + "','" + objeto.FKIdDoacao + "','" + objeto.FKIdProduto + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

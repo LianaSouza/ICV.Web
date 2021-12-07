@@ -26,6 +26,31 @@ namespace ICV.WebUIMVC.Models
 
         string dataAtual = DateTime.Now.ToString();
 
+        public List<ProdutoModel> BuscarProdutoSelect()
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = "Select * from TblProduto";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<ProdutoModel> lista = new List<ProdutoModel>();
+
+            while (dr.Read())
+            {
+                ProdutoModel produto = new ProdutoModel();
+
+                produto.IdProduto = Convert.ToInt32(dr["IdProduto"]);
+                produto.NomeProduto = dr["NomeProduto"].ToString();
+
+                lista.Add(produto);
+            }
+
+            return lista;
+        }
 
         public ProdutoModel Buscar(int id)
         {

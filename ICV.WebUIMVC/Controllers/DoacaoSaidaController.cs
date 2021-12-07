@@ -13,6 +13,7 @@ namespace ICV.WebUIMVC.Controllers
         // GET: DoacaoSaida
         public ActionResult Index()
         {
+            //  return View( new TurmaModel().BuscarTurmaCurso());
             return View(new DoacaoSaidaModel().Buscar());
         }
 
@@ -24,8 +25,11 @@ namespace ICV.WebUIMVC.Controllers
 
         // GET: DoacaoSaida/Create
         public ActionResult Cadastrar()
-        {
-            return View();
+       {
+            var vm = new DoacaoSaidaModel();
+            vm.Beneficiado = new BeneficiadoModel().BuscarBeneficiado();
+            vm.Produto = new ProdutoModel().BuscarProdutoSelect();
+            return View(vm);
         }
 
         // POST: DoacaoSaida/Create
@@ -33,23 +37,56 @@ namespace ICV.WebUIMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(DoacaoSaidaModel objeto)
         {
-            try
-            {
-                // TODO: Add insert logic here
-                new Models.DoacaoSaidaModel().Cadastrar(objeto);
+            //Cadastro Doação
+            DoacaoSaidaModel doacao = objeto;
+            string email = User.Identity.Name;
+            LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+            doacao.FKIdColaborador = Login.Id;
+            doacao.BuscarId(doacao.FKIdColaborador);
+            ViewBag.IdSaidaDoacao = doacao.IdDoacao;
+            doacao.Cadastrar(doacao);
 
+            return RedirectToAction(nameof(Cadastrar));
+        }
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarItem(DoacaoSaidaModel objeto)
+        {
+            // Adquirir o Email do colaborador 
+            DoacaoSaidaModel doacao = objeto;
+            string email = User.Identity.Name;
+            LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+            int colaborador = Login.Id;
+
+            
+            ItemSaidaModel item = new ItemSaidaModel();
+
+            // Busco o ultimo cadastro do colaborador
+            doacao.ListBeneficiado = doacao.BuscarId(colaborador);
+
+            item.FKIdDoacao = doacao.ListBeneficiado.IdDoacao;
+
+            item.categoriaProduto = objeto.CategoriaDoacao;
+
+            item.QuantidadeItem = objeto.QuantidadeItem;
+
+            // Adquirir o id do produto
+            item.FKIdProduto = doacao.FKIdProduto ;
+
+            item.Cadastrar(item);
+
+            return RedirectToAction("Index","ItemSaida");
         }
 
         // GET: DoacaoSaida/Edit/5
         public ActionResult Editar(int id)
         {
+            /*var vm = new TurmaModel().BuscarTurma(id);
+            vm.Cursos = new CursoModel().BuscarCursoSelect(id);
+            return View(vm);*/
+           
+           
             return View(new DoacaoSaidaModel().Buscar(id));
         }
 
