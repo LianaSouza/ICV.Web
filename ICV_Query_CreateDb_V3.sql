@@ -124,7 +124,7 @@ CREATE TABLE TblSaidaDoacao
 (
     IdSaidaDoacao INT PRIMARY KEY IDENTITY(1,1),
     TipoSaidaDoacao INT NOT NULL,
-    DataCadastroSaidaDoacao INT NOT NULL,
+    DataCadastroSaidaDoacao Date NOT NULL,
     FKIdBeneficiado INT NOT NULL,
     FkIdColaborador INT NOT NULL,
     FOREIGN KEY (FKIdBeneficiado) REFERENCES TblBeneficiado(IdBeneficiado),
@@ -137,7 +137,7 @@ CREATE TABLE TblSaidaItem
     QuantidadeSaidaItem INT NOT NULL,
     DataCadastroSaidaItem DATE NOT NULL,
     FKIdProduto INT NOT NULL,
-    FKIdSaidoDoacao INT NOT NULL,
+    FKIdSaidaDoacao INT NOT NULL,
     FOREIGN KEY (FKIdProduto) REFERENCES TblProduto(IdProduto),
-    FOREIGN KEY (FKIdSaidoDoacao) REFERENCES TblSaidaDoacao(idSaidaDoacao)
+    FOREIGN KEY (FKIdSaidaDoacao) REFERENCES TblSaidaDoacao(idSaidaDoacao)
 )

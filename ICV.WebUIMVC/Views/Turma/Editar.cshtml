@@ -19,14 +19,13 @@
 
                         <table class="table table-bordered text-center">
 
-                            <thead>
+                            <thead class="table-dark">
                                 <tr class="text-center">
                                     <th scope="col">Nome</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Periodo</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Curso</th>
-                                    <th scope="col">Criado por</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,17 +45,14 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => modelItem.Curso)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => modelItem.Colaborador)
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="container-fluid">
+                    <div>
                         <form asp-action="Editar">
-                            <div class="row justify-content-center">
-                                <div class="col-8 mt-2">
+                            <div class="row">
+                                <div class="col-12 mt-2">
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                                     <div class="col-sm-12 mt-2 ">
@@ -65,8 +61,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-sm-4 mt-2">
+                            <div class="row ">
+                                <div class="col-sm-6 mt-2">
                                     <label>Status</label>
                                     <select asp-for="StatusTurma" class="form-select" required>
                                         <option value="1" selected>Ativo</option>
@@ -74,8 +70,8 @@
                                     </select>
                                 </div>
 
-                                <div class="col-sm-4  mt-2">
-                                    <label>Status</label>
+                                <div class="col-sm-6  mt-2">
+                                    <label>Período</label>
                                     <select asp-for="PeriodoTurma" class="form-select" required>
                                         <option value="1" selected>Manhã</option>
                                         <option value="2">Tarde</option>
@@ -83,8 +79,8 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-sm-8  mt-2">
+                            <div class="row">
+                                <div class="col-sm-12  mt-2">
                                     <label>Descrição</label>
                                     <textarea asp-for="DescricaoTurma" id="floatingTextarea2" class="form-control" rows="4" placeholder="Preencha a descrição" required></textarea>
                                 </div>
@@ -101,10 +97,6 @@
                 </section>
             </div>
         </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Back to List</a>
     </div>
 </section>
 

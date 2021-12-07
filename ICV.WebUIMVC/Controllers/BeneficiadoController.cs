@@ -34,17 +34,26 @@ namespace ICV.WebUIMVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(BeneficiadoModel objeto)
-        {
+ {
             try
             {
-                var obj = new BeneficiadoModel();
 
-                obj.Cadastrar(objeto);
+                BeneficiadoModel beneficiado = objeto;
+
+                string email = User.Identity.Name;
+
+                LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+
+                beneficiado.FKIdColaborador = Login.Id;
+
+                beneficiado.Cadastrar(beneficiado);
 
                 return RedirectToAction(nameof(Index));
+
             }
-            catch
+            catch (Exception ex)
             {
+                ViewBag.Error = true;
                 return View();
             }
         }

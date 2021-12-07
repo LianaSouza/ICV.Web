@@ -5,116 +5,120 @@
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
-<section class="row justify-content-center">
+<section>
+    <div class="p-3">
+        <div class="card shadow p-4">
+            <div class="card-body">
+                <section>
 
-    <div class="col-sm-8 text-center mt-5">
+                    <h2>Editar Aluno</h2>
+                    <hr />
 
-        <h1 class="h3">Coruja Veículos - Editar Aluno</h1>
+                </section>
+                <section class="row justify-content-center mt-3">
+                    <div class="table-responsive rounded">
 
-        <p>Para voltar para lista de alunos <a asp-action="Index">Clique aqui</a>.</p>
+                        <table class="table table-bordered text-center">
 
-    </div>
+                            <thead class="table-dark">
 
-</section>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">CpfAluno</th>
+                                    <th scope="col">DataNascimento</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Turma</th>
+                                    <th scope="col">Criado por</th>
+                                </tr>
 
-<section class="row justify-content-center">
+                            </thead>
 
-    <div class="col-sm-8">
+                            <tbody>
 
-        <div class="table-responsive rounded">
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Nome)
+                                    </td>
 
-            <table class="table table-bordered text-center">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.CpfAluno)
+                                    </td>
 
-                <thead class="table-dark">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.DataNascimentoAluno)
+                                    </td>
 
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">CpfAluno</th>
-                        <th scope="col">DataNascimento</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Status</th>
-                    </tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Email)
+                                    </td>
 
-                </thead>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Telefone)
+                                    </td>
 
-                <tbody>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Status)
+                                    </td>
 
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => modelItem.Nome)
-                        </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.NomeTurma)
+                                    </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => modelItem.CpfAluno)
-                        </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => modelItem.Colaborador)
+                                    </td>
+                                </tr>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => modelItem.DataNascimentoAluno)
-                        </td>
+                            </tbody>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => modelItem.Email)
-                        </td>
+                        </table>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => modelItem.Telefone)
-                        </td>
+                    </div>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => modelItem.Status)
-                        </td>
+                    <article class="col-sm-8">
+                        <form asp-action="Editar">
 
-                    </tr>
+                            <div class="row justify-content-center">
 
-                </tbody>
+                                <div class="col-2 mt-2">
+                                    <input asp-for="Nome" class="form-control" placeholder="Insira o nome do aluno..." required />
+                                </div>
 
-            </table>
+                                <div class="col-2 mt-2">
+                                    <input asp-for="CpfAluno" class="form-control" placeholder="xxx.xxx.xxx-xx" required />
+                                </div>
 
-        </div>
+                                <div class="col-2 mt-2">
+                                    <input asp-for="DataNascimentoAluno" class="form-control" placeholder="xx/xx/xxxx" required />
+                                </div>
 
-    </div>
+                                <div class="col-2 mt-2">
+                                    <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
+                                </div>
 
-    <div class="col-sm-8">
-        <form asp-action="Editar">
+                                <div class="col-2 mt-2">
+                                    <input asp-for="Telefone" class="form-control" placeholder="(xx)xxxxx-xxxx" required />
+                                </div>
 
-            <div class="row justify-content-center">
+                                <div class="col-2 mt-2">
+                                    <select asp-for="Status" class="form-select" required>
+                                        <option value="1" selected>Ativo</option>
+                                        <option value="0">Inativo</option>
+                                    </select>
+                                </div>
 
-                <div class="col-8 mt-2">
-                    <input asp-for="Nome" class="form-control" placeholder="Insira o nome do aluno..." required />
-                </div>
-
-                <div class="col-2 mt-2">
-                    <input asp-for="CpfAluno" class="form-control" placeholder="xxx.xxx.xxx-xx" required />
-                </div>
-
-                <div class="col-2 mt-2">
-                    <input asp-for="DataNascimentoAluno" class="form-control" placeholder="xx/xx/xxxx" required />
-                </div>
-
-                <div class="col-2 mt-2">
-                    <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
-                </div>
-
-                <div class="col-2 mt-2">
-                    <input asp-for="Telefone" class="form-control" placeholder="(xx)xxxxx-xxxx" required />
-                </div>
-
-                <div class="col-2 mt-2">
-                    <select asp-for="Status" class="form-select" required>
-                        <option value="1" selected>Ativo</option>
-                        <option value="0">Inativo</option>
-                    </select>
-                </div>
+                                <div class="col-12 mt-2">
+                                    <input type="submit" value="Salvar" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </form>
+                    </article>
+                </section>
             </div>
-
-            <input asp-action="Editar" type="submit" value="Editar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
-
-        </form>
-
+        </div>
     </div>
+
 </section>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
