@@ -1,114 +1,132 @@
 ﻿@page
 @model ICV.WebUIMVC.Views.HomePortal.IndexModel
 @{
+
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
 <style>
-    .animation-up {
+    #grad1 {
+        height: 150px;
+        background-image: linear-gradient(to right, #04A0D2, #6b4f3b);
     }
 
-        .animation-up:hover {
-        }
+    .card-borda {
+        border-radius: 20px;
+    }
 </style>
-<section>
-    <section class="p-3">
-        <div class="card p-3 mt-3 shadow">
-            <h1>Olá, usuário!</h1>
-            <h5>Bem-vindo ao Portal do Colaborador!</h5>
+<section class="p-3">
+    <section class="p-4">
+        <div class="card text-white shadow mb-4" id="grad1" style="border-radius: 35px">
+            <div class="p-4 mt-2">
+                <h1>Olá, colaborador!</h1>
+                <h5>Seja bem-vindo ao Portal do Instituto Coruja Veículos!</h5>
+            </div>
         </div>
+        <div class="card shadow p-5 mt-5" style="border-radius:35px">
+            <div class="row mt-3">
+                <div class="animation-up">
+                    <div class="p-3  text-start">
+                        <h3><b>Institucional</b></h3>
+                        <hr />
+                    </div>
+                </div>
+                <div class="col-sm-3 mb-1">
 
-        <div class="row text-center mt-3">
-            <div class="animation-up">
-                <div class="p-3">
-                    <h3><b>Institucional</b></h3>
+                    <div class="card  card-borda shadow">
+                        <div class="card-body">
+                            <i class="fas fa-users"></i><h3>Doadores</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 mb-1">
+                    <div class="card  card-borda shadow">
+                        <div class="card-body">
+                            <i class="fas fa-hands-helping"></i><h3> Beneficiados</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 mb-1">
+                    <a asp-controller="Colaborador" asp-action="Index">
+                        <div class="card card-borda shadow">
+                            <div class="card-body">
+                                <i class="fas fa-people-carry"></i><h3> Colaboradores</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-3 mb-1">
+                    <div class="card card-borda shadow">
+                        <div class="card-body">
+                            <i class="fas fa-chart-bar"></i><h3> Dashboard</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="p-4  text-start">
+                    <h3><b>Ensino</b></h3>
                     <hr />
                 </div>
-            </div>
-            <div class="col-sm-3">
+                <div class="col-sm-4  mb-1">
+                    <a asp-controller="Curso" asp-action="Index">
+                        <div class="card card-borda shadow">
+                            <div class="card-body">
+                                <i class="far fa-list-alt"></i><h3> Cursos</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4  mb-1">
+                    <a asp-controller="Turma" asp-action="Index">
+                        <div class="card card-borda shadow">
+                            <div class="card-body">
+                                <i class="fas fa-chalkboard-teacher"></i><h3> Turmas</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4  mb-1">
+                    <a asp-controller="Aluno" asp-action="Index">
+                        <div class="card card-borda shadow">
+                            <div class="card-body">
+                                <i class="fas fa-user-graduate"></i><h3> Alunos</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-users"></i><h3>Doadores</h3>
-                    </div>
-                </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-hands-helping"></i><h3> Beneficiados</h3>
-                    </div>
+            <div class="row mt-5">
+                <div class="p-4  text-start">
+                    <h3><b>Controle de Doações</b></h3>
+                    <hr />
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <a asp-controller="Colaborador" asp-action="Index">
-                    <div class="card shadow">
+
+                <div class="col-sm-4  mb-1">
+                    <div class="card card-borda shadow">
                         <div class="card-body">
-                            <i class="fas fa-people-carry"></i><h3> Colaboradores</h3>
+                            <i class="fas fa-arrow-right"></i><h3> Entrada de Doações</h3>
                         </div>
                     </div>
-                </a>
-            </div>
-            <div class="col-sm-3">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-chart-bar"></i><h3> Dashboard</h3>
-                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row mt-5 text-center">
-            <div class="p-3">
-                <h3><b>Ensino</b></h3>
-                <hr />
-            </div>
-            <div class="col-sm-4">
-                <a asp-controller="Curso" asp-action="Index">
-                    <div class="card shadow">
+                <div class="col-sm-4  mb-1">
+                    <a asp-controller="Produto" asp-action="Index">
+                        <div class="card card-borda shadow">
+                            <div class="card-body">
+                                <i class="fas fa-boxes"></i><h3> Gestão de Produtos</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-4  mb-1">
+                    <div class="card card-borda shadow">
                         <div class="card-body">
-                            <i class="far fa-list-alt"></i><h3> Cursos</h3>
+                            <i class="fas fa-arrow-left"></i><h3> Saída de Doações</h3>
                         </div>
                     </div>
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <a asp-controller="Turma" asp-action="Index">
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <i class="fas fa-chalkboard-teacher"></i><h3> Turmas</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-user-graduate"></i><h3> Alunos</h3>
-                    </div>
                 </div>
             </div>
-
-        </div>
-        <div class="row mt-5 text-center">
-            <div class="p-3">
-                <h3><b>Controle de Doações</b></h3>
-                <hr />
-            </div>
-            <div class="col-sm-6">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-arrow-right"></i><h3> Entrada de Doações</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <i class="fas fa-arrow-left"></i><h3> Saída de Doações</h3>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 </section>
