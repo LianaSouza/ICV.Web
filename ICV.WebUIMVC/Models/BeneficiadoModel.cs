@@ -10,6 +10,8 @@ namespace ICV.WebUIMVC.Models
     public class BeneficiadoModel : SuperPessoaAbstract <BeneficiadoModel>
     {
         // Revisado e de acordo com o banco - 26/11
+        
+
         [Required]
         public string CpfBeneficiado { get; set; }
 
@@ -35,7 +37,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From TblBeneficiado where IdBeneficiario =" + id;
+            string sql = @"Select * From TblBeneficiado INNER JOIN TblColaborador ON TblBeneficiado.FkIdColaborador = TblColaborador.IdColaborador where TblBeneficiado.IdBeneficiado  = " + id;
+
+            
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -97,7 +101,8 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Insert Into TblBeneficiado Values('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" +Convert.ToDateTime(objeto.DataNascimentoBeneficiado) + "', '" + objeto.Telefone + "','" + objeto.Email  + "','" +(int) objeto.Status + "','" + objeto.QuantidadeDependentes + "','" + objeto.RendaMensalBeneficiado + "','" + dataAtual + "','" + FKIdColaborador + "')";
+
+            string sql = "Insert Into TblBeneficiado Values ('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + objeto.DataNascimentoBeneficiado + "','" + objeto.Telefone + "','" + objeto.Email  + "','" + (int)objeto.Status + "','" + objeto.QuantidadeDependentes + "', '" + objeto.RendaMensalBeneficiado + "', '"+ DataCadastro + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
