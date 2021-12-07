@@ -139,5 +139,5 @@ CREATE TABLE TblSaidaItem
     FKIdProduto INT NOT NULL,
     FKIdSaidaDoacao INT NOT NULL,
     FOREIGN KEY (FKIdProduto) REFERENCES TblProduto(IdProduto),
-    FOREIGN KEY (FKIdSaidoDoacao) REFERENCES TblSaidaDoacao(idSaidaDoacao)
+    FOREIGN KEY (FKIdSaidaDoacao) REFERENCES TblSaidaDoacao(idSaidaDoacao)
 )
