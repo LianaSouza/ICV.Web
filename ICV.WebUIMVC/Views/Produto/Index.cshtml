@@ -1,49 +1,70 @@
 ﻿@model IEnumerable<ICV.WebUIMVC.Models.ProdutoModel>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.NomeProduto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoriaProduto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QuantidadeProduto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadastroProduto)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-       
-            <td>
-                @Html.DisplayFor(modelItem => item.NomeProduto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoriaProduto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantidadeProduto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCadastroProduto)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new {  id=item.IdProduto   }) |
-                @Html.ActionLink("Detalhes", "Detalhes", new {  id=item.IdProduto   }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.IdProduto    })
-            </td>
-        </tr>
+@{
+    ViewData["Title"] = "Produtos";
+    Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
-    </tbody>
-</table>
+
+
+
+
+<section class="p-3">
+
+    <div class="card shadow p-4">
+
+        <div class="card-body">
+            <section>
+                <h2>Gerenciamento de Produtos</h2>
+                <hr />
+                <a class="btn btn-secondary" asp-controller="HomePortal" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
+                <a class="btn btn-primary" asp-action="Cadastrar"><i class="fas fa-plus"></i> Novo</a>
+            </section>
+
+            <section class="row justify-content-center mt-3">
+                <div class="table-responsive rounded">
+                    <div class="table-responsive rounded">
+                        <table class="table text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>
+                                        Nome do Produto
+                                    </th>
+                                    <th>
+                                        Categoria
+                                    </th>
+                                    <th>
+                                        Quantidade
+                                    </th>
+                                    <th>
+                                        Ação
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NomeProduto)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CategoriaProduto)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.QuantidadeProduto)
+                                        </td>
+                                        <td>
+                                            <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdProduto"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+
+

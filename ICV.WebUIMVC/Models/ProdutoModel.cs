@@ -93,8 +93,8 @@ namespace ICV.WebUIMVC.Models
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
-
-            string sql = "Update TblProduto Set  NomeProduto='" + objeto.NomeProduto + "', CategoriaProduto='" + (int)objeto.CategoriaProduto + "', QuantidadeProduto='" + objeto.QuantidadeProduto + "', where IdProduto=" + objeto.IdProduto;
+            
+            string sql = $"Update TblProduto set NomeProduto='{objeto.NomeProduto}', CategoriaProduto={(int)objeto.CategoriaProduto}, QuantidadeProduto={objeto.QuantidadeProduto} where IdProduto = {id}";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
