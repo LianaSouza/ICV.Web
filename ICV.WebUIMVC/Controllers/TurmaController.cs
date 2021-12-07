@@ -78,7 +78,6 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Turma/Delete/5
         public ActionResult Remover(int id)
         {
             return View(new TurmaModel().BuscarTurma(id));
