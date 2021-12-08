@@ -106,13 +106,13 @@ namespace ICV.WebUIMVC.Models
                 BeneficiadoModel Beneficiado = new BeneficiadoModel();
 
                 Beneficiado.id = Convert.ToInt32(dr["IdBeneficiado"]);
-                Beneficiado.Nome = dr["NomeBeneficiado "].ToString();
-                Beneficiado.CpfBeneficiado = dr["CpfBeneficiado "].ToString();
-                Beneficiado.DataNascimentoBeneficiado = dr["DataNascimentoBeneficiado "].ToString();
+                Beneficiado.Nome = dr["NomeBeneficiado"].ToString();
+                Beneficiado.CpfBeneficiado = dr["CpfBeneficiado"].ToString();
+                Beneficiado.DataNascimentoBeneficiado = dr["DataNascimentoBeneficiado"].ToString();
                 Beneficiado.Telefone = dr["TelefoneBeneficiado"].ToString();
                 Beneficiado.Email = dr["EmailBeneficiado"].ToString();
                 Beneficiado.Status = (Status)Convert.ToInt32(dr["StatusBeneficiado"]);
-                Beneficiado.QuantidadeDependentes = Convert.ToInt32(dr["QuantidadeDependentesBeneficiado"]);
+                Beneficiado.QuantidadeDependentes = Convert.ToInt32(dr["QuantidadesDependentesBeneficiado"]);
                 Beneficiado.RendaMensalBeneficiado = dr["RendaMensalBeneficiado"].ToString();
                 Beneficiado.DataCadastro = dr["DataCadastroBeneficiado"].ToString();
                 Beneficiado.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
@@ -128,8 +128,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-
-            string sql = "Insert Into TblBeneficiado Values ('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + objeto.DataNascimentoBeneficiado + "','" + objeto.Telefone + "','" + objeto.Email  + "','" + (int)objeto.Status + "','" + objeto.QuantidadeDependentes + "', '" + objeto.RendaMensalBeneficiado + "', '"+ DataCadastro + "','" + objeto.FKIdColaborador + "')";
+            string dataNascimento = Convert.ToString(objeto.DataNascimentoBeneficiado);
+            string dataAtual = DateTime.Now.ToString("yyyy-MM-dd");
+            string sql = "Insert Into TblBeneficiado Values ('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + Convert.ToDateTime(objeto.DataNascimentoBeneficiado) + "','" + objeto.Telefone + "','" + objeto.Email  + "','" + (int)objeto.Status + "','" + objeto.QuantidadeDependentes + "', '" + objeto.RendaMensalBeneficiado + "', '"+ DateTime.Now + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
