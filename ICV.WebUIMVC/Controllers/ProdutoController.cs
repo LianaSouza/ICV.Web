@@ -42,7 +42,7 @@ namespace ICV.WebUIMVC.Controllers
         // GET: Produto/Edit/5
         public ActionResult Editar(int id)
         {
-            return View();
+            return View(new ProdutoModel().Buscar(id));
         }
 
         // POST: Produto/Edit/5
