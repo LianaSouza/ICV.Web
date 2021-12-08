@@ -19,18 +19,18 @@
                             <div class="row justify-content-center">
                                 <div class="col-8 mt-2">
                                     <label>Nome do Curso</label>
-                                    <input asp-for="NomeCurso" class="form-control" placeholder="Insira o nome do curso..." required />
+                                    <input asp-for="NomeCurso" class="form-control" placeholder="Insira o nome do curso..."  />
                                 </div>
                                 <div class="col-4 mt-2">
                                     <label>Status</label>
-                                    <select asp-for="StatusCurso" class="form-select" required>
+                                    <select asp-for="StatusCurso" class="form-select">
                                         <option value="1" selected>Ativo</option>
                                         <option value="0">Inativo</option>
                                     </select>
                                 </div>
                                 <div class="col-12 mt-4">
                                     <label>Descrição</label>
-                                    <textarea asp-for="DescricaoCurso" id="floatingTextarea2" class="form-control" rows="4" placeholder="Preencha a descrição do curso..." required></textarea>
+                                    <textarea asp-for="DescricaoCurso" id="floatingTextarea2" class="form-control" rows="4" placeholder="Preencha a descrição do curso..." ></textarea>
                                 </div>
                             </div>
                             <div class="mt-3 text-end">
@@ -47,3 +47,42 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script>
+    var retorno = "@ViewBag.retorno";
+    console.log(retorno);
+
+    $(document).ready(function () {
+
+            if (retorno == "Erro" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Não foi possível cadastrar! Revise os dados.',
+
+                    icon: 'warning',
+
+                    iconColor: 'yellow',
+
+                })
+            }
+
+    });
+</script>

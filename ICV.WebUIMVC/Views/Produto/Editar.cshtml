@@ -12,7 +12,7 @@
         <div class="card shadow p-4">
             <div class="card-body">
                 <section>
-                    <h2>Editar Colaborador</h2>
+                    <h2>Editar Produto</h2>
                     <hr />
 
                 </section>
@@ -21,7 +21,7 @@
                         <table class="table table-bordered text-center">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Nome do Colaborador</th>
+                                    <th scope="col">Nome</th>
                                     <th scope="col">Categoria</th>
                                     <th scope="col">Quantidade</th>
 
@@ -45,7 +45,7 @@
                     <form asp-action="Editar">
                         <div class="row justify-content-center">
                             <div class="col-sm-4 mt-2">
-                                <label>Nome do Colaborador</label>
+                                <label>Nome do Produto</label>
                                 <input asp-for="NomeProduto" class="form-control" />
                             </div>
 
@@ -76,38 +76,3 @@
         </div>
     </div>
 </section>
-
-
-
-<h4>ProdutoModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Editar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NomeProduto" class="control-label"></label>
-                <input asp-for="NomeProduto" class="form-control" />
-                <span asp-validation-for="NomeProduto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoriaProduto" class="control-label"></label>
-                <input asp-for="CategoriaProduto" class="form-control" />
-                <span asp-validation-for="CategoriaProduto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QuantidadeProduto" class="control-label"></label>
-                <input asp-for="QuantidadeProduto" class="form-control" />
-                <span asp-validation-for="QuantidadeProduto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

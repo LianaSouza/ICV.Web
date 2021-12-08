@@ -31,17 +31,25 @@ namespace ICV.WebUIMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(CursoModel curso)
         {
-            try
+            if (!string.IsNullOrEmpty(curso.NomeCurso))
             {
-                var obj = new CursoModel();
-
-                obj.Cadastrar(curso);
-
-                return RedirectToAction(nameof(Index));
+                ViewBag.retorno = "Erro";
+                return RedirectToAction(nameof(Cadastrar));
             }
-            catch 
+            else
             {
-                return View();
+                try
+                {
+                    var obj = new CursoModel();
+
+                    obj.Cadastrar(curso);
+
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
             }
         }
 

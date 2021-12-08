@@ -69,7 +69,7 @@ namespace ICV.WebUIMVC.Models
                 produto.NomeProduto = dr["NomeProduto"].ToString();
                 produto.CategoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
                 produto.QuantidadeProduto = Convert.ToInt32(dr["QuantidadeProduto"]);
-                produto.DataCadastroProduto = dr["DataCadastroProduto "].ToString();
+                //produto.DataCadastroProduto = dr["DataCadastroProduto "].ToString();
 
             }
             return produto;
