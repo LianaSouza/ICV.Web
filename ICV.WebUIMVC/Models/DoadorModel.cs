@@ -100,25 +100,25 @@ namespace ICV.WebUIMVC.Models
 
         public override void Editar(DoadorModel objeto, int id)
         {
-            SqlConnection con = new SqlConnection(ConecteDb.Connect());
-            con.Open();
-
-            string sql = "Update TblDoador Set  NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', TelefoneDoador='" + objeto.Telefone + "', EmailDoador='" + objeto.Email + "', StatusDoador=" + (int)objeto.Status + ", AnonimoDoador=" + (int)objeto.AnonimoDoador + ", ObservacaoDoador='" + objeto.ObservacaoDoador + "', where IdDoador=" + id;
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+            string sql = $"Update TblDoador Set NomeDoador= '{objeto.Nome}', DocumentoDoador='{objeto.DocumentoDoador}', TelefoneDoador=' {objeto.Telefone} ', EmailDoador=' {objeto.Email}', StatusDoador={(int)objeto.Status}, AnonimoDoador={(int)objeto.AnonimoDoador}, ObservacaoDoador='{ objeto.ObservacaoDoador }' where IdDoador = {id}";
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
-            con.Close();
+
+            conn.Close();
         }
 
         public override void Remover(int id)
         {
-            SqlConnection con = new SqlConnection(ConecteDb.Connect());
-            con.Open();
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
 
             string sql = "Delete From TblDoador Where IdDoador=" + id + "";
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
 
-            con.Close();
+            conn.Close();
         }
     }
 }
