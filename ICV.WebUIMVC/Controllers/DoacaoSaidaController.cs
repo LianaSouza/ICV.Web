@@ -98,8 +98,7 @@ namespace ICV.WebUIMVC.Controllers
             try
             {
                 // TODO: Add update logic here
-                new DoacaoSaidaModel().Editar(objeto, id);
-
+                
                 return RedirectToAction(nameof(Index));
             }
             catch

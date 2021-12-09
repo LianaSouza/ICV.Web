@@ -26,6 +26,7 @@
                                     <th scope="col">Periodo</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Curso</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,12 +54,8 @@
                         <form asp-action="Editar">
                             <div class="row">
                                 <div class="col-12 mt-2">
-                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                                    <div class="col-sm-12 mt-2 ">
-                                        <label>Nome da Turma</label>
-                                        <input asp-for="NomeTurma" class="form-control" placeholder="Insira o nome da Turma..." required />
-                                    </div>
+                                    <label>Nome da Turma</label>
+                                    <input asp-for="NomeTurma" class="form-control" placeholder="Insira o nome da Turma..." required />
                                 </div>
                             </div>
                             <div class="row ">

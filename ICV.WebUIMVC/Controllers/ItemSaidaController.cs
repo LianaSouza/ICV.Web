@@ -49,24 +49,16 @@ namespace ICV.WebUIMVC.Controllers
         // GET: ItemSaida/Edit/5
         public ActionResult Editar(int id)
         {
-            return View();
+            return View(new ItemSaidaModel().Buscar(id));
         }
 
         // POST: ItemSaida/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, IFormCollection collection)
+        public ActionResult Editar(int id, ItemSaidaModel objeto)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            new ItemSaidaModel().Editar(objeto, id);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: ItemSaida/Delete/5
