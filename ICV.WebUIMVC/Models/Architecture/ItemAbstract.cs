@@ -30,6 +30,10 @@ namespace ICV.WebUIMVC.Models
 
         public List<BeneficiadoModel> Beneficiado { get; set; }
 
+        public int FKIdBeneficiado { get; set; }
+
+        public string NomeBeneficiado { get; set; }
+
 
         [Required]
         public int FKIdDoacao { get; set; }

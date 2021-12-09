@@ -19,11 +19,11 @@
                     <table class="table table-bordered table-striped table-hover">
                         <thead class="table-dark">
                             <tr class="text-center">
-                                <th scope="col">ID</th>
+                                <th scope="col">Codigo Doação</th>
+                                <th scope="col">Nome</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Categoria</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Id Doador</th>
+                                <th scope="col">codigo Beneficiado</th>
                                 <th scope="col">Data Cadastro</th>
                             </tr>
                         </thead>
@@ -32,7 +32,10 @@
                             {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.IdItem)
+                                    @Html.DisplayFor(modelItem => item.FKIdDoacao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NomeProduto)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.QuantidadeItem)
@@ -41,10 +44,7 @@
                                     @Html.DisplayFor(modelItem => item.categoriaProduto)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.NomeProduto)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FKIdDoacao)
+                                    @Html.DisplayFor(modelItem => item.FKIdBeneficiado)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.DataCadastroItem)
