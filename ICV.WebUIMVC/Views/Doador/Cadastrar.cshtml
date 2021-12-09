@@ -75,67 +75,6 @@
 
 
 
-
-
-
-
-<section class="row justify-content-center">
-
-    <div class="col-sm-8 text-center mt-5">
-
-        <h1 class="h3">Coruja Veículos - Cadastrar Novo Doador</h1>
-
-        <p>Para voltar para lista de Doadores <a asp-action="Index">Clique aqui</a>.</p>
-
-    </div>
-
-    <article class="col-sm-8">
-
-        <form asp-action="Cadastrar">
-
-            <div class="row justify-content-center">
-
-                <div class="col-2 mt-2">
-
-                </div>
-
-                <div class="col-2 mt-2">
-
-                </div>
-                <div class="col-2 mt-2">
-
-                </div>
-
-                <div class="col-2 mt-2">
-
-                </div>
-
-                <div class="col-2 mt-2">
-
-
-                </div>
-
-                <div class="col-2 mt-2">
-
-
-                </div>
-
-                <div class="col-2 mt-2">
-
-                </div>
-
-                <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
-
-            </div>
-
-        </form>
-
-    </article>
-
-</section>
-
-
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

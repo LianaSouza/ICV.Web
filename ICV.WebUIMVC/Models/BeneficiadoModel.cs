@@ -9,9 +9,6 @@ namespace ICV.WebUIMVC.Models
 {
     public class BeneficiadoModel : SuperPessoaAbstract <BeneficiadoModel>
     {
-        // Revisado e de acordo com o banco - 26/11
-        
-
         [Required]
         public string CpfBeneficiado { get; set; }
 
@@ -62,26 +59,27 @@ namespace ICV.WebUIMVC.Models
         public override BeneficiadoModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+
             conn.Open();
 
             string sql = @"Select * From TblBeneficiado INNER JOIN TblColaborador ON TblBeneficiado.FkIdColaborador = TblColaborador.IdColaborador where TblBeneficiado.IdBeneficiado  = " + id;
 
-            
-
             SqlCommand cmd = new SqlCommand(sql, conn);
+
             SqlDataReader dr = cmd.ExecuteReader();
+
             BeneficiadoModel Beneficiado = new BeneficiadoModel();
 
             if (dr.Read())
             {
                 Beneficiado.id = Convert.ToInt32(dr["IdBeneficiado"]);
-                Beneficiado.Nome = dr["NomeBeneficiado "].ToString();
-                Beneficiado.CpfBeneficiado = dr["CpfBeneficiado "].ToString();
-                Beneficiado.DataNascimentoBeneficiado = dr["DataNascimentoBeneficiado "].ToString();
+                Beneficiado.Nome = dr["NomeBeneficiado"].ToString();
+                Beneficiado.CpfBeneficiado = dr["CpfBeneficiado"].ToString();
+                Beneficiado.DataNascimentoBeneficiado = dr["DataNascimentoBeneficiado"].ToString();
                 Beneficiado.Telefone = dr["TelefoneBeneficiado"].ToString();
                 Beneficiado.Email = dr["EmailBeneficiado"].ToString();
                 Beneficiado.Status = (Status)Convert.ToInt32(dr["StatusBeneficiado"]);
-                Beneficiado.QuantidadeDependentes = Convert.ToInt32(dr["QuantidadeDependentesBeneficiado"]);
+                Beneficiado.QuantidadeDependentes = Convert.ToInt32(dr["QuantidadesDependentesBeneficiado"]);
                 Beneficiado.RendaMensalBeneficiado = dr["RendaMensalBeneficiado"].ToString();
                 Beneficiado.DataCadastro = dr["DataCadastroBeneficiado"].ToString();
                 Beneficiado.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
@@ -143,7 +141,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblBeneficiado Set NomeBeneficiado='" + objeto.Nome + "', CpfBeneficiado='" + objeto.CpfBeneficiado + "', DataNascimentoBeneficiado='" + Convert.ToDateTime(objeto.DataNascimentoBeneficiado) + "', TelefoneBeneficiado='" + objeto.Telefone + "', EmailBeneficiado='" + objeto.Email + "', StatusBeneficiado='" + (int)objeto.Status + "', QuantidadeDependentesBeneficiado='" + objeto.QuantidadeDependentes + "', RendaMensalBeneficiado='" + objeto.RendaMensalBeneficiado + "', where IdBeneficiado=" + objeto.id;
+            string dataNascimento = Convert.ToString(objeto.DataNascimentoBeneficiado);
+            string dataAtual = DateTime.Now.ToString("yyyy-MM-dd");
+            string sql = $"Update TblBeneficiado Set NomeBeneficiado =  '{ objeto.Nome }', CpfBeneficiado= '{ objeto.CpfBeneficiado }', DataNascimentoBeneficiado= '{objeto.DataNascimentoBeneficiado}', TelefoneBeneficiado= '{objeto.Telefone}', EmailBeneficiado= '{objeto.Email}',  StatusBeneficiado={(int)objeto.Status}, QuantidadesDependentesBeneficiado= {(int)objeto.QuantidadeDependentes},  RendaMensalBeneficiado={objeto.RendaMensalBeneficiado.Replace(',','.')} where IdBeneficiado =  {id};";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
