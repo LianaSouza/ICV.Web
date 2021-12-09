@@ -9,14 +9,15 @@ namespace ICV.WebUIMVC.Models
     public class ItemSaidaModel : ItemAbstract <ItemSaidaModel>
     {
         // Revisado 18/11 - De acordo com o Banco
-        string dataAtual = DateTime.Now.ToString();
 
         public override ItemSaidaModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From TblSaidaItem where IdSaidaItem =" + id;
+            string sql = @"SELECT QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao  FROM TblSaidaItem
+                            INNER JOIN TblProduto ON  TblSaidaItem.FkIdProduto = TblProduto.IdProduto
+                            INNER JOIN TblSaidaDoacao ON TblSaidaItem.FKIdSaidaDoacao = TblSaidaDoacao.IdSaidaDoacao where TblSaidaItem .IdSaidaItem = "+ id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -25,10 +26,12 @@ namespace ICV.WebUIMVC.Models
             if (dr.Read())
             {
                 Item.IdItem = Convert.ToInt32(dr["IdSaidaItem"]);
-                Item.QuantidadeItem = dr["QuantidadeSaidaItem"].ToString();
+                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeSaidaItem"]);
                 Item.DataCadastroItem = dr["DataCadastroSaidaItem"].ToString();
-                Item.FKIdProduto = dr["FkIdProduto"].ToString();
-                Item.FKIdDoacao = dr["FkIdSaidaDoacao"].ToString(); 
+                Item.FKIdProduto = Convert.ToInt32(dr["FkIdProduto"]);
+                Item.FKIdDoacao = Convert.ToInt32(dr["FkIdSaidaDoacao"]);
+                Item.NomeProduto = dr["NomeProduto"].ToString();
+                Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
             }
 
             return Item;
@@ -39,7 +42,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Select * from TblSaidaItem";
+            string sql = @"SELECT IdSaidaItem, QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao  FROM TblSaidaItem
+                            INNER JOIN TblProduto ON  TblSaidaItem.FkIdProduto = TblProduto.IdProduto
+                            INNER JOIN TblSaidaDoacao ON TblSaidaItem.FKIdSaidaDoacao = TblSaidaDoacao.IdSaidaDoacao";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -50,10 +55,12 @@ namespace ICV.WebUIMVC.Models
                 ItemSaidaModel Item = new ItemSaidaModel();
 
                 Item.IdItem = Convert.ToInt32(dr["IdSaidaItem"]);
-                Item.QuantidadeItem = dr["QuantidadeSaidaItem"].ToString();
+                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeSaidaItem"]);
                 Item.DataCadastroItem = dr["DataCadastroSaidaItem"].ToString();
-                Item.FKIdProduto = dr["FkIdProduto"].ToString();
-                Item.FKIdDoacao = dr["FkIdSaidaDoacao"].ToString();
+                Item.FKIdProduto = Convert.ToInt32(dr["FKIdProduto"]);
+                Item.FKIdDoacao = Convert.ToInt32(dr["FKIdSaidaDoacao"]);
+                Item.NomeProduto = dr["NomeProduto"].ToString();
+                Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
 
                 listaObj.Add(Item);
             }
@@ -66,7 +73,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblSaidaItem Values ('" + objeto.QuantidadeItem + "','" + dataAtual + "','" + objeto.FKIdProduto + "','" + objeto.FKIdDoacao + "')";
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string sql = "Insert Into TblSaidaItem Values ('" + objeto.QuantidadeItem + "','" + date + "','" + objeto.FKIdProduto + "','" + objeto.FKIdDoacao + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

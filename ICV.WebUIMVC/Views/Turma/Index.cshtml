@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ICV.WebUIMVC.Models.TurmaModel>
 
 @{
-    ViewData["Title"] = "Index";
+ViewData["Title"] = "Turmas";
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
@@ -11,14 +11,14 @@
                 <section>
                     <h2>Gerenciamento de Turma</h2>
                     <hr />
-                    <a class="btn btn-secondary" asp-action="Home"><i class="fas fa-arrow-left"></i> Retornar</a>
+                    <a class="btn btn-secondary" asp-controller="HomePortal" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
                     <a class="btn btn-primary" asp-action="Cadastrar"><i class="fas fa-plus"></i> Novo</a>
                 </section>
                 <section class="row justify-content-center mt-3">
-                    <div class="table-responsive rounded">
-                        <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                                <tr class="text-center">
+                    <div class="table-responsive  rounded">
+                        <table class="table text-center  table-bordered table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
                                     <th scope="col">Nome</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Periodo</th>

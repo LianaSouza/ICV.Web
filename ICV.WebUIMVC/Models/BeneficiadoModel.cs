@@ -31,6 +31,33 @@ namespace ICV.WebUIMVC.Models
 
         string dataAtual = DateTime.Now.ToString();
 
+        public List<BeneficiadoModel> BuscarBeneficiado()
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = "Select * from TblBeneficiado";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<BeneficiadoModel> lista = new List<BeneficiadoModel>();
+
+            while (dr.Read())
+            {
+                BeneficiadoModel Beneficiado = new BeneficiadoModel();
+
+                Beneficiado.id = Convert.ToInt32(dr["IdBeneficiado"]);
+                Beneficiado.Nome = dr["NomeBeneficiado"].ToString();
+
+                lista.Add(Beneficiado);
+            }
+
+            return lista;
+
+
+        }
 
         public override BeneficiadoModel Buscar(int id)
         {

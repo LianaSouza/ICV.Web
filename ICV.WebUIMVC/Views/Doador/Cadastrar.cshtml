@@ -2,50 +2,76 @@
 
 @{
     ViewData["Title"] = "Cadastrar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
-<div style=" margin-top:140px;">
-    <div class="card mb-2 shadow">
-        <div class="card-title p-3">
-            <h4>Cadastrar Doador</h4>
-        </div>
-        <div class="card-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label for="formGroupExampleInput" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nomecolaborador" placeholder="Nome e sobrenome">
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="formGroupExampleInput" class="form-label">RG</label>
-                        <input type="text" class="form-control" id="numerodocumentocolaborador">
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="formGroupExampleInput" class="form-label">Status</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Selecione o status</option>
-                            <option value="1">Ativo</option>
-                            <option value="2">Inativo</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <label for="formGroupExampleInput" class="form-label">Data de Cadastro</label>
-                        <input type="date" class="form-control" id="datacadastrocolaborador">
-                    </div>
-                    <div class="col-sm-4">
-                    </div>
-                    <div class="col-sm-4 text-right">
-                        <div style="margin-top: 31px">
-                            <a href="" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Retornar</a>
-                            <a href="" class="btn btn-success">Salvar <i class="fas fa-save"></i></a>
+
+
+
+<section>
+    <div class="p-3">
+        <div class="card shadow p-4">
+            <div class="card-body">
+                <section>
+                    <h2>Cadastrar Doador</h2>
+                    <hr />
+                </section>
+                <section class="row justify-content-center mt-3">
+                    <form asp-action="Cadastrar">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4 mt-2">
+                                <label>Nome do Doador</label>
+                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do doador" required />
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>CPF</label>
+                                <input asp-for="DocumentoDoador" class="form-control" placeholder="Insira o CPF do doador" required />
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Telefone</label>
+                                <input asp-for="Telefone" class="form-control" placeholder="Insira seu telefone" required />
+                            </div>
                         </div>
-                    </div>
-                </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4 mt-2">
+                                <label>Email do Doador</label>
+                                <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Status</label>
+                                <select asp-for="Status" class="form-select">
+                                    <option value="1" selected>Ativo</option>
+                                    <option value="0">Inativo</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Doador anônimo</label>
+                                <select asp-for="AnonimoDoador" class="form-select">
+                                    <option value="1" selected>Verdadeiro</option>
+                                    <option value="2">Falso</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8 mt-2">
+                                <label>Observações</label>
+                                <textarea asp-for="ObservacaoDoador" class="form-control" rows="3"  required>Insira a observações...</textarea>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="mt-4 text-end">
+                                    <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
+                                    <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success" />
+                                </div>
+                            </div>                         
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 
 
@@ -53,3 +79,63 @@
 
 
 
+<section class="row justify-content-center">
+
+    <div class="col-sm-8 text-center mt-5">
+
+        <h1 class="h3">Coruja Veículos - Cadastrar Novo Doador</h1>
+
+        <p>Para voltar para lista de Doadores <a asp-action="Index">Clique aqui</a>.</p>
+
+    </div>
+
+    <article class="col-sm-8">
+
+        <form asp-action="Cadastrar">
+
+            <div class="row justify-content-center">
+
+                <div class="col-2 mt-2">
+
+                </div>
+
+                <div class="col-2 mt-2">
+
+                </div>
+                <div class="col-2 mt-2">
+
+                </div>
+
+                <div class="col-2 mt-2">
+
+                </div>
+
+                <div class="col-2 mt-2">
+
+
+                </div>
+
+                <div class="col-2 mt-2">
+
+
+                </div>
+
+                <div class="col-2 mt-2">
+
+                </div>
+
+                <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-primary btn-sm btn-block w-100 mt-2" />
+
+            </div>
+
+        </form>
+
+    </article>
+
+</section>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

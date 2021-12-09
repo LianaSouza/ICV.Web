@@ -30,7 +30,7 @@
     }
     public enum AnonimoDoador
     {
-        True = 1,
-        False= 2
+        Sim = 1,
+        Não = 2
     }
 }

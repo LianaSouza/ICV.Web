@@ -16,6 +16,8 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public int QuantidadeItem { get; set; }
 
+        public int FKIdProduto { get; set; }
+
         [Required]
         [Display(Name = "Digite o  tipo de produto")]
         public CategoriaProduto CategoriaDoacao { get; set; }

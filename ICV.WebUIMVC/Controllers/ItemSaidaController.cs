@@ -8,99 +8,83 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
-    public class DoadorController : Controller
+    public class ItemSaidaController : Controller
     {
-
+        // GET: ItemSaida
         public ActionResult Index()
         {
-            return View(new DoadorModel().Buscar());
-
+            return View(new ItemSaidaModel().Buscar());
         }
 
-        public ActionResult Detalhes(int id)
-        {
-            
-            return View( new DoadorModel().Buscar(id));
-        }
-
-
-        public ActionResult Cadastrar()
+        // GET: ItemSaida/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
+        // GET: ItemSaida/Create
+        public ActionResult Cadastrar()
+        { 
+            // Não será usado pois esta junto do doação saida.
+            return View();
+        }
 
+        // POST: ItemSaida/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(DoadorModel objeto)
+        public ActionResult Cadastrar(IFormCollection collection)
         {
             try
             {
-                DoadorModel Doador = objeto;
-
-                string email = User.Identity.Name;
-
-                LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
-
-                Doador.FKIdColaborador = Login.Id;
-
-                Doador.Cadastrar(Doador);
+                // TODO: Add insert logic here
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                ViewBag.Error = true;
                 return View();
             }
         }
 
-
+        // GET: ItemSaida/Edit/5
         public ActionResult Editar(int id)
         {
-            return View(new DoadorModel().Buscar(id));
+            return View();
         }
 
-
+        // POST: ItemSaida/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, DoadorModel objeto)
+        public ActionResult Editar(int id, IFormCollection collection)
         {
             try
             {
-                DoadorModel Doador = objeto;
-
-                Doador.Editar(objeto, id);
+                // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
             }
-
             catch
             {
                 return View();
             }
         }
 
-
-        public ActionResult Remover(int id)
+        // GET: ItemSaida/Delete/5
+        public ActionResult Delete(int id)
         {
             return View();
         }
 
-
+        // POST: ItemSaida/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Remover(int id, DoadorModel objeto)
+        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
-
-                DoadorModel Doador = new DoadorModel();
-                Doador.Remover(id);
+                // TODO: Add delete logic here
 
                 return RedirectToAction(nameof(Index));
-
-              
             }
             catch
             {

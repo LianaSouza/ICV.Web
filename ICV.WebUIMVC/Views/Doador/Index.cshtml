@@ -1,71 +1,90 @@
 ﻿@model IEnumerable<ICV.WebUIMVC.Models.DoadorModel>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DocumentoDoador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FKIdColaborador)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DocumentoDoador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FKIdColaborador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCadastro)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.id }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.id })
-            </td>
-        </tr>
+@{
+    ViewData["Title"] = "Doadores";
+    Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
-    </tbody>
-</table>
+
+
+<section class="p-3">
+
+    <div class="card shadow p-4">
+
+        <div class="card-body">
+            <section>
+                <h2>Gerenciamento de Doadores</h2>
+                <hr />
+                <a class="btn btn-secondary" asp-controller="HomePortal" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
+                <a class="btn btn-primary" asp-action="Cadastrar"><i class="fas fa-plus"></i> Novo</a>
+            </section>
+
+            <section class="row justify-content-center mt-3">
+                <div class="table-responsive rounded">
+                    <div class="table-responsive rounded">
+                        <table class="table text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Nome do Doador</th>
+                                    <th scope="col">Documento</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Anônimo</th>
+                                    <th scope="col">Observação</th>
+                                    <th scope="col">Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DocumentoDoador)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Telefone)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Status)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AnonimoDoador)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ObservacaoDoador)
+                                        </td>
+
+                                        <td>
+                                            <a class="text-primary" asp-action="Editar" asp-route-id="@item.id"><i class="fas fa-edit"></i></a>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+

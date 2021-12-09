@@ -103,7 +103,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblDoador Set  NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', TelefoneDoador='" + objeto.Telefone + "', EmailDoador='" + objeto.Email + "', StatusDoador='" + (int)objeto.Status + "', AnonimoDoador='" + (int)objeto.AnonimoDoador + "', ObservacaoDoador='" + objeto.ObservacaoDoador + "', where IdDoador=" + objeto.id;
+            string sql = "Update TblDoador Set  NomeDoador='" + objeto.Nome + "', DocumentoDoador='" + objeto.DocumentoDoador + "', TelefoneDoador='" + objeto.Telefone + "', EmailDoador='" + objeto.Email + "', StatusDoador=" + (int)objeto.Status + ", AnonimoDoador=" + (int)objeto.AnonimoDoador + ", ObservacaoDoador='" + objeto.ObservacaoDoador + "', where IdDoador=" + id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

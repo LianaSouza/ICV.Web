@@ -14,17 +14,25 @@ namespace ICV.WebUIMVC.Models
         public int IdItem { get; set; }
 
         [Required]
-        public string QuantidadeItem { get; set; }
+        public int QuantidadeItem { get; set; }
 
         public string DataCadastroItem { get; set; }
 
+        
+        public int FKIdProduto { get; set; }
+
+        public string NomeProduto { get; set; }
+
         public CategoriaProduto categoriaProduto { get; set; }
 
-        [Required]
-        public string FKIdProduto { get; set; }
+        public List<ProdutoModel> Produto { get; set; }
+
+
+        public List<BeneficiadoModel> Beneficiado { get; set; }
+
 
         [Required]
-        public string FKIdDoacao { get; set; }
+        public int FKIdDoacao { get; set; }
 
         public abstract T Buscar(int id);
 
