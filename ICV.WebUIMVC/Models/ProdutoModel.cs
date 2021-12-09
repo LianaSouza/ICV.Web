@@ -125,6 +125,17 @@ namespace ICV.WebUIMVC.Models
             con.Close();
         }
 
+        public void AtualizarQuantidade(ProdutoModel objeto, int id)
+        {
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string sql = $"Update TblProduto set QuantidadeProduto= {objeto.QuantidadeProduto} where IdProduto = {id}";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         public void Remover(int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());

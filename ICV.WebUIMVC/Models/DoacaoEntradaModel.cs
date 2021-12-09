@@ -17,7 +17,41 @@ namespace ICV.WebUIMVC.Models
         [Required]
         public int FKIdEntradaDoacao { get; set; }
 
-        string dataAtual = DateTime.Now.ToString();
+        public List<DoadorModel> Doador { get; set; }
+
+        public DoacaoEntradaModel ListBeneficiado { get; set; }
+
+        public List<ProdutoModel> Produto { get; set; }
+
+
+        public string Colaborador { get; set; }
+
+        public int QuantidadeProduto { get; set; }
+
+
+        
+
+        public DoacaoEntradaModel BuscarId(int id)
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = @"SELECT TOP 1* FROM TblEntradaDoacao where FkIdColaborador = "+id+" ORDER BY DataCadastroEntradoDoacao DESC ";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DoacaoEntradaModel Doacao = new DoacaoEntradaModel();
+
+            if (dr.Read())
+            {
+                Doacao.IdDoacao = Convert.ToInt32(dr["IdEntradaDoacao"]);
+                Doacao.CategoriaDoacao = (CategoriaProduto)Convert.ToInt32(dr["TipoEntradoDoacao"]);
+                Doacao.DataCadastroDoacao = dr["DataCadastroEntradoDoacao"].ToString();
+                Doacao.FKIdDoador = Convert.ToInt32(dr["FKIdDoador"]);
+                Doacao.FKIdColaborador = id;
+            }
+            return Doacao;
+        }
 
 
         public override DoacaoEntradaModel Buscar(int id)
@@ -74,7 +108,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblEntradaDoacao Values ('" + (int)objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdDoador + "','" + objeto.FKIdColaborador + "')";
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string sql = "Insert Into TblEntradaDoacao Values ('" + (int)objeto.CategoriaDoacao + "','" + date + "','" + objeto.FKIdDoador + "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();

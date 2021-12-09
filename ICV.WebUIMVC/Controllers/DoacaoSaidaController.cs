@@ -10,18 +10,6 @@ namespace ICV.WebUIMVC.Controllers
 {
     public class DoacaoSaidaController : Controller
     {
-        // GET: DoacaoSaida
-        public ActionResult Index()
-        {
-            //  return View( new TurmaModel().BuscarTurmaCurso());
-            return View(new DoacaoSaidaModel().Buscar());
-        }
-
-        // GET: DoacaoSaida/Details/5
-        public ActionResult Detalhes(int id)
-        {
-            return View(new DoacaoSaidaModel().Buscar(id));
-        }
 
         // GET: DoacaoSaida/Create
         public ActionResult Cadastrar()
@@ -77,6 +65,24 @@ namespace ICV.WebUIMVC.Controllers
             item.Cadastrar(item);
 
             return RedirectToAction("Index","ItemSaida");
+        }
+
+
+
+
+        // Não esta usado
+
+        // GET: DoacaoSaida
+        public ActionResult Index()
+        {
+            //  return View( new TurmaModel().BuscarTurmaCurso());
+            return View(new DoacaoSaidaModel().Buscar());
+        }
+
+        // GET: DoacaoSaida/Details/5
+        public ActionResult Detalhes(int id)
+        {
+            return View(new DoacaoSaidaModel().Buscar(id));
         }
 
         // GET: DoacaoSaida/Edit/5
