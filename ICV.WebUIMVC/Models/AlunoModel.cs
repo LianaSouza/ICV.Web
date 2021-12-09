@@ -89,7 +89,7 @@ namespace ICV.WebUIMVC.Models
                 Aluno.Email = dr["EmailAluno"].ToString();
                 Aluno.Telefone = dr["TelefoneAluno"].ToString();
                 Aluno.Status = (Status) Convert.ToInt32(dr["StatusAluno"]);
-                Aluno.DataCadastro = dr["DataCadastroAluno"].ToString();
+                //Aluno.DataCadastro = dr["DataCadastroAluno"].ToString();
                 Aluno.FKIdTurma = Convert.ToInt32(dr["FkIdTurma"]);
                 Aluno.FKIdColaborador = Convert.ToInt32(dr["FkIdColaborador"]);
                 Aluno.NomeTurma =  dr["NomeTurma"].ToString();
