@@ -9,7 +9,7 @@
     <div class="card shadow p-4">
         <div class="card-body">
             <section>
-                <h2>Gerenciamento de Doações e Itens</h2>
+                <h2>Gerenciamento de Doações Saida</h2>
                 <hr />
                 <a class="btn btn-secondary" asp-action="Home"><i class="fas fa-arrow-left"></i> Retornar</a>
                 <a class="btn btn-primary" asp-action="Cadastrar"><i class="fas fa-plus"></i> Novo</a>
@@ -19,20 +19,23 @@
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr class="text-center">
-                                <th scope="col">ID</th>
+                                <th scope="col">Codigo Doação</th>
+                                <th scope="col">Nome</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Categoria</th>
-                                <th scope="col">Produto</th>
-                                <th scope="col">Id Doador</th>
-                                <th scope="col">Data Cadastro</th>
+                                <th scope="col">Codigo Beneficiado</th>
+                                <th scope="col">Data</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                             @foreach (var item in Model)
                             {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.IdItem)
+                                    @Html.DisplayFor(modelItem => item.FKIdDoacao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NomeProduto)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.QuantidadeItem)
@@ -41,11 +44,9 @@
                                     @Html.DisplayFor(modelItem => item.categoriaProduto)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                                    @Html.DisplayFor(modelItem => item.FKIdBeneficiado)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.FKIdDoacao)
-                                </td>
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.DataCadastroItem)
                                 </td>

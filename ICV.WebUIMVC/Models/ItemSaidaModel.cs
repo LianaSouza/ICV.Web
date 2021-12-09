@@ -15,9 +15,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"SELECT QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao  FROM TblSaidaItem
+            string sql = @"SELECT QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao, FKIdBeneficiado   FROM TblSaidaItem
                             INNER JOIN TblProduto ON  TblSaidaItem.FkIdProduto = TblProduto.IdProduto
-                            INNER JOIN TblSaidaDoacao ON TblSaidaItem.FKIdSaidaDoacao = TblSaidaDoacao.IdSaidaDoacao where TblSaidaItem .IdSaidaItem = "+ id;
+                            INNER JOIN TblSaidaDoacao ON TblSaidaItem.FKIdSaidaDoacao = TblSaidaDoacao.IdSaidaDoacao where TblSaidaItem .IdSaidaItem = " + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -32,6 +32,7 @@ namespace ICV.WebUIMVC.Models
                 Item.FKIdDoacao = Convert.ToInt32(dr["FkIdSaidaDoacao"]);
                 Item.NomeProduto = dr["NomeProduto"].ToString();
                 Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
+                Item.FKIdBeneficiado = Convert.ToInt32(dr["FKIdBeneficiado"]);
             }
 
             return Item;
@@ -42,7 +43,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"SELECT IdSaidaItem, QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao  FROM TblSaidaItem
+            string sql = @"SELECT IdSaidaItem, QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao,  FKIdBeneficiado  FROM TblSaidaItem
                             INNER JOIN TblProduto ON  TblSaidaItem.FkIdProduto = TblProduto.IdProduto
                             INNER JOIN TblSaidaDoacao ON TblSaidaItem.FKIdSaidaDoacao = TblSaidaDoacao.IdSaidaDoacao";
 
@@ -61,6 +62,7 @@ namespace ICV.WebUIMVC.Models
                 Item.FKIdDoacao = Convert.ToInt32(dr["FKIdSaidaDoacao"]);
                 Item.NomeProduto = dr["NomeProduto"].ToString();
                 Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
+                Item.FKIdBeneficiado = Convert.ToInt32(dr["FKIdBeneficiado"]);
 
                 listaObj.Add(Item);
             }

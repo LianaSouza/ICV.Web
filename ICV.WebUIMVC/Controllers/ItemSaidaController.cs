@@ -13,6 +13,7 @@ namespace ICV.WebUIMVC.Controllers
         // GET: ItemSaida
         public ActionResult Index()
         {
+            
             return View(new ItemSaidaModel().Buscar());
         }
 
@@ -49,18 +50,18 @@ namespace ICV.WebUIMVC.Controllers
         // GET: ItemSaida/Edit/5
         public ActionResult Editar(int id)
         {
-            return View();
+            return View(new ItemSaidaModel().Buscar(id));
         }
 
         // POST: ItemSaida/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, IFormCollection collection)
+        public ActionResult Editar(int id, ItemSaidaModel objeto)
         {
             try
             {
                 // TODO: Add update logic here
-
+                new ItemSaidaModel().Editar(objeto, id);
                 return RedirectToAction(nameof(Index));
             }
             catch
