@@ -150,6 +150,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
+
             string sql = "Update TblAluno Set NomeAluno='" + objeto.Nome + "', CpfAluno='" + objeto.CpfAluno + "', DataNascimentoAluno='" + Convert.ToDateTime(objeto.DataNascimentoAluno) + "', EmailAluno='" + objeto.Email + "', TelefoneAluno='" + objeto.Telefone + "',  StatusAluno='" + (int)objeto.Status + "'  where IdAluno=" + objeto.id;
             
             SqlCommand cmd = new SqlCommand(sql, con);
