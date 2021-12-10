@@ -77,9 +77,9 @@ namespace ICV.WebUIMVC.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            catch (Exception ex)
+            catch (Exception erro)
             {
-                return View();
+                return View(erro);
             }
         }
 

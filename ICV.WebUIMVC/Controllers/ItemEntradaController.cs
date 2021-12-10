@@ -10,31 +10,36 @@ namespace ICV.WebUIMVC.Controllers
 {
     public class ItemEntradaController : Controller
     {
-     
         public ActionResult Index()
         {
             return View(new ItemEntradaModel().Buscar());
         }
-
        
         public ActionResult Editar(int id)
         {
             return View(new ItemEntradaModel().Buscar(id));
         }
 
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id, ItemEntradaModel objeto)
         {
             try
             {
+                // Update da Tabela Item
                 new ItemEntradaModel().Editar(objeto, id);
+
+                // Atualização da Tabela Produto
+                ProdutoModel quantProduto = new ProdutoModel().Buscar(objeto.FKIdProduto);
+                ProdutoModel produto = new ProdutoModel();
+                produto.QuantidadeProduto = quantProduto.QuantidadeProduto + objeto.QuantidadeItem;
+                produto.AtualizarQuantidade(produto, objeto.FKIdProduto);
+
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                return View("Ops! Ocorreu um erro inesperado..." + e);
             }
         }
 
@@ -43,19 +48,16 @@ namespace ICV.WebUIMVC.Controllers
 
         // Não utilizado
 
-        // GET: ItemEntrada/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: ItemEntrada/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ItemEntrada/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -72,13 +74,11 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: ItemEntrada/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ItemEntrada/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
