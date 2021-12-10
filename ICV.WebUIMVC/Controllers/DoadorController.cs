@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ICV.WebUIMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DoadorController : Controller
     {
 
         public ActionResult Index()
         {
-            return View(new DoadorModel().Buscar());
-
-        }
-
-        public ActionResult Detalhes(int id)
-        {
+            try
+            {
+                return View(new DoadorModel().Buscar());
+            }
+            catch 
+            {
+                ViewBag.Error = true;
+                return View();
+            }
             
-            return View( new DoadorModel().Buscar(id));
-        }
 
+        }
 
         public ActionResult Cadastrar()
         {
@@ -58,7 +62,16 @@ namespace ICV.WebUIMVC.Controllers
 
         public ActionResult Editar(int id)
         {
-            return View(new DoadorModel().Buscar(id));
+            try
+            {
+                return View(new DoadorModel().Buscar(id));
+            }
+            catch
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
 
 
@@ -73,12 +86,20 @@ namespace ICV.WebUIMVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            catch(Exception ex)
+            catch
             {
                 return View();
             }
         }
 
+
+        //Não utilizado
+
+        public ActionResult Detalhes(int id)
+        {
+
+            return View(new DoadorModel().Buscar(id));
+        }
 
         public ActionResult Remover(int id)
         {

@@ -3,69 +3,110 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ICV.WebUIMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProdutoController : Controller
     {
-        // GET: Produto
+
         public ActionResult Index()
         {
-            return View(new ProdutoModel().Buscar());
+            try
+            {
+                return View(new ProdutoModel().Buscar());
+            }
+            catch (Exception)
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
+            
         }
 
-        // GET: Produto/Details/5
+
         public ActionResult Detalhes(int id)
         {
-           ProdutoModel Produto = new ProdutoModel();
-            return View(Produto.Buscar(id));
+            try
+            {
+                ProdutoModel Produto = new ProdutoModel();
+                return View(Produto.Buscar(id));
+            }
+            catch (Exception)
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
+            
         }
 
-        // GET: Produto/Create
+
         public ActionResult Cadastrar()
         {
             return View();
         }
 
-        // POST: Produto/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(ProdutoModel objeto)
-        {        
-                // TODO: Add insert logic here
+        {
+            try
+            {
                 new Models.ProdutoModel().Cadastrar(objeto);
-                return RedirectToAction(nameof(Index));                 
+                ViewBag.retorno = "Sucesso";
+                return RedirectToAction(nameof(Index));
+
+            }
+            catch (Exception)
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
         }
 
-        // GET: Produto/Edit/5
         public ActionResult Editar(int id)
         {
-            return View(new ProdutoModel().Buscar(id));
+            try
+            {
+                return View(new ProdutoModel().Buscar(id));
+            }
+            catch (Exception)
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
+            
         }
 
-        // POST: Produto/Edit/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id, ProdutoModel objeto)
         {
-           
-                // TODO: Add update logic here
+            try
+            {
                 new ProdutoModel().Editar(objeto, id);
-
                 return RedirectToAction(nameof(Index));
-          
-        
+            }
+            catch (Exception)
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
         }
 
-        // GET: Produto/Delete/5
+
+        //Não utilizado
+        
         public ActionResult Deletar(int id)
         {
             return View();
         }
-
-        // POST: Produto/Delete/5
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Deletar(int id, ProdutoModel objeto)

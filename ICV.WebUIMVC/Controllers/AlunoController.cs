@@ -3,36 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ICV.WebUIMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AlunoController : Controller
     {
-        // GET: Aluno
+      
         public ActionResult Index()
         {
-            AlunoModel Colaborador = new AlunoModel();
-            return View(Colaborador.Buscar());
+            try
+            {
+                AlunoModel Colaborador = new AlunoModel();
+                return View(Colaborador.Buscar());
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
-
-        // GET: Aluno/Details/5
-        public ActionResult Detalhes(int id)
-        {
-           AlunoModel Colaborador = new AlunoModel();
-            return View(Colaborador.Buscar(id));
-        }
-
-        // GET: Aluno/Create
+     
         public ActionResult Cadastrar()
         {
-            var vm = new AlunoModel();
-            vm.Turmas = vm.BuscarAlunoTurma();
-            return View(vm);
+            try
+            {
+                var vm = new AlunoModel();
+                vm.Turmas = vm.BuscarAlunoTurma();
+                return View(vm);
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
 
-        // POST: Aluno/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(AlunoModel objeto)
@@ -59,23 +71,31 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: Aluno/Edit/5
+       
         public ActionResult Editar(int id)
         {
-            //return View(new CursoModel().Buscar(id));
+            try
+            {
+                var vm = new AlunoModel().Buscar(id);
 
-            var vm = new AlunoModel().Buscar(id);
+                string email = User.Identity.Name;
 
-            string email = User.Identity.Name;
+                LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
 
-            LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+                vm.Colaborador = Login.Nome;
 
-            vm.Colaborador = Login.Nome;
+                return View(vm);
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = true;
+                return View();
+            }
 
-            return View(vm);
+            
         }
 
-        // POST: Aluno/Edit/5
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id, AlunoModel objeto)
@@ -90,24 +110,41 @@ namespace ICV.WebUIMVC.Controllers
 
                 aluno.FKIdColaborador = login.Id;
 
-                // TODO: Add update logic here
+               
                 aluno.Editar(aluno, id);
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                ViewBag.Error = true;
                 return View();
             }
         }
 
-        // GET: Aluno/Delete/5
+        // Não utilizado
+
+        public ActionResult Detalhes(int id)
+        {
+            try
+            {
+                AlunoModel Colaborador = new AlunoModel();
+                return View(Colaborador.Buscar(id));
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+
+        }
+
         public ActionResult Remover(int id)
         {
             return View();
         }
 
-        // POST: Aluno/Delete/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Remover(int id, AlunoModel objeto)

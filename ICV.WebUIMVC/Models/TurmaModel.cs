@@ -133,7 +133,7 @@ namespace ICV.WebUIMVC.Models
             return listaObj;
         }
 
-        public void CadastrarTurma(TurmaModel objeto)
+        public bool CadastrarTurma(TurmaModel objeto)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
@@ -141,9 +141,15 @@ namespace ICV.WebUIMVC.Models
             string sql = "Insert Into TblTurma Values ('" + objeto.NomeTurma + "','" + objeto.DescricaoTurma + "','" + (int)objeto.PeriodoTurma + "','" + (int)objeto.StatusTurma + "','" + dataAtual + "','" + objeto.FKIdCurso+ "','" + objeto.FKIdColaborador + "')";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.ExecuteNonQuery();
 
-            conn.Close();
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void EditarTurma(int id, TurmaModel objeto)

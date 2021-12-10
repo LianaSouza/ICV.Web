@@ -14,12 +14,30 @@ namespace ICV.WebUIMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View(new CursoModel().Buscar());
+            try
+            {
+                return View(new CursoModel().Buscar());
+            }
+            catch
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
 
         public ActionResult Buscar(int id)
         {
-            return View(new CursoModel().Buscar(id));
+            try
+            {
+                return View(new CursoModel().Buscar(id));
+            }
+            catch 
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
 
         public ActionResult Cadastrar()
@@ -31,10 +49,6 @@ namespace ICV.WebUIMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(CursoModel curso)
         {
-
-            //return RedirectToAction(nameof(Cadastrar));
-
-
             try
             {
                 var obj = new CursoModel();
@@ -45,6 +59,7 @@ namespace ICV.WebUIMVC.Controllers
             }
             catch
             {
+                ViewBag.Error = true;
                 return View();
             }
 
@@ -52,7 +67,16 @@ namespace ICV.WebUIMVC.Controllers
 
         public ActionResult Editar(int id)
         {
-            return View(new CursoModel().Buscar(id));
+            try
+            {
+                return View(new CursoModel().Buscar(id));
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
 
         [HttpPost]
@@ -66,9 +90,13 @@ namespace ICV.WebUIMVC.Controllers
             }
             catch
             {
+                ViewBag.Error = true;
                 return View();
             }
         }
+
+
+        //Não utilizado
 
         public ActionResult Remover(int id)
         {

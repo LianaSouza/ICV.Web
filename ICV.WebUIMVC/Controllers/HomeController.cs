@@ -8,9 +8,11 @@ using Microsoft.Extensions.Logging;
 using ICV.WebUIMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ICV.WebUIMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

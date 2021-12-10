@@ -104,5 +104,74 @@
             $("#inputCategoria").prop("disabled", true);
 
         });
+
+        var retorno = "@ViewBag.retorno";
+        console.log("Esse" + retorno);
+
+        if (retorno == "Erro" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Erro ao enviar os dados, revise as informações enviadas.',
+
+                    icon: 'warning',
+
+                    iconColor: 'red',
+
+                })
+            }
+             if (retorno == "Sucesso" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Dados enviados com Sucesso!',
+
+                    icon: 'success',
+
+                    iconColor: 'green',
+
+                })
+             }
+
+
+
     });
+
+
 </script>
