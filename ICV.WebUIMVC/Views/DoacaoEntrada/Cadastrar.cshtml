@@ -2,9 +2,115 @@
 
 @{
     ViewData["Title"] = "Cadastrar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
+<section class="row justify-content-center">
+    <div class="p-3">
+        <div class="card shadow p-4">
+            <div class="card-body">
+                <section>
+                    <h2>Cadastrar Entrada de Doação</h2>
+                    <hr />
+                </section>
+                <section class="row justify-content-center mt-3">
+                    <form asp-action="Cadastrar">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4 mt-2">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label>Selecione o Produto</label>
+                                    <select asp-for="FKIdProduto"
+                                            asp-items="@(new SelectList(Model.Produto, nameof(ProdutoModel.IdProduto), nameof(ProdutoModel.NomeProduto)))" class="form-select" required>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Selecione a Categoria da Doação</label>
+                                <select asp-for="CategoriaDoacao" id="inputCategoria" class="form-select" required>
+                                    <option value="1">Alimento</option>
+                                    <option value="2">Roupa</option>
+                                    <option value="3">Brinquedo</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <div class="form-group mt-4 text-end">
+
+                                    <a class="btn btn-danger" asp-controller="HomePortal" asp-action="Index"><i class="fas fa"></i>Cancelar</a>
+                                    <input asp-controller="ItemSaida" type="button" asp-action="Salvar" id="btnCadastrar" value="Salvar" class="btn btn-success" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <div class="card mt-4 shadow p-4" id="divId">
+            <div class="card-body">
+                <section class="row justify-content-center mt-3">
+                    <section>
+                        <h2>Cadastrar Entrada de itens</h2>
+                        <hr />
+                    </section>
+                    <form asp-action="CadastrarItem">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4 mt-2">
+
+                                <div class="form-group">
+                                    <label>Selecione o Produto</label>
+                                    <select asp-for="FKIdProduto"
+                                            asp-items="@(new SelectList(Model.Produto, nameof(ProdutoModel.IdProduto), nameof(ProdutoModel.NomeProduto)))" class="form-select" required>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Insira a Quantidade desse Produto</label>
+                                <input asp-for="QuantidadeItem" class="form-control" required />
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Selecione a Categoria do Produto</label>
+                                <select asp-for="CategoriaDoacao" class="form-select" required>
+                                    <option value="1">Alimento</option>
+                                    <option value="2">Roupa</option>
+                                    <option value="3">Brinquedo</option>
+                                </select>
+                            </div>
+                            <div class="form-group mt-3 text-end">
+
+
+                                <input type="submit" value="Cadastrar" class="btn btn-success" />
+
+                            </div>
+
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('#divId').hide();
+        $('#btnCadastrar').on('click', function () {
+            $('#divId').show();
+            $('#inputNome').prop("disabled", true);
+            $("#inputCategoria").prop("disabled", true);
+
+        });
+    });
+</script>
+
+
+
+
+<!--
 <section class="row justify-content-center">
     <div class="p-3">
         <div class="card shadow p-4">
@@ -21,7 +127,7 @@
                                 <div class="form-group">
                                     <label>Selecione o Nome do Doador</label>
                                     <select asp-for="FKIdDoador"
-                                            asp-items="@(new SelectList(Model.Doador, nameof(DoadorModel.id), nameof(DoadorModel.Nome)))" class="form-select" required>
+                                            asp-items=" class="form-select" required>
                                     </select>
                                 </div>
                             </div>
@@ -53,7 +159,7 @@
                                 <div class="form-group">
                                     <label>Selecione o Produto</label>
                                     <select asp-for="FKIdProduto"
-                                            asp-items="@(new SelectList(Model.Produto, nameof(ProdutoModel.IdProduto), nameof(ProdutoModel.NomeProduto)))" class="form-select" required>
+                                            asp-items=class="form-select" required>
                                     </select>
                                 </div>
                             </div>
@@ -83,3 +189,4 @@
         </div>
     </div>
 </section>
+    -->
