@@ -12,32 +12,32 @@ namespace ICV.WebUIMVC.Controllers
     [Authorize(Roles = "Admin")]
     public class BeneficiadoController : Controller
     {
-        // GET: Beneficiado
+     
         public ActionResult Index()
         {
-            return View(new BeneficiadoModel().Buscar());
+            try
+            {
+                return View(new BeneficiadoModel().Buscar());
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+           
         }
-
-        // GET: Beneficiado/Details/5
-        public ActionResult Detalhes(int id)
-        {
-            return View(new BeneficiadoModel().Buscar(id));
-        }
-
-        // GET: Beneficiado/Create
+        
         public ActionResult Cadastrar()
         {
             return View();
         }
 
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(BeneficiadoModel objeto)
  {
             try
             {
-
                 BeneficiadoModel beneficiado = objeto;
 
                 string email = User.Identity.Name;
@@ -61,29 +61,44 @@ namespace ICV.WebUIMVC.Controllers
         
         public ActionResult Editar(int id)
         {
-            return View(new BeneficiadoModel().Buscar(id));
+            try
+            {
+                return View(new BeneficiadoModel().Buscar(id));
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = true;
+                return View();
+            }
+            
         }
 
-        // POST: Beneficiado/Edit/5
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id, BeneficiadoModel objeto)
         {
             try
             {
-                
                 new BeneficiadoModel().Editar(objeto, id);
-
                 return RedirectToAction(nameof(Index));
-
             }
-            catch (Exception erro)
+            catch (Exception)
             {
-                return View(erro);
+                ViewBag.Error = true;
+                return View();
             }
         }
 
-        
+
+
+        // Não utilizado
+
+        public ActionResult Detalhes(int id)
+        {
+            return View(new BeneficiadoModel().Buscar(id));
+        }
+
         public ActionResult Excluir(int id)
         {
             return View(new BeneficiadoModel().Buscar(id));

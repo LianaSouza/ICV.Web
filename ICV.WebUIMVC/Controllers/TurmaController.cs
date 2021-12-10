@@ -8,31 +8,40 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ICV.WebUIMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TurmaController : Controller
     {
 
         public ActionResult Index()
         {
-
-            return View( new TurmaModel().BuscarTurmaCurso());
-        }
-
-        public ActionResult Buscar(int id)
-        {
-            //var vm = new TurmaModel().BuscarTurma(id);
-            //vm.Cursos = new CursoModel().BuscarCursoSelect(id);
-            return View();
+            try
+            {
+                return View(new TurmaModel().BuscarTurmaCurso());
+            }
+            catch 
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            } 
         }
 
         public ActionResult Cadastrar()
         {
-            var vm = new TurmaModel();
-            vm.Cursos = new CursoModel().BuscarCursoSelect();
-            return View(vm);
-
+            try
+            {
+                var vm = new TurmaModel();
+                vm.Cursos = new CursoModel().BuscarCursoSelect();
+                return View(vm);
+            }
+            catch 
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
         }
 
         [HttpPost]
@@ -41,23 +50,46 @@ namespace ICV.WebUIMVC.Controllers
         {
             TurmaModel turma = objeto;
 
-            string email = User.Identity.Name;
+            try
+            {
+                
+                string email = User.Identity.Name;
+                LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+                turma.FKIdColaborador = Login.Id;
 
-            LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
-
-            turma.FKIdColaborador = Login.Id;
-
-            turma.CadastrarTurma(turma);
-
-            return RedirectToAction(nameof(Index));
+                if (turma.CadastrarTurma(turma) == true)
+                {
+                    ViewBag.retorno = "Sucesso";
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.retorno = "Erro";
+                    return View();
+                }
+                
+            }
+            catch (Exception)
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
         }
-
 
         public ActionResult Editar(int id)
         {
-            var vm = new TurmaModel().BuscarTurma(id);
-            vm.Cursos = new CursoModel().BuscarCursoSelect(id);
-            return View(vm);
+            try
+            {
+                var vm = new TurmaModel().BuscarTurma(id);
+                vm.Cursos = new CursoModel().BuscarCursoSelect(id);
+                return View(vm);
+            }
+            catch
+            {
+                ViewBag.retorno = "Erro";
+                return View();
+            }
+            
         }
 
         [HttpPost]
@@ -67,22 +99,29 @@ namespace ICV.WebUIMVC.Controllers
             try
             {
                 TurmaModel turma = objeto;
-
                 turma.EditarTurma(id, objeto);
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                ViewBag.retorno = "Erro";
                 return View();
             }
+        }
+
+
+        // Não utilizado
+
+        public ActionResult Detalhes(int id)
+        {
+            return View();
         }
 
         public ActionResult Remover(int id)
         {
             return View(new TurmaModel().BuscarTurma(id));
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]

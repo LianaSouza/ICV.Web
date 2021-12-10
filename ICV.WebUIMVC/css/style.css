@@ -20,10 +20,23 @@
 }
 
 
-@media (max-width:767px) {
+@media screen and (max-width:767px) {
     .social-icons li.title {
         display: block;
         margin-right: 0;
         font-weight: 600
+    }
+}
+
+
+
+
+@media (min-width:767px) {
+    .screen-pc {
+        display: block;
+    }
+
+    .screen-mobile {
+        display: none;
     }
 }

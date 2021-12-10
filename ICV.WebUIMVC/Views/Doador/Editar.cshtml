@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
+
+
 <section>
     <div class="p-3">
         <div class="card shadow p-4">
             <div class="card-body">
                 <section>
-
                     <h2>Editar Doador</h2>
                     <hr />
 
@@ -21,9 +22,8 @@
                         <table class="table table-bordered text-center">
 
                             <thead class="table-dark">
-
                                 <tr>
-                                    <th scope="col">Nome do Doador</th>
+                                    <th scope="col">Nome</th>
                                     <th scope="col">Documento</th>
                                     <th scope="col">Telefone</th>
                                     <th scope="col">Email</th>
@@ -31,7 +31,6 @@
                                     <th scope="col">Anonimo</th>
                                     <th scope="col">Observação</th>
                                 </tr>
-
                             </thead>
 
                             <tbody>
@@ -65,35 +64,29 @@
                                     </td>
                                 </tr>
                             </tbody>
-
                         </table>
-
                     </div>
                     <form asp-action="Editar">
                         <div class="row justify-content-center">
-                            <div class="col-sm-4 mt-3">
-                                <label>Nome do Curso</label>
+                            <div class="col-sm-4 mt-2">
+                                <label>Nome do Doador</label>
                                 <input asp-for="Nome" class="form-control" placeholder="Insira o nome do doador..." required />
                             </div>
 
-                            <div class="col-sm-4 mt-3">
+                            <div class="col-sm-4 mt-2">
+                                <label>Email</label>
+                                <input asp-for="Email" class="form-control" placeholder="" required />
+
+                            </div>
+
+                            <div class="col-sm-4 mt-2">
                                 <label>Documento</label>
                                 <input asp-for="DocumentoDoador" class="form-control" placeholder="Insira seu cpf" required />
                             </div>
-
-                            <div class="col-sm-4 mt-3">
-                                <label>Telefone</label>
-                                <input asp-for="Telefone" class="form-control" placeholder="Insira seu telefone" required />
-                            </div>
-
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-sm-4 mt-3">
-                                <label>E-mail</label>
-                                <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
-                            </div>
+                        <div class="row justify-content-center mt-2">
 
-                            <div class="col-sm-4 mt-3">
+                            <div class="col-sm-4 mt-2">
                                 <label>Status</label>
                                 <select asp-for="Status" class="form-select">
                                     <option value="1" selected>Ativo</option>
@@ -101,7 +94,25 @@
                                 </select>
                             </div>
 
-                            <div class="col-sm-4 mt-3">
+                            <div class="col-sm-4 mt-2">
+                                <label>Telefone</label>
+                                <input asp-for="Telefone" class="form-control" placeholder="" required />
+                            </div>
+
+                            <div class="col-sm-4 mt-2">
+                                <label>Status</label>
+                                <select asp-for="Status" class="form-select" required>
+                                    <option value="1" selected>Ativo</option>
+                                    <option value="0">Inativo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-8 mt-2">
+                                <label>Observação</label>
+                                <textarea asp-for="ObservacaoDoador" rows="4" class="form-control" required>Insira a descrição do doador...</textarea>
+                            </div>
+                            <div class="col-sm-2 mt-2">
                                 <label>Doador anônimo</label>
                                 <select asp-for="AnonimoDoador" class="form-select">
                                     <option value="1" selected>Verdadeiro</option>
@@ -109,23 +120,18 @@
                                 </select>
                             </div>
 
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-sm-10 mt-3">
-                                 <label>Observação</label>
-                                <textarea asp-for="ObservacaoDoador" rows="4" class="form-control" required></textarea>
-                            </div>
-                            <div class="col-sm-2 mt-5 text-end">
+                            <div class="col-sm-2 text-end" style="margin-top: 37.5px">
                                 <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
                                 <input asp-action="Editar" type="submit" value="Salvar" class="btn btn-success" />
                             </div>
                         </div>
-
                     </form>
+
                 </section>
             </div>
         </div>
     </div>
+
 </section>
 
 
@@ -134,126 +140,6 @@
 
 
 
-
-
-
-
-
-<!--
-<section>
-
-    <div class="p-3">
-
-        <div class="card shadow p-4">
-
-            <div class="card-body">
-
-                <section>
-
-                    <h2>Editar Doadores</h2>
-                    <hr />
-
-                </section>
-
-                <section class="row justify-content-center mt-3">
-
-                    <div class="table-responsive rounded">
-
-                        <table class="table table-bordered text-center">
-
-                            <thead class="table-dark">
-
-                                <tr>
-
-                                    <th scope="col">Nome do Doador</th>
-                                    <th scope="col">Documento</th>
-                                    <th scope="col">Telefone</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Anonimo</th>
-                                    <th scope="col">Observação</th>
-
-                                </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                                <tr>
-
-                                    
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-
-                    <article class="col-sm-8">
-
-                        <form asp-action="Editar">
-
-                            <div class="row justify-content-center">
-
-                                <div class="col-2 mt-2">
-                                    <input asp-for="Nome" class="form-control" placeholder="Insira o nome do doador..." required />
-                                </div>
-
-                                <div class="col-2 mt-2">
-                                    <input asp-for="DocumentoDoador" class="form-control" placeholder="Insira seu cpf" required />
-                                </div>
-
-                                <div class="col-2 mt-2">
-                                    <input asp-for="Telefone" class="form-control" placeholder="Insira seu telefone" required />
-                                </div>
-
-                                <div class="col-2 mt-2">
-                                    <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
-                                </div>
-
-                                <div class="col-2 mt-2">
-                                    <label>Status</label>
-                                    <select asp-for="Status" class="form-select">
-                                        <option value="1" selected>Ativo</option>
-                                        <option value="0">Inativo</option>
-                                    </select>
-
-                                </div>
-
-                                <div class="col-2 mt-2">
-                                    <label>Doador anônimo</label>
-                                    <select asp-for="AnonimoDoador" class="form-select">
-                                        <option value="1" selected>Vardadeiro</option>
-                                        <option value="2">Falso</option>
-                                    </select>
-
-                                </div>
-
-                                <div class="col-2 mt-2">
-                                    <input asp-for="ObservacaoDoador" class="form-control" placeholder="xxxxxxxxxxx" required />
-                                </div>
-
-                                <div class="mt-3 text-end">
-
-                                </div>
-
-                            </div>
-
-                        </form>
-
-                    </article>
-
-                </section>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
--->
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

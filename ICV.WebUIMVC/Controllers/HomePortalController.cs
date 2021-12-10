@@ -2,39 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomePortalController : Controller
     {
-        // GET: HomePortal
+        
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: HomePortal/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: HomePortal/Create
+        
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HomePortal/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+               
 
                 return RedirectToAction(nameof(Index));
             }
@@ -44,20 +40,20 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: HomePortal/Edit/5
+    
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: HomePortal/Edit/5
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                
 
                 return RedirectToAction(nameof(Index));
             }
@@ -67,13 +63,13 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: HomePortal/Delete/5
+       
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: HomePortal/Delete/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

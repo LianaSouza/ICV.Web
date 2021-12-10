@@ -11,7 +11,7 @@
             <section>
                 <h2>Gerenciamento de Saída de Doações</h2>
                 <hr />
-                <a class="btn btn-secondary" asp-action="HomePortal"><i class="fas fa-arrow-left"></i> Retornar</a>
+                <a class="btn btn-secondary" asp-controller="HomePortal" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
                 <a class="btn btn-primary" asp-controller="DoacaoSaida" asp-action="Cadastrar"><i class="fas fa-plus"></i> Nova Saída</a>
             </section>
                 
@@ -52,7 +52,7 @@
                                     @Html.DisplayFor(modelItem => item.DataCadastroItem)
                                 </td>
                                 <td class="text-center">
-                                    <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdItem"><i class="fas fa-edit"></i></a>
+                                    <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdItem" data-myValue="@ViewBag.retorno" ><i class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
                             }
@@ -63,3 +63,75 @@
         </div>
     </div>
 </section>
+
+<script>
+
+    var retorno = "@ViewBag.retorno";
+    console.log("Esse"+retorno);
+
+
+
+    $(document).ready(function () {
+
+            if (retorno == "Erro" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Erro ao enviar os dados, revise as informações enviadas.',
+
+                    icon: 'warning',
+
+                    iconColor: 'red',
+
+                })
+            }
+             if (retorno == "Sucesso" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Dados enviados com Sucesso!',
+
+                    icon: 'success',
+
+                    iconColor: 'green',
+
+                })
+             }
+    });
+</script>
