@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ICV.WebUIMVC.Models.ItemSaidaModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Saída de Doações";
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
@@ -11,7 +11,7 @@
             <section>
                 <h2>Gerenciamento de Saída de Doações</h2>
                 <hr />
-                <a class="btn btn-secondary" asp-action="HomePortal"><i class="fas fa-arrow-left"></i> Retornar</a>
+                <a class="btn btn-secondary" asp-controller="HomePortal" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
                 <a class="btn btn-primary" asp-controller="Doacao" asp-action="Cadastrar"><i class="fas fa-plus"></i> Nova Saída</a>
             </section>
             <section class="row justify-content-center mt-3">
@@ -19,11 +19,11 @@
                     <table class="table table-bordered table-striped table-hover">
                         <thead class="table-dark">
                             <tr class="text-center">
-                                <th scope="col">Codigo Doação</th>
+                                <th scope="col">Código de Doação</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Categoria</th>
-                                <th scope="col">codigo Beneficiado</th>
+                                <th scope="col">Código Beneficiado</th>
                                 <th scope="col">Data Cadastro</th>
                             </tr>
                         </thead>

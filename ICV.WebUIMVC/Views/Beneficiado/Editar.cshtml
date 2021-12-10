@@ -5,42 +5,38 @@
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
-<h1>Editar</h1>
-
-
 <section>
     <div class="p-3">
         <div class="card shadow p-4">
             <div class="card-body">
                 <section>
-
                     <h2>Editar Beneficiado</h2>
                     <hr />
 
                 </section>
-
                 <section class="row justify-content-center mt-3">
                     <div class="table-responsive rounded">
 
                         <table class="table table-bordered text-center">
 
                             <thead class="table-dark">
+
                                 <tr>
                                     <th scope="col">Nome</th>
-                                    <th scope="col">CpfAluno</th>
+                                    <th scope="col">CPF</th>
                                     <th scope="col">DataNascimento</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Telefone</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Turma</th>
                                     <th scope="col">Criado por</th>
-
                                 </tr>
+
                             </thead>
 
                             <tbody>
-
                                 <tr>
+
                                     <td>
                                         @Html.DisplayFor(modelItem => modelItem.Nome)
                                     </td>
@@ -75,60 +71,77 @@
                                 </tr>
 
                             </tbody>
-
                         </table>
-
                     </div>
-                    <article class="col-sm-8">
-                        <form asp-action="Editar">
-
-                            <div class="row justify-content-center">
-
-                                <div class="col-sm-3 mt-2">
-                                    <label>Nome do beneficiado</label>
-                                    <input asp-for="Nome" class="form-control" placeholder="Insira o nome do beneficiado..." required />
-                                </div>
-
-                                <div class="col-sm-3 mt-2">
-                                    <input asp-for="CpfBeneficiado" class="form-control" placeholder="000.000.000-00" required />
-                                </div>
-
-                                <div class="col-sm-3 mt-2">
-                                    <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
-                                </div>
-
-                                <div class="col-sm-3 mt-2">
-                                    <input asp-for="Telefone" class="form-control" placeholder="(00) 00000-0000" required />
-                                </div>
-
-                                <div class="col-sm-3 mt-2">
-                                    <input asp-for="DataNascimentoBeneficiado" class="form-control"  required />
-                                </div>
-
-                                <div class="col-sm-3 mt-2">
-                                    <input asp-for="QuantidadeDependentes" class="form-control" placeholder="Ex: 3" required />
-                                </div>
-
-                                <div class="col-sm-3 mt-2">
-                                    <input asp-for="RendaMensalBeneficiado" class="form-control" placeholder="R$ = 0000" required />
-                                </div>
-
-                                <div class="col-sm-3 mt-2">
-                                    <select asp-for="Status" class="form-select" required>
-                                        <option value="1" selected>Ativo</option>
-                                        <option value="0">Inativo</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-12 mt-2">
-                                    <input type="submit" value="Salvar" class="btn btn-success" />
-                                </div>
+                    <form asp-action="Editar">
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4 mt-2">
+                                <label>Nome do beneficiado</label>
+                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do beneficiado..." required />
                             </div>
-                        </form>
-                    </article>
+
+                            <div class="col-sm-4 mt-2">
+                                <label>CPF</label>
+                                <input asp-for="CpfBeneficiado" class="form-control" placeholder="000.000.000-00" required />
+                            </div>
+
+                            <div class="col-sm-4 mt-2">
+                                <label>E-mail</label>
+                                <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-2">
+
+                            <div class="col-sm-4 mt-2">
+                                <label>Telefone</label>
+                                <input asp-for="Telefone" class="form-control" placeholder="(00) 00000-0000" required />
+                            </div>
+
+                            <div class="col-sm-4 mt-2">
+                                <label>Nascimento</label>
+                                <input asp-for="DataNascimentoBeneficiado" class="form-control" required />
+                            </div>
+
+                            <div class="col-sm-4 mt-2">
+                                <label>Quantidade de Dependentes</label>
+                                <input asp-for="QuantidadeDependentes" class="form-control" placeholder="Ex: 3" required />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-sm-4 mt-2">
+                                <label>Renda Mensal</label>
+                                <input asp-for="RendaMensalBeneficiado" class="form-control" placeholder="R$ = 0000" required />
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Status</label>
+                                <select asp-for="Status" class="form-select" required>
+                                    <option value="1" selected>Ativo</option>
+                                    <option value="0">Inativo</option>
+                                </select>
+                            </div> 
+
+                            <div class="col-sm-4 text-end" style="margin-top: 37.5px">
+                                <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
+                                <input asp-action="Editar" type="submit" value="Salvar" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </form>
+
                 </section>
             </div>
         </div>
     </div>
+
 </section>
+
+
+
+
+
+
+
+
+
+
+
 
