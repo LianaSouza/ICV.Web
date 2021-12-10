@@ -15,7 +15,7 @@
                 </section>
                 <section class="row justify-content-center mt-3">
                     <form asp-action="Cadastrar">
-                        <div class="row mt-3">
+                        <div class="row">
                             <div class="col-sm-6 mt-3">
                                 <label>Nome</label>
                                 <input asp-for="Nome" class="form-control" placeholder="Insira o nome do aluno..." required />
@@ -31,7 +31,7 @@
                                 <input asp-for="DataNascimentoAluno"  class="form-control" placeholder="xx/xx/xxxx" required />
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row">
                             <div class="col-sm-4 mt-3">
                                 <label>Email</label>
                                 <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
@@ -51,17 +51,15 @@
                             </div>
                         </div>
 
-                        <div class="row mt-3">
+                        <div class="row">
                             <div class="col-sm-4 mt-3">
                                 <label>Turma</label>
                                 <select asp-for="FKIdTurma"
                                         asp-items="@(new SelectList(Model.Turmas, nameof(AlunoModel.FKIdTurma), nameof(AlunoModel.NomeTurma)))" class="form-select" required>
                                 </select>
                             </div>
-                            <div class="col-sm-4 mt-3">
-                               
-                            </div>
-                            <div class="col-sm-4 mt-3 text-end">
+
+                            <div class="col-sm-8 mt-3 text-end">
                                 <a asp-action="Index" class="btn btn-secondary mt-4" /><i class="fas fa-arrow-left"></i> Retornar</a>
                                 <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success mt-4" />
                             </div>

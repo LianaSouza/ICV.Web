@@ -24,58 +24,62 @@
         <div class="card shadow p-4">
             <div class="card-body">
                 <section>
-                    <h2>Cadastrar Curso</h2>
+                    <h2>Cadastrar Beneficiado</h2>
                     <hr />
                 </section>
-                <section class="row justify-content-center mt-3">
+                <section>
                     <form asp-action="Cadastrar">
+                        <div class="row mt-3">
+                            <div class="col-sm-4">
+                                <label>Nome do beneficiado</label>
+                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do beneficiado..." required />
+                            </div>
 
-                        <div class="col-sm-3 mt-2">
-                            <label>Nome do beneficiado</label>
-                            <input asp-for="Nome" class="form-control" placeholder="Insira o nome do beneficiado..." required />
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput" class="form-label">Cpf Beneficiario</label>
+                                <input asp-for="CpfBeneficiado" class="form-control" placeholder="000.000.000-00" required />
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput" class="form-label">Email</label>
+                                <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
+                            </div>
                         </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput" class="form-label">Telefone</label>
+                                <input asp-for="Telefone" class="form-control" placeholder="(00) 00000-0000" required />
+                            </div>
 
-                        <div class="col-sm-3 mt-2">
-                            <label for="formGroupExampleInput" class="form-label">Cpf Beneficiario</label>
-                            <input asp-for="CpfBeneficiado" class="form-control"  placeholder="000.000.000-00" required />
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput" class="form-label">Data de Nascimento</label>
+                                <input asp-for="DataNascimentoBeneficiado" class="form-control" placeholder="00/00/0000" required />
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput" class="form-label">Digite a quantidade de dependentes</label>
+                                <input asp-for="QuantidadeDependentes" class="form-control" placeholder="Ex: 3" required />
+                            </div>
                         </div>
+                        <div class="row mt-3">
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput" class="form-label">Digite a renda mensal dos dependetes</label>
+                                <input asp-for="RendaMensalBeneficiado" class="form-control" placeholder="R$ = 0000" required />
+                            </div>
 
-                        <div class="col-sm-3 mt-2">
-                            <label for="formGroupExampleInput" class="form-label">Email</label>
-                            <input asp-for="Email" class="form-control"  placeholder="example@gmail.com" required/>
-                        </div>
-
-                        <div class="col-sm-3 mt-2">
-                            <label for="formGroupExampleInput" class="form-label">Telefone</label>
-                            <input asp-for="Telefone" class="form-control"  placeholder="(00) 00000-0000" required/>
-                        </div>
-
-                        <div class="col-sm-3 mt-2">
-                            <label for="formGroupExampleInput" class="form-label">Data de Nascimento</label>
-                            <input asp-for="DataNascimentoBeneficiado" class="form-control" placeholder="00/00/0000" required/>
-                        </div>
-
-                        <div class="col-sm-3 mt-2">
-                            <label for="formGroupExampleInput" class="form-label">Digite a quantidade de dependentes</label>
-                            <input asp-for="QuantidadeDependentes" class="form-control" placeholder="Ex: 3" required/>
-                        </div>
-
-                        <div class="col-sm-3 mt-2">
-                            <label for="formGroupExampleInput" class="form-label">Digite a renda mensal dos dependetes</label>
-                            <input asp-for="RendaMensalBeneficiado" class="form-control" placeholder="R$ = 0000" required/>
-                        </div>
-
-                        <div class="col-sm-3 mt-2">
-                            <label for="formGroupExampleInput" class="form-label">Status</label>
-                            <select asp-for="Status" class="form-select" required>
-                                <option value="1"  selected>Ativo</option>
-                                <option value="0">Inativo</option>
-                            </select>
-                        </div>
-
-                        <div class="mt-3 text-end">
-                            <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
-                            <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success" />
+                            <div class="col-sm-4">
+                                <label for="formGroupExampleInput" class="form-label">Status</label>
+                                <select asp-for="Status" class="form-select" required>
+                                    <option value="1" selected>Ativo</option>
+                                    <option value="0">Inativo</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4 mt-3">
+                                <div class="mt-4 text-end">
+                                    <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
+                                    <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success" />
+                                </div>
+                            </div>
                         </div>
 
                     </form>
@@ -85,7 +89,6 @@
     </div>
 </section>
 
-</html>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -24,7 +24,33 @@ namespace ICV.WebUIMVC.Models
 
         string dataAtual = DateTime.Now.ToString();
 
+        public List<DoadorModel> BuscarDoador()
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
 
+            string sql = "Select * from TblDoador";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<DoadorModel> lista = new List<DoadorModel>();
+
+            while (dr.Read())
+            {
+                DoadorModel Doador = new DoadorModel();
+
+                Doador.id = Convert.ToInt32(dr["IdDoador"]);
+                Doador.Nome = dr["NomeDoador"].ToString();
+
+                lista.Add(Doador);
+            }
+
+            return lista;
+
+
+        }
         public override DoadorModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());

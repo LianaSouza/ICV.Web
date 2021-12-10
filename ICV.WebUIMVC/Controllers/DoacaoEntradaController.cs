@@ -10,48 +10,94 @@ namespace ICV.WebUIMVC.Controllers
 {
     public class DoacaoEntradaController : Controller
     {
-        // GET: DoacaoEntrada
-        public ActionResult Index()
-        {
-            return View(new DoacaoEntradaModel().Buscar());
-        }
-
-        // GET: DoacaoEntrada/Details/5
-        public ActionResult Detalhes(int id)
-        {
-            return View(new DoacaoEntradaModel().Buscar(id));
-        }
-
-        // GET: DoacaoEntrada/Create
         public ActionResult Cadastrar()
         {
-            return View();
+            try
+            {
+                var vm = new DoacaoEntradaModel();
+                vm.Doador = new DoadorModel().BuscarDoador();
+                vm.Produto = new ProdutoModel().BuscarProdutoSelect();
+                return View(vm);
+            }
+            catch (Exception e)
+            {
+                return View("Ops! Ocorreu um erro inesperado..." + e);
+            }
         }
 
-        // POST: DoacaoEntrada/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(DoacaoEntradaModel objeto)
         {
             try
             {
-                // TODO: Add insert logic here
+                //Cadastro Doação
+                DoacaoEntradaModel doacao = objeto;
+                string email = User.Identity.Name;
+                LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+                doacao.FKIdColaborador = Login.Id;
+                doacao.BuscarId(doacao.FKIdColaborador);
+                ViewBag.IdSaidaDoacao = doacao.IdDoacao;
+                doacao.Cadastrar(doacao);
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Cadastrar));
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return View("Ops! Ocorreu um erro inesperado..." + e);
             }
+
         }
 
-        // GET: DoacaoEntrada/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CadastrarItem(DoacaoEntradaModel objeto)
+        {
+            try
+            {
+                // Cadastro Item 
+                DoacaoEntradaModel doacao = objeto;
+                string email = User.Identity.Name;
+                LoginModel Login = new LoginModel().BuscarLoginColaborador(email);
+                int colaborador = Login.Id;
+                doacao.ListBeneficiado = doacao.BuscarId(colaborador);
+                ItemEntradaModel item = new ItemEntradaModel();
+                item.FKIdDoacao = doacao.ListBeneficiado.IdDoacao;
+                item.categoriaProduto = objeto.CategoriaDoacao;
+                item.QuantidadeItem = objeto.QuantidadeItem;
+                item.FKIdProduto = doacao.FKIdProduto;
+                item.Cadastrar(item);
+
+                // Atualização da Tabela Produto
+                ProdutoModel quantProduto = new ProdutoModel().Buscar(objeto.FKIdProduto);
+                ProdutoModel produto = new ProdutoModel();
+                produto.QuantidadeProduto = objeto.QuantidadeItem + quantProduto.QuantidadeProduto;
+                produto.AtualizarQuantidade(produto, objeto.FKIdProduto);
+
+                return RedirectToAction("Index", "ItemEntrada");
+            }
+            catch (Exception e)
+            {
+                return View("Ops! Ocorreu um erro inesperado..." + e);
+            }
+
+        }
+
+        // Actions Não Utilizadas
+
+        public ActionResult Index()
+        {
+            return View(new DoacaoEntradaModel().Buscar());
+        }
+        public ActionResult Detalhes(int id)
+        {
+            return View(new DoacaoEntradaModel().Buscar(id));
+        }
         public ActionResult Editar(int id)
         {
             return View(new DoacaoEntradaModel().Buscar(id));
         }
 
-        // POST: DoacaoEntrada/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id, DoacaoEntradaModel objeto)
@@ -69,13 +115,10 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: DoacaoEntrada/Delete/5
         public ActionResult Excluir(int id)
         {
             return View(new DoacaoEntradaModel().Buscar(id));
         }
-
-        // POST: DoacaoEntrada/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Excluir(int id, DoacaoEntradaModel objeto)

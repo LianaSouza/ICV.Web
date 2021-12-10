@@ -51,7 +51,7 @@ namespace ICV.WebUIMVC.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-            catch (Exception ex)
+            catch 
             {
                 ViewBag.Error = true;
                 return View();
@@ -73,12 +73,13 @@ namespace ICV.WebUIMVC.Controllers
             {
                 
                 new BeneficiadoModel().Editar(objeto, id);
+
                 return RedirectToAction(nameof(Index));
 
             }
-            catch
+            catch (Exception erro)
             {
-                return View();
+                return View(erro);
             }
         }
 

@@ -8,14 +8,15 @@ namespace ICV.WebUIMVC.Models
 {
     public class ItemEntradaModel : ItemAbstract <ItemEntradaModel>
     {
-        //Revisado com o banco - 26/11
 
         public override ItemEntradaModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"Select * From TblEntradaItem where IdEntradaItem =" + id;
+            string sql = @"SELECT IdEntradaItem, QuantidadeItem, TipoEntradaItem, DataCadastroEntradoItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdEntradaDoacao, FKIdDoador  FROM TblEntradaItem
+                            INNER JOIN TblProduto ON  TblEntradaItem.FkIdProduto = TblProduto.IdProduto
+                            INNER JOIN TblEntradaDoacao ON TblEntradaItem.FKIdEntradaDoacao = TblEntradaDoacao.IdEntradaDoacao where IdEntradaItem =" + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -24,11 +25,14 @@ namespace ICV.WebUIMVC.Models
             if (dr.Read())
             {
                 Item.IdItem = Convert.ToInt32(dr["IdEntradaItem"]);
-                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeEntradaItem"]);
-                Item.categoriaProduto = (CategoriaProduto) Convert.ToInt32( dr["QuantidadeEntradaItem"]);
-                Item.DataCadastroItem = dr["DataCadastroEntradaItem"].ToString();
+                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeItem"]);
+                Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["TipoEntradaItem"]);
+                Item.DataCadastroItem = dr["DataCadastroEntradoItem"].ToString();
                 Item.FKIdDoacao = Convert.ToInt32(dr["FkIdEntradaDoacao"]);
-                Item.FKIdProduto = Convert.ToInt32(dr["FkIdProduto"]); 
+                Item.FKIdProduto = Convert.ToInt32(dr["FkIdProduto"]);
+                Item.NomeProduto = dr["NomeProduto"].ToString();
+                Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
+                Item.FKIdDoador = Convert.ToInt32(dr["FkIdDoador"]);
             }
 
             return Item;
@@ -39,7 +43,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = "Select * from TblEntradaItem";
+            string sql = @"SELECT IdEntradaItem, QuantidadeItem, TipoEntradaItem, DataCadastroEntradoItem,FKIdDoador , FKIdProduto, NomeProduto, FKIdEntradaDoacao  FROM TblEntradaItem
+                            INNER JOIN TblProduto ON  TblEntradaItem.FkIdProduto = TblProduto.IdProduto
+                            INNER JOIN TblEntradaDoacao ON TblEntradaItem.FKIdEntradaDoacao = TblEntradaDoacao.IdEntradaDoacao";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -50,12 +56,14 @@ namespace ICV.WebUIMVC.Models
                 ItemEntradaModel Item = new ItemEntradaModel();
 
                 Item.IdItem = Convert.ToInt32(dr["IdEntradaItem"]);
-                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeEntradaItem"]);
-                Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["QuantidadeEntradaItem"]);
-                Item.DataCadastroItem = dr["DataCadastroEntradaItem"].ToString();
-                Item.FKIdDoacao = Convert.ToInt32(dr["FkIdEntradaDoacao"]);
+                Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeItem"]);
+                Item.categoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["TipoEntradaItem"]);
+                Item.DataCadastroItem = dr["DataCadastroEntradoItem"].ToString();
                 Item.FKIdProduto = Convert.ToInt32(dr["FkIdProduto"]);
-
+                Item.NomeProduto = dr["NomeProduto"].ToString();
+                Item.FKIdDoador = Convert.ToInt32(dr["FkIdDoador"]);
+                Item.FKIdDoacao = Convert.ToInt32(dr["FkIdEntradaDoacao"]);
+  
                 listaObj.Add(Item);
             }
 
@@ -82,12 +90,14 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblEntradaItem Set  QuantidadeEntradaItem='" + objeto.QuantidadeItem + "', TipoEntradaItem='" + (int)objeto.categoriaProduto + "',   where IdEntradaItem=" + objeto.IdItem;
+            string sql = "Update TblEntradaItem Set  QuantidadeItem=" + objeto.QuantidadeItem + "   where IdEntradaItem=" + id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
 
+
+        // Não utilizados
         public override void Remover(int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());

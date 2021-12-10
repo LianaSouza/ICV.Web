@@ -9,17 +9,54 @@ namespace ICV.WebUIMVC.Models
 {
     public class DoacaoEntradaModel : DoacaoAbstract<DoacaoEntradaModel>
     {
-        // Revisado 19/11 - De acordo com o Banco
-
-        [Required]
         public int FKIdDoador { get; set; }
-
-        [Required]
         public int FKIdEntradaDoacao { get; set; }
+        public string Colaborador { get; set; }
+        public int QuantidadeProduto { get; set; }
+        public List<DoadorModel> Doador { get; set; }
+        public List<ProdutoModel> Produto { get; set; }
+        public DoacaoEntradaModel ListBeneficiado { get; set; }
+        
 
-        string dataAtual = DateTime.Now.ToString();
+        public DoacaoEntradaModel BuscarId(int id)
+        {
+            SqlConnection conn = new SqlConnection(ConecteDb.Connect());
+            conn.Open();
+
+            string sql = @"SELECT TOP 1* FROM TblEntradaDoacao where FkIdColaborador = "+id+" ORDER BY DataCadastroEntradoDoacao DESC ";
+
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            DoacaoEntradaModel Doacao = new DoacaoEntradaModel();
+
+            if (dr.Read())
+            {
+                Doacao.IdDoacao = Convert.ToInt32(dr["IdEntradaDoacao"]);
+                Doacao.CategoriaDoacao = (CategoriaProduto)Convert.ToInt32(dr["TipoEntradoDoacao"]);
+                Doacao.DataCadastroDoacao = dr["DataCadastroEntradoDoacao"].ToString();
+                Doacao.FKIdDoador = Convert.ToInt32(dr["FKIdDoador"]);
+                Doacao.FKIdColaborador = id;
+            }
+            return Doacao;
+        }
+
+        public override void Cadastrar(DoacaoEntradaModel objeto)
+        {
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string sql = "Insert Into TblEntradaDoacao Values ('" + (int)objeto.CategoriaDoacao + "','" + date + "','" + objeto.FKIdDoador + "','" + objeto.FKIdColaborador + "')";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+        }
 
 
+        // Não utilizados
         public override DoacaoEntradaModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
@@ -41,7 +78,6 @@ namespace ICV.WebUIMVC.Models
             }
             return Doacao;
         }
-
         public override List<DoacaoEntradaModel> Buscar()
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
@@ -68,31 +104,16 @@ namespace ICV.WebUIMVC.Models
 
             return listaObj;
         }
-
-        public override void Cadastrar(DoacaoEntradaModel objeto)
-        {
-            SqlConnection con = new SqlConnection(ConecteDb.Connect());
-            con.Open();
-
-            string sql = "Insert Into TblEntradaDoacao Values ('" + (int)objeto.CategoriaDoacao + "','" + dataAtual + "','" + objeto.FKIdDoador + "','" + objeto.FKIdColaborador + "')";
-
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.ExecuteNonQuery();
-
-            con.Close();
-        }
-
         public override void Editar(DoacaoEntradaModel objeto, int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblEntradaDoacao Set  TipoEntradaDoacao='" + (int)objeto.CategoriaDoacao + "', where IdEntradaDoacao=" + objeto.IdDoacao;
+            string sql = "Update TblEntradaDoacao Set  TipoEntradaDoacao=" + (int)objeto.CategoriaDoacao + " where IdEntradaDoacao=" + objeto.IdDoacao;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
-
         public override void Remover(int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());

@@ -9,27 +9,14 @@ namespace ICV.WebUIMVC.Models
 {
     public class DoacaoSaidaModel : DoacaoAbstract<DoacaoSaidaModel>
     {
-        // Revisado 19/11 - De acordo com o Banco
-
-      
         public int FKIdBeneficiado { get; set; }
-
-        
         public int FKIdSaidaDoacao { get; set; }
-
+        public string Colaborador { get; set; }
+        public int QuantidadeProduto { get; set; }
         public List<BeneficiadoModel> Beneficiado { get; set; }
-
         public DoacaoSaidaModel ListBeneficiado { get; set; }
-
         public List<ProdutoModel> Produto { get; set; }
 
-       
-
-        public string Colaborador { get; set; }
-
-        public int QuantidadeProduto { get; set; }
-
-        
 
         public DoacaoSaidaModel BuscarId(int id)
         {
@@ -53,6 +40,23 @@ namespace ICV.WebUIMVC.Models
             return Doacao;
         }
 
+        public override void Cadastrar(DoacaoSaidaModel objeto)
+        {
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string sql = "Insert Into TblSaidaDoacao Values (" + (int)objeto.CategoriaDoacao + ",'" + date + "'," + objeto.FKIdBeneficiado + "," + objeto.FKIdColaborador + ")";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+        }
+
+
+        // Não utilizados
         public override DoacaoSaidaModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
@@ -67,14 +71,13 @@ namespace ICV.WebUIMVC.Models
             if (dr.Read())
             {
                 Doacao.IdDoacao = Convert.ToInt32(dr["IdSaidaDoacao"]);
-                Doacao.CategoriaDoacao= (CategoriaProduto) Convert.ToInt32(dr["TipoSaidaDoacao"]);
+                Doacao.CategoriaDoacao = (CategoriaProduto)Convert.ToInt32(dr["TipoSaidaDoacao"]);
                 Doacao.DataCadastroDoacao = dr["DataCadastroSaidaDoacao"].ToString();
                 Doacao.FKIdBeneficiado = Convert.ToInt32(dr["FKIdBeneficiado"]);
                 Doacao.FKIdColaborador = Convert.ToInt32(dr["FKIdColaborador"]);
             }
             return Doacao;
         }
-
         public override List<DoacaoSaidaModel> Buscar()
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
@@ -84,7 +87,7 @@ namespace ICV.WebUIMVC.Models
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
-           
+
             List<DoacaoSaidaModel> listaObj = new List<DoacaoSaidaModel>();
 
             while (dr.Read())
@@ -101,22 +104,6 @@ namespace ICV.WebUIMVC.Models
             }
             return listaObj;
         }
-
-        public override void Cadastrar(DoacaoSaidaModel objeto)
-        {
-            SqlConnection con = new SqlConnection(ConecteDb.Connect());
-            con.Open();
-
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
-
-            string sql = "Insert Into TblSaidaDoacao Values (" + (int)objeto.CategoriaDoacao + ",'" + date + "'," + objeto.FKIdBeneficiado + "," + objeto.FKIdColaborador + ")";
-
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.ExecuteNonQuery();
-
-            con.Close();
-        }
-
         public override void Editar(DoacaoSaidaModel objeto, int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
@@ -127,7 +114,6 @@ namespace ICV.WebUIMVC.Models
             cmd.ExecuteNonQuery();
             con.Close();
         }
-
         public override void Remover(int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());

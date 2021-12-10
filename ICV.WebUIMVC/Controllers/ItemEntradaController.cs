@@ -8,27 +8,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
-    public class ItemSaidaController : Controller
+    public class ItemEntradaController : Controller
     {
-       
         public ActionResult Index()
         {
-            return View(new ItemSaidaModel().Buscar());
+            return View(new ItemEntradaModel().Buscar());
         }
-        
+       
         public ActionResult Editar(int id)
         {
-            return View(new ItemSaidaModel().Buscar(id));
+            return View(new ItemEntradaModel().Buscar(id));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, ItemSaidaModel objeto)
+        public ActionResult Editar(int id, ItemEntradaModel objeto)
         {
             try
             {
                 // Update da Tabela Item
-                new ItemSaidaModel().Editar(objeto, id);
+                new ItemEntradaModel().Editar(objeto, id);
 
                 // Atualização da Tabela Produto
                 ProdutoModel quantProduto = new ProdutoModel().Buscar(objeto.FKIdProduto);
@@ -38,21 +37,30 @@ namespace ICV.WebUIMVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                return View("Ops! Ocorreu um erro inesperado..."+ e);
+                return View("Ops! Ocorreu um erro inesperado..." + e);
             }
-            
         }
+
 
 
 
         // Não utilizado
 
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(IFormCollection collection)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
@@ -66,25 +74,14 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        public ActionResult Detalhes(int id)
-        {
-            return View();
-        }
-
-        public ActionResult Cadastrar()
-        {
-            // Não será usado pois esta junto do doação saida.
-            return View();
-        }
-   
-        public ActionResult Excluir(int id)
+        public ActionResult Delete(int id)
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Excluir(int id, IFormCollection collection)
+        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
