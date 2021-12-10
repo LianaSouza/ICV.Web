@@ -1,13 +1,14 @@
-﻿using ICV.WebApi.Entity;
+﻿using ICV.WebApi.EF.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace ICV.WebApi.Context
+namespace ICV.WebApi.EF.Context
 {
     public class ICVContext : DbContext
     {
         public DbSet<Colaborador> Colaborador { get; set; }
         public DbSet<Doador> Doador { get; set; }
-        public DbSet<EntradaDoacao> EntradaDoacao { get; set; }
+        public DbSet<Doacao> Doacao { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -18,7 +19,7 @@ namespace ICV.WebApi.Context
         {
             modelBuilder.ApplyConfiguration(new ColaboradorConfiguration());
             modelBuilder.ApplyConfiguration(new DoadorConfiguration());
-            modelBuilder.ApplyConfiguration(new EntradaDoacaoConfiguration());
+            modelBuilder.ApplyConfiguration(new DoacaoConfiguration());
         }
-    }       
+    }
 }

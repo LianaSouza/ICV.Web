@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICV.Libary", "ICV.Libary\ICV.Libary.csproj", "{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICV.WebUIMVC", "ICV.WebUIMVC\ICV.WebUIMVC.csproj", "{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ICV.WebApi", "ICV.WebApi\ICV.WebApi.csproj", "{3EFBF46B-93F7-4C26-AB45-C6C3C0CC7E34}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BAC2A86-6E4D-42CA-B445-0296BDF4CE91}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08FDB186-82D8-4AE5-A5AD-482C0E4F4E33}.Release|Any CPU.ActiveCfg = Release|Any CPU

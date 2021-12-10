@@ -1,4 +1,4 @@
-﻿using ICV.WebApi.Entity;
+﻿using ICV.WebApi.EF.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -6,17 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ICV.WebApi.Context
+namespace ICV.WebApi.EF.Context
 {
-    public class EntradaDoacaoConfiguration : IEntityTypeConfiguration<EntradaDoacao>
+    public class DoacaoConfiguration : IEntityTypeConfiguration<Doacao>
     {
-        public void Configure(EntityTypeBuilder<EntradaDoacao> builder)
+        public void Configure(EntityTypeBuilder<Doacao> builder)
         {
             builder
                 .ToTable("TblEntradaDoacao");
 
             builder
-                .HasKey(a => a.IdEntradaDoacao);
+                .HasKey(c => c.IdEntradaDoacao);
         }
     }
 }

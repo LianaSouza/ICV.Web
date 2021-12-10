@@ -1,9 +1,9 @@
-﻿using ICV.WebApi.Entity;
+﻿using ICV.WebApi.EF.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
-namespace ICV.WebApi.Context
+namespace ICV.WebApi.EF.Context
 {
     public class ColaboradorConfiguration : IEntityTypeConfiguration<Colaborador>
     {
