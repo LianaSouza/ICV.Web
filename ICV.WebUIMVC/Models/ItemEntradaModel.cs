@@ -8,7 +8,6 @@ namespace ICV.WebUIMVC.Models
 {
     public class ItemEntradaModel : ItemAbstract <ItemEntradaModel>
     {
-        //Revisado com o banco - 26/11
 
         public override ItemEntradaModel Buscar(int id)
         {
@@ -91,12 +90,14 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblEntradaItem Set  QuantidadeEntradaItem='" + objeto.QuantidadeItem + "', TipoEntradaItem='" + (int)objeto.categoriaProduto + "'   where IdEntradaItem=" + id;
+            string sql = "Update TblEntradaItem Set  QuantidadeItem=" + objeto.QuantidadeItem + "   where IdEntradaItem=" + id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();
         }
 
+
+        // Não utilizados
         public override void Remover(int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());

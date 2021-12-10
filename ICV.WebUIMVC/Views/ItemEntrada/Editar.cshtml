@@ -8,7 +8,7 @@
         <div class="card shadow p-4">
             <div class="card-body">
                 <section>
-                    <h2>Edição Item</h2>
+                    <h2>Edição Entrada Item</h2>
                     <hr />
                 </section>
                 <section class="row justify-content-center mt-3">
@@ -22,7 +22,6 @@
                                     <th scope="col">Categoria</th>
                                     <th scope="col">Codigo Doador</th>
                                     <th scope="col">Data Cadastro</th>
-                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -53,6 +52,10 @@
                     <div>
                         <form asp-action="Editar">
                             <div class="row">
+                                <div class="col-sm-3 mt-2">
+                                    <label>Código Produto</label>
+                                    <input asp-for="FKIdProduto" class="form-control " readonly />
+                                </div>
                                 <div class="col-sm-6 mt-2">
                                     <label>Quantidade</label>
                                     <input asp-for="QuantidadeItem" class="form-control" />

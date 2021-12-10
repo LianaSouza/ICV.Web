@@ -8,16 +8,15 @@ namespace ICV.WebUIMVC.Models
 {
     public class ItemSaidaModel : ItemAbstract <ItemSaidaModel>
     {
-        // Revisado 18/11 - De acordo com o Banco
 
         public override ItemSaidaModel Buscar(int id)
         {
             SqlConnection conn = new SqlConnection(ConecteDb.Connect());
             conn.Open();
 
-            string sql = @"SELECT QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao, FKIdBeneficiado  FROM TblSaidaItem
+            string sql = @"SELECT IdSaidaItem, QuantidadeSaidaItem, DataCadastroSaidaItem, FKIdProduto, NomeProduto, CategoriaProduto, FKIdSaidaDoacao, FKIdBeneficiado  FROM TblSaidaItem
                             INNER JOIN TblProduto ON  TblSaidaItem.FkIdProduto = TblProduto.IdProduto
-                            INNER JOIN TblSaidaDoacao ON TblSaidaItem.FKIdSaidaDoacao = TblSaidaDoacao.IdSaidaDoacao where TblSaidaItem .IdSaidaItem = "+ id;
+                            INNER JOIN TblSaidaDoacao ON TblSaidaItem.FKIdSaidaDoacao = TblSaidaDoacao.IdSaidaDoacao where TblSaidaItem .IdSaidaItem = " + id;
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -25,7 +24,7 @@ namespace ICV.WebUIMVC.Models
 
             if (dr.Read())
             {
-                Item.IdItem = id;
+                Item.IdItem = Convert.ToInt32(dr["IdSaidaItem"]);
                 Item.QuantidadeItem = Convert.ToInt32(dr["QuantidadeSaidaItem"]);
                 Item.DataCadastroItem = dr["DataCadastroSaidaItem"].ToString();
                 Item.FKIdProduto = Convert.ToInt32(dr["FkIdProduto"]);
@@ -96,6 +95,8 @@ namespace ICV.WebUIMVC.Models
             con.Close();
         }
 
+
+        // Não utilizados
         public override void Remover(int id)
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());

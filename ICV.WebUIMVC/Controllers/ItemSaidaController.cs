@@ -21,13 +21,28 @@ namespace ICV.WebUIMVC.Controllers
             return View(new ItemSaidaModel().Buscar(id));
         }
 
-        // POST: ItemSaida/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(int id, ItemSaidaModel objeto)
         {
-            new ItemSaidaModel().Editar(objeto, id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                // Update da Tabela Item
+                new ItemSaidaModel().Editar(objeto, id);
+
+                // Atualização da Tabela Produto
+                ProdutoModel quantProduto = new ProdutoModel().Buscar(objeto.FKIdProduto);
+                ProdutoModel produto = new ProdutoModel();
+                produto.QuantidadeProduto = quantProduto.QuantidadeProduto + objeto.QuantidadeItem;
+                produto.AtualizarQuantidade(produto, objeto.FKIdProduto);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                return View("Ops! Ocorreu um erro inesperado..."+ e);
+            }
+            
         }
 
 
@@ -51,28 +66,25 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: ItemSaida/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalhes(int id)
         {
             return View();
         }
 
-        // GET: ItemSaida/Create
         public ActionResult Cadastrar()
         {
             // Não será usado pois esta junto do doação saida.
             return View();
         }
-        // GET: ItemSaida/Delete/5
-        public ActionResult Delete(int id)
+   
+        public ActionResult Excluir(int id)
         {
             return View();
         }
 
-        // POST: ItemSaida/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Excluir(int id, IFormCollection collection)
         {
             try
             {
