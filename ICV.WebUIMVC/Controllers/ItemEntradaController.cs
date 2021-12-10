@@ -8,36 +8,57 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ICV.WebUIMVC.Controllers
 {
-    public class ItemSaidaController : Controller
+    public class ItemEntradaController : Controller
     {
-       
+     
         public ActionResult Index()
         {
-            return View(new ItemSaidaModel().Buscar());
-        }
-        
-        public ActionResult Editar(int id)
-        {
-            return View(new ItemSaidaModel().Buscar(id));
+            return View(new ItemEntradaModel().Buscar());
         }
 
-        // POST: ItemSaida/Edit/5
+       
+        public ActionResult Editar(int id)
+        {
+            return View(new ItemEntradaModel().Buscar(id));
+        }
+
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(int id, ItemSaidaModel objeto)
+        public ActionResult Editar(int id, ItemEntradaModel objeto)
         {
-            new ItemSaidaModel().Editar(objeto, id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                new ItemEntradaModel().Editar(objeto, id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
+
 
 
 
         // Não utilizado
 
+        // GET: ItemEntrada/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
 
+        // GET: ItemEntrada/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: ItemEntrada/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Cadastrar(IFormCollection collection)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
@@ -51,25 +72,13 @@ namespace ICV.WebUIMVC.Controllers
             }
         }
 
-        // GET: ItemSaida/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ItemSaida/Create
-        public ActionResult Cadastrar()
-        {
-            // Não será usado pois esta junto do doação saida.
-            return View();
-        }
-        // GET: ItemSaida/Delete/5
+        // GET: ItemEntrada/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: ItemSaida/Delete/5
+        // POST: ItemEntrada/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

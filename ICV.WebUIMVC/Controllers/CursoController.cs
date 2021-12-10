@@ -31,6 +31,10 @@ namespace ICV.WebUIMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(CursoModel curso)
         {
+
+            //return RedirectToAction(nameof(Cadastrar));
+
+
             try
             {
                 var obj = new CursoModel();
@@ -39,10 +43,11 @@ namespace ICV.WebUIMVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch 
+            catch
             {
                 return View();
             }
+
         }
 
         public ActionResult Editar(int id)

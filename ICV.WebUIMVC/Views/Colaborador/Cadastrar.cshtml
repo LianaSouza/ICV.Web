@@ -18,24 +18,29 @@
                     <form asp-action="Cadastrar">
                         <div class="row mt-3">
                             <div class="col-sm-6 mt-3">
+                                <label>Nome</label>
                                 <input asp-for="Nome" class="form-control" placeholder="Insira o nome" required />
                             </div>
 
                             <div class="col-sm-4 mt-3">
+                                <label>Email</label>
                                 <input asp-for="Email" type="email" class="form-control" placeholder="email@gmail.com" required />
                             </div>
 
                             <div class="col-sm-2 mt-3">
+                                <label>Data de Nascimento</label>
                                 <input asp-for="DataNascimentoColaborador" class="form-control" required />
 
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-sm-4 mt-3">
+                                <label>Telefone</label>
                                 <input asp-for="Telefone" type="tel" class="form-control" placeholder="(11)95140-7863" required />
                             </div>
 
                             <div class="col-sm-4 mt-3">
+                                <label>Tipo do Colaborador</label>
                                 <select asp-for="TipoColaborador" class="form-select" aria-label="Default select example">
                                     <option value="0" selected>Voluntario</option>
                                     <option value="1">Funcionario</option>
@@ -43,6 +48,7 @@
                             </div>
 
                             <div class="col-sm-4 mt-3">
+                                <label>Status</label>
                                 <select asp-for="Status" class="form-select" aria-label="Default select example">
                                     <option value="0">Ativo</option>
                                     <option value="1">Inativo</option>
@@ -51,13 +57,15 @@
                         </div>
                         <div class="row mt-3">
                             <div class="col-sm-4 mt-3">
+                                <label>RG</label>
                                 <input asp-for="DocumentoColaborador" class="form-control" placeholder="RG" required />
                             </div>
                             <div class="col-sm-4 mt-3">
+                                <label>Senha</label>
                                 <input asp-for="SenhaColaborador" type="password" class="form-control" placeholder="Insira uma senha" required />
                             </div>
-                            <div class="col-sm-4 mt-3 text-end">
-                                <a class="btn btn-secondary" /><i class="fas fa-arrow-left"></i> Retornar</a>
+                            <div class="col-sm-4 text-end" style="margin-top:40px;">
+                                <a asp-action="Index" class="btn btn-secondary" /><i class="fas fa-arrow-left"></i> Retornar</a>
                                 <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success">
                             </div>
                         </div>

@@ -3,8 +3,9 @@
 @{
 
     Layout = "~/Views/Shared/_Layout_New.cshtml";
-}
 
+}
+<title>Coruja Veículos</title>
 <style>
     #grad1 {
         height: 150px;
@@ -32,20 +33,25 @@
                     </div>
                 </div>
                 <div class="col-sm-3 mb-1">
+                    <a asp-controller="Doador" asp-action="Index">
+                        <div class="card  card-borda shadow">
 
-                    <div class="card  card-borda shadow">
-                        <div class="card-body">
-                            <i class="fas fa-users"></i><h3>Doadores</h3>
+                            <div class="card-body">
+                                <i class="fas fa-users"></i><h3>Doadores</h3>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-sm-3 mb-1">
-                    <div class="card  card-borda shadow">
-                        <div class="card-body">
-                            <i class="fas fa-hands-helping"></i><h3> Beneficiados</h3>
+                    <a asp-controller="Beneficiado" asp-action="Index">
+                        <div class="card  card-borda shadow">
+                            <div class="card-body">
+                                <i class="fas fa-hands-helping"></i><h3> Beneficiados</h3>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
+                
                 <div class="col-sm-3 mb-1">
                     <a asp-controller="Colaborador" asp-action="Index">
                         <div class="card card-borda shadow">
@@ -120,11 +126,13 @@
                     </a>
                 </div>
                 <div class="col-sm-4  mb-1">
-                    <div class="card card-borda shadow">
-                        <div class="card-body">
-                            <i class="fas fa-arrow-left"></i><h3> Saída de Doações</h3>
+                    <a asp-controller="ItemSaida" asp-action="Index">
+                        <div class="card card-borda shadow">
+                            <div class="card-body">
+                                <i class="fas fa-arrow-left"></i><h3> Saída de Doações</h3>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

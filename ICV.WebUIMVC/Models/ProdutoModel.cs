@@ -69,7 +69,7 @@ namespace ICV.WebUIMVC.Models
                 produto.NomeProduto = dr["NomeProduto"].ToString();
                 produto.CategoriaProduto = (CategoriaProduto)Convert.ToInt32(dr["CategoriaProduto"]);
                 produto.QuantidadeProduto = Convert.ToInt32(dr["QuantidadeProduto"]);
-                produto.DataCadastroProduto = dr["DataCadastroProduto "].ToString();
+                //produto.DataCadastroProduto = dr["DataCadastroProduto "].ToString();
 
             }
             return produto;
@@ -120,6 +120,17 @@ namespace ICV.WebUIMVC.Models
             con.Open();
             
             string sql = $"Update TblProduto set NomeProduto='{objeto.NomeProduto}', CategoriaProduto={(int)objeto.CategoriaProduto}, QuantidadeProduto={objeto.QuantidadeProduto} where IdProduto = {id}";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public void AtualizarQuantidade(ProdutoModel objeto, int id)
+        {
+            SqlConnection con = new SqlConnection(ConecteDb.Connect());
+            con.Open();
+
+            string sql = $"Update TblProduto set QuantidadeProduto= {objeto.QuantidadeProduto} where IdProduto = {id}";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

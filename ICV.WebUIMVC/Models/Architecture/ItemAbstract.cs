@@ -34,6 +34,7 @@ namespace ICV.WebUIMVC.Models
 
         public string NomeBeneficiado { get; set; }
 
+        public int FKIdDoador { get; set; }
 
         [Required]
         public int FKIdDoacao { get; set; }

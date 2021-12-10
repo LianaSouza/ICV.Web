@@ -23,7 +23,7 @@ namespace ICV.WebUIMVC.Models
 
         public List<ProdutoModel> Produto { get; set; }
 
-        public int FKIdProduto { get; set; }
+       
 
         public string Colaborador { get; set; }
 
@@ -122,7 +122,7 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Update TblSaidaDoacao Set  TipoSaidaDoacao='" + (int)objeto.CategoriaDoacao + "', where IdSaidaDoacao=" + objeto.IdDoacao;
+            string sql = "Update TblSaidaDoacao Set  TipoSaidaDoacao='" + (int)objeto.CategoriaDoacao + "' where IdSaidaDoacao=" + id;
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
             con.Close();

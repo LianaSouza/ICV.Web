@@ -68,14 +68,12 @@ namespace ICV.WebUIMVC.Controllers
         {
             try
             {
-                DoadorModel Doador = objeto;
-
-                Doador.Editar(objeto, id);
+                new DoadorModel().Editar(objeto, id);
 
                 return RedirectToAction(nameof(Index));
             }
 
-            catch
+            catch(Exception ex)
             {
                 return View();
             }

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ICV.WebUIMVC.Models.ItemEntradaModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_New.cshtml";
+}
+
+<section class="p-3">
+    <div class="card shadow p-4">
+        <div class="card-body">
+            <section>
+                <h2>Gerenciamento de Entrada de Doações</h2>
+                <hr />
+                <a class="btn btn-secondary" asp-action="HomePortal"><i class="fas fa-arrow-left"></i> Retornar</a>
+                <a class="btn btn-primary" asp-controller="DoacaoSaida" asp-action="Cadastrar"><i class="fas fa-plus"></i> Nova Saída</a>
+            </section>
+            <section class="row justify-content-center mt-3">
+                <div class="table-responsive rounded">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr class="text-center">
+                                <th scope="col">Codigo Doação</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">codigo Doador</th>
+                                <th scope="col">Data Cadastro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FKIdDoacao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NomeProduto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.QuantidadeItem)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.categoriaProduto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FKIdDoador)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataCadastroItem)
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdItem"><i class="fas fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
