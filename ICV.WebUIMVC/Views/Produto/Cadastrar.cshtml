@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-sm-12 mt-3 text-end">
                             <a asp-action="Index" class="btn btn-secondary mt-4" /><i class="fas fa-arrow-left"></i> Retornar</a>
-                            <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success mt-4" />
+                            <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success mt-4" data-myValue="@ViewBag.retorno"/>
                         </div>
 
                     </form>
@@ -45,5 +45,77 @@
         </div>
     </div>
 </section>
+
+<script>
+
+    var retorno = "@ViewBag.retorno";
+    console.log("Esse"+retorno);
+
+
+
+    $(document).ready(function () {
+
+            if (retorno == "Erro" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Erro ao enviar os dados, revise as informações enviadas.',
+
+                    icon: 'warning',
+
+                    iconColor: 'red',
+
+                })
+            }
+             if (retorno == "Sucesso" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Dados enviados com Sucesso!',
+
+                    icon: 'success',
+
+                    iconColor: 'green',
+
+                })
+             }
+    });
+</script>
 
 

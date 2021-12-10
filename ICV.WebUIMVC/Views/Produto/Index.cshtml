@@ -45,7 +45,7 @@
                                             @Html.DisplayFor(modelItem => item.QuantidadeProduto)
                                         </td>
                                         <td>
-                                            <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdProduto"><i class="fas fa-edit"></i></a>
+                                            <a class="text-primary" asp-action="Editar" asp-route-id="@item.IdProduto" data-myValue="@ViewBag.retorno" ><i class="fas fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 }
@@ -58,5 +58,76 @@
     </div>
 </section>
 
+<script>
+
+    var retorno = "@ViewBag.retorno";
+    console.log("Esse"+retorno);
+
+
+
+    $(document).ready(function () {
+
+            if (retorno == "Erro" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Erro ao enviar os dados, revise as informações enviadas.',
+
+                    icon: 'warning',
+
+                    iconColor: 'red',
+
+                })
+            }
+             if (retorno == "Sucesso" ) {
+                const Toast = Swal.mixin({
+
+                    toast: true,
+
+                    position: 'top',
+
+                    showConfirmButton: false,
+
+                    timer: 2000,
+
+                    didOpen: (toast) => {
+
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+
+                })
+
+                Toast.fire({
+
+                    title: 'Dados enviados com Sucesso!',
+
+                    icon: 'success',
+
+                    iconColor: 'green',
+
+                })
+             }
+    });
+</script>
 
 

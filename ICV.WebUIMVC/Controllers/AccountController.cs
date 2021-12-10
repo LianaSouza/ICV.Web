@@ -60,11 +60,6 @@ namespace ICV.WebUIMVC.Controllers
                         var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
                         return RedirectToAction ("Index", "HomePortal");
                     }
-                    ////Create the identity for the user  
-                    //var identity = new ClaimsIdentity(new[] {
-                    //new Claim(ClaimTypes.Name, email),
-                    //new Claim(ClaimTypes.Role, "Admin")
-                    //}, CookieAuthenticationDefaults.AuthenticationScheme);
                 }
                 else
                 {
