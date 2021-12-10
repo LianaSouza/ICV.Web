@@ -15,7 +15,7 @@ namespace ICV.WebUIMVC.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Login
+        
         public ActionResult Login()
         {
             return View();

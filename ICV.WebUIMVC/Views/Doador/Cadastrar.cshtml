@@ -21,22 +21,22 @@
                         <div class="row justify-content-center">
                             <div class="col-sm-4 mt-2">
                                 <label>Nome do Doador</label>
-                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do doador" required />
+                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do doador"  required />
                             </div>
                             <div class="col-sm-4 mt-2">
                                 <label>CPF</label>
-                                <input asp-for="DocumentoDoador" class="form-control" placeholder="Insira o CPF do doador" required />
+                                <input asp-for="DocumentoDoador" class="form-control" placeholder="Insira o CPF do doador" type="number" required />
                             </div>
                             <div class="col-sm-4 mt-2">
                                 <label>Telefone</label>
-                                <input asp-for="Telefone" class="form-control" placeholder="Insira seu telefone" required />
+                                <input asp-for="Telefone" class="form-control" placeholder="Insira seu telefone" type="tel" required />
                             </div>
                         </div>
 
                         <div class="row justify-content-center">
                             <div class="col-sm-4 mt-2">
                                 <label>Email do Doador</label>
-                                <input asp-for="Email" class="form-control" placeholder="example@gmail.com" required />
+                                <input asp-for="Email" class="form-control" placeholder="example@gmail.com" type="email" required />
                             </div>
                             <div class="col-sm-4 mt-2">
                                 <label>Status</label>
