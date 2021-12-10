@@ -5,12 +5,18 @@
 
 
 }
+
+
+
+
+
 <head>
     <title>Coruja Veículos | Login</title>
     <link rel="shortcut icon" type="imagex/png" href="~/img/Logocoruja.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.2.0/sweetalert2.min.js"  integrity="sha512-BbhEY8ZvF5TicBw3nIPE5QA4tgPjQ8C3fIiY9c4UBSaRBmvFcY/qOD3FIBa30oBRbN6h/+KjzEMHGqI9tnbSIg=="  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.2.0/sweetalert2.css"  integrity="sha512-LRp+qODOA0wpSaltREOgP39Xpy8tfQwNgdCfzjgvRyzUg2qSsB5N/b4lag3eP5e0CfUIBYdg6iKlSJfNZVUHeQ=="  crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script  src="https://cdn.jsdelivr.net/combine/npm/sweetalert2@11.2.0,npm/sweetalert2@11.2.0/dist/sweetalert2.min.js,npm/sweetalert2@11.2.0/dist/sweetalert2.js,npm/sweetalert2@11.2.0/dist/sweetalert2.all.js">
@@ -24,12 +30,23 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.2.0/dist/sweetalert2.all.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.2.0/dist/sweetalert2.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
 </head>
+
+<style>
+    @@media screen and (min-width:480px) {
+        .card-login {
+            width: 750px;
+            height: 850px;
+        }
+    }
+
+</style>
 <body style="background-color: lightgray">
 
     <main style="margin-top: 90px">
-        <center>
-            <div class="col-sm-4">
+        <center class="screen-pc">
+            <div class="card-login">
                 <div class="card shadow" style="border-radius: 20px;">
                     <div class="card-body">
                         <div class="text-center">
@@ -54,7 +71,7 @@
                             </div>
 
                             <div class="form-group" style="text-align:center; padding-top: 10px">
-                                <br/>
+                                <br />
                                 <input id="btnLogin" type="submit" value="Acessar" class="btn btn-primary btn-block rounded-pill" data-myValue="@ViewBag.retorno" />
                             </div>
                         </form>
@@ -62,63 +79,6 @@
                     </div>
                 </div>
             </div>
-
-
-            <!--
-    <div class="container-fluid">
-        <div class="p-5">
-            <div class="card p-5 shadow" style="margin-top:55px">
-                <div>
-                    <div class="card-body">
-                        <div>
-                            <div class="row">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-4 text-center retira-responsivo">
-                                    <div>
-                                        <div>
-                                            <img src="~/img/Logocoruja2.png" class="img-fluid rounded" style="margin-top: 5px">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-4" style="margin-top:35px;">
-                                    <div>
-                                        <div id="titulo" class="text-start" style="margin-top: 15px">
-
-                                            <h3><b>Faça seu Login</b></h3>
-                                        </div>
-                                        <hr />
-                                        <div class="p-2">
-                                            <form asp-action="Login" class="align-center">
-                                                <div class="form-group">
-                                                    <label for="InputEmail" class="form-label">Email</label>
-                                                    <input asp-for="Email" type="email"  class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputEmail" placeholder="" required>
-                                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="InputPassword" class="form-label">Senha</label>
-                                                    <input asp-for="Senha" type="password"  class="form-control d-sm-inline-flex p-2 bd-highlight rounded-pill" id="InputPassword" placeholder="" required />
-                                                    <span asp-validation-for="Senha" class="text-danger"></span>
-                                                </div>
-
-                                                <div class="form-group" style="text-align:center; padding-top: 10px">
-                                                    <input id="btnLogin" type="submit" value="Acessar" style="width: 100%" class="btn btn-primary rounded-pill" data-myValue="@ViewBag.retorno" />
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-2">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
         </center>
     </main>
 
