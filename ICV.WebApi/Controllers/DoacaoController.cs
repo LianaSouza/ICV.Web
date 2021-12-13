@@ -7,14 +7,15 @@ using ICV.WebApi.EF.Entity;
 using ICV.WebApi.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace ICV.WebApi.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowSpecificOrigin")]
     [ApiController]
     public class DoacaoController : ControllerBase
     {
-        // GET: api/Doacao
         [HttpGet]
         public List<int?> Get()
         {

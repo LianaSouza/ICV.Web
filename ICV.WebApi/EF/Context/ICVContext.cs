@@ -8,7 +8,7 @@ namespace ICV.WebApi.EF.Context
         public DbSet<Colaborador> Colaborador { get; set; }
         public DbSet<Doador> Doador { get; set; }
         public DbSet<Doacao> Doacao { get; set; }
-
+        //public DbSet<Beneficiado> Beneficiado { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
