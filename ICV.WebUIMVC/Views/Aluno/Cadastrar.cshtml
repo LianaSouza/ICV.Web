@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_Layout_New.cshtml";
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.5/jquery.mask.min.js"></script>
+
+<script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+
 <section>
     <div class="p-3">
         <div class="card shadow p-4">
@@ -18,17 +26,17 @@
                         <div class="row">
                             <div class="col-sm-6 mt-3">
                                 <label>Nome</label>
-                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do aluno..." required />
+                                <input asp-for="Nome" id="nome" class="form-control" placeholder="Insira o nome do aluno..." required />
                             </div>
 
                             <div class="col-sm-4 mt-3">
                                 <label>CPF</label>
-                                <input asp-for="CpfAluno" class="form-control" placeholder="xxx.xxx.xxx-xx" type="number" required />
+                                <input asp-for="CpfAluno" id="cpf" class="form-control" placeholder="000.000.000.00" type="number" required />
                             </div>
 
                             <div class="col-sm-2 mt-3">
                                 <label>Data Nascimento</label>
-                                <input asp-for="DataNascimentoAluno"  class="form-control" placeholder="xx/xx/xxxx" type="date" required />
+                                <input asp-for="DataNascimentoAluno" id="dataNascimento" class="form-control" placeholder="xx/xx/xxxx" type="date" required />
                             </div>
                         </div>
                         <div class="row">
@@ -39,7 +47,7 @@
 
                             <div class="col-sm-4 mt-3">
                                 <label>Telefone</label>
-                                <input asp-for="Telefone" class="form-control" placeholder="(xx)xxxxx-xxxx" type="tel" required />
+                                <input asp-for="Telefone" id="celular" class="form-control" placeholder="(DD)00000-0000" type="tel" required />
                             </div>
 
                             <div class="col-sm-4 mt-3">
@@ -72,6 +80,35 @@
     </div>
 </section>
 
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+<script>
+
+    /* Mascaras */
+
+
+    /*Mascara para o Nome*/
+
+    $("#nome").on("input", function () {
+        var regexp = /[^a-zA-Z]/g;
+        if (this.value.match(regexp)) {
+            $(this).val(this.value.replace(regexp, ''));
+        }
+    });
+
+    /*Mascara para o CPF*/
+    $("cpf, #cpf").mask("000.000.000-00");
+
+
+    /*Data de nascimento
+  $('.dataNascimento').mask('00/00/0000');*/
+
+    /*Mascara para celular*/
+    $("#telefone, #celular").mask("(00) 00000-0000");
+
+</script>
