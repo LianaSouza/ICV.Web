@@ -128,7 +128,7 @@ namespace ICV.WebUIMVC.Models
 
             string dataNascimento = Convert.ToString(objeto.DataNascimentoBeneficiado);
             string dataAtual = DateTime.Now.ToString("yyyy-MM-dd");
-            string sql = "Insert Into TblBeneficiado Values ('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + Convert.ToDateTime(objeto.DataNascimentoBeneficiado) + "','" + objeto.Telefone + "','" + objeto.Email  + "','" + (int)objeto.Status + "','" + objeto.QuantidadeDependentes + "', '" + objeto.RendaMensalBeneficiado + "', '"+ DateTime.Now + "','" + objeto.FKIdColaborador + "')";
+            string sql = "Insert Into TblBeneficiado Values ('" + objeto.Nome + "','" + objeto.CpfBeneficiado + "','" + dataNascimento + "','" + objeto.Telefone + "','" + objeto.Email  + "'," + (int)objeto.Status + "," + objeto.QuantidadeDependentes + ", " + objeto.RendaMensalBeneficiado + ", '"+ dataAtual + "'," + objeto.FKIdColaborador + ")";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();

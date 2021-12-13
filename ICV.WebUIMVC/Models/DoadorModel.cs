@@ -22,7 +22,7 @@ namespace ICV.WebUIMVC.Models
 
         public string ObservacaoDoador { get; set; }
 
-        string dataAtual = DateTime.Now.ToString();
+        
 
         public List<DoadorModel> BuscarDoador()
         {
@@ -115,6 +115,8 @@ namespace ICV.WebUIMVC.Models
         {
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
+
+            string dataAtual = DateTime.Now.ToString("yyyy-MM-dd");
 
             string sql = "Insert Into TblDoador Values ('" + objeto.Nome + "','" + objeto.DocumentoDoador + "','" + objeto.Telefone + "','" + objeto.Email + "','" + (int)objeto.Status + "','" + (int)objeto.AnonimoDoador + "','" + objeto.ObservacaoDoador + "','" + dataAtual + "', '" + objeto.FKIdColaborador+ "')";
 
