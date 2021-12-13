@@ -43,12 +43,12 @@
                         <div class="row justify-content-center">
                             <div class="col-sm-4 mt-2">
                                 <label>Nome do Produto</label>
-                                <input asp-for="NomeProduto" class="form-control" />
+                                <input asp-for="NomeProduto" class="form-control" required />
                             </div>
 
                             <div class="col-sm-4 mt-2">
                                 <label class="control-label">Categoria</label>
-                                <select asp-for="CategoriaProduto" class="form-select">
+                                <select asp-for="CategoriaProduto" class="form-select" required>
                                     <option value="1" selected>Alimento</option>
                                     <option value="2">Roupa</option>
                                     <option value="3">Brinquedo</option>
@@ -57,7 +57,7 @@
 
                             <div class="col-sm-4 mt-2">
                                 <label asp-for="QuantidadeProduto" class="control-label"></label>
-                                <input asp-for="QuantidadeProduto" class="form-control" />
+                                <input asp-for="QuantidadeProduto" class="form-control" required/>
                             </div>
                         </div>
                      
