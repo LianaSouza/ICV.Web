@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-sm-4 mt-3">
                                 <label>Telefone</label>
-                                <input asp-for="Telefone" type="tel" class="form-control" placeholder="(11)95140-7863" required />
+                                <input asp-for="Telefone"  type="tel" id="celular"  class="form-control" placeholder="(11)95140-7863" required />
                             </div>
 
                             <div class="col-sm-4 mt-3">
@@ -57,8 +57,8 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-4 mt-3">
-                                <label>RG</label>
-                                <input asp-for="DocumentoColaborador" class="form-control" placeholder="RG" required />
+                                <label>CPF</label>
+                                <input asp-for="DocumentoColaborador" class="form-control" placeholder="CPF" type="number" required />
                             </div>
                             <div class="col-sm-4 mt-3">
                                 <label>Senha</label>
@@ -75,3 +75,9 @@
         </div>
     </div>
 </section>
+
+<script>
+
+    $("#telefone, #celular").mask("(00) 00000-0000");
+
+</script>
