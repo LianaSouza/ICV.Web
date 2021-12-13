@@ -16,21 +16,19 @@ namespace ICV.WebApi.Controllers
     {
         // GET: api/Doacao
         [HttpGet]
-        public int? Get()
+        public List<int?> Get()
         {
             return new RequestDoacao().Get();
         }
 
         [HttpPost]
-        public List<int> Get(RequestDoacao request)
+        public List<int?> Get(RequestDoacao request)
         {
-            if (request.RequestDate == null)
+            if (string.IsNullOrEmpty(request.RequestDate))
                 return null;
 
-            if (request.RequestType != 1)
-                return null;
-
-            return new RequestDoacao().Get(request);
+            return new RequestDoacao().GetYear(request.RequestDate);
         }
+
     }
 }

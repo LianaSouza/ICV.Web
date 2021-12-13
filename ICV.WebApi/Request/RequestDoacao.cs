@@ -11,34 +11,16 @@ namespace ICV.WebApi.Request
         public int RequestType { get; set; }
         public string RequestDate { get; set; }
 
-        public int? Get()
+        public List<int?> Get()
         {
             try
             {
-                using (var context = new ICVContext())
-                {
-                    var query = context.Doacao
-                        .Count();
-
-                    return query;
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public List<int> Get(RequestDoacao request)
-        {
-            try
-            {
-                var values = new List<int>();
+                var values = new List<int?>();
 
                 using (var context = new ICVContext())
                 {
                     var query = context.Doacao
-                        .Where(a => a.DataCadastroEntradaDoacao.Contains(request.RequestDate));
+                        .Where(a => a.DataCadastroEntradoDoacao.Contains("2021"));
 
                     values.Add(query.Count(a => a.TipoEntradaDoacao == 1));
                     values.Add(query.Count(a => a.TipoEntradaDoacao == 2));
@@ -47,10 +29,27 @@ namespace ICV.WebApi.Request
 
                 return values;
             }
-            catch
+            catch(Exception ex)
             {
                 return null;
             }
+        }
+
+        public List<int?> GetYear(string year)
+        {
+            var doacoesList = new List<int?>();
+
+            using (var context = new ICVContext())
+            {
+                var query = context.Doacao
+                    .Where(a => a.DataCadastroEntradoDoacao.Contains("01/01/2021"));
+
+                doacoesList.Add(query.Count());
+            }
+
+
+
+            return doacoesList;
         }
     }
 }

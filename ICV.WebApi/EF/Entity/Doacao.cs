@@ -11,6 +11,6 @@ namespace ICV.WebApi.EF.Entity
 
         public int TipoEntradaDoacao { get; set; }
 
-        public string DataCadastroEntradaDoacao { get; set; }
+        public string DataCadastroEntradoDoacao { get; set; }
     }
 }
