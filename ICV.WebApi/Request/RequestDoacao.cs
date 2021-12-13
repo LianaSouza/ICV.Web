@@ -20,7 +20,7 @@ namespace ICV.WebApi.Request
                 using (var context = new ICVContext())
                 {
                     var query = context.Doacao
-                        .Where(a => a.DataCadastroEntradoDoacao.Contains("2021"));
+                        .Where(a => a.DataCadastroEntradaDoacao.Contains("2021"));
 
                     values.Add(query.Count(a => a.TipoEntradaDoacao == 1));
                     values.Add(query.Count(a => a.TipoEntradaDoacao == 2));
@@ -42,12 +42,10 @@ namespace ICV.WebApi.Request
             using (var context = new ICVContext())
             {
                 var query = context.Doacao
-                    .Where(a => a.DataCadastroEntradoDoacao.Contains("01/01/2021"));
+                    .Where(a => a.DataCadastroEntradaDoacao.Contains("01/01/2021"));
 
                 doacoesList.Add(query.Count());
             }
-
-
 
             return doacoesList;
         }
