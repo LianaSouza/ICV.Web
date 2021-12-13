@@ -42,6 +42,7 @@
                         <div class="row">
                             <div class="col-sm-4 mt-3">
                                 <label>Email</label>
+                                <label style="color:red ; font-size:small">*Não utilizar e-mails cadastrados anteriormente</label>
                                 <input asp-for="Email" class="form-control" placeholder="example@gmail.com" type="email" required />
                             </div>
 
@@ -52,7 +53,7 @@
 
                             <div class="col-sm-4 mt-3">
                                 <label>Status</label>
-                                <select asp-for="Status" class="form-select">
+                                <select asp-for="Status" class="form-select" required>
                                     <option value="1" selected>Ativo</option>
                                     <option value="0">Inativo</option>
                                 </select>

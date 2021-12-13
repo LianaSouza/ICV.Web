@@ -6,6 +6,8 @@
 }
 
 
+
+
 <section>
     <div class="p-3">
         <div class="card shadow p-4">
@@ -19,56 +21,73 @@
                         <div class="row justify-content-center">
                             <div class="col-sm-4 mt-2">
                                 <label>Nome do Doador</label>
-                                <input asp-for="Nome" id="nome" class="form-control" placeholder="Insira o nome do doador" required />
+                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do doador"  required />
                             </div>
                             <div class="col-sm-4 mt-2">
                                 <label>CPF</label>
-                                <input asp-for="DocumentoDoador" id="cpf" class="form-control" placeholder="Insira o CPF do doador" required />
+                                <input asp-for="DocumentoDoador" class="form-control" placeholder="Insira o CPF do doador" type="number" required />
                             </div>
                             <div class="col-sm-4 mt-2">
                                 <label>Telefone</label>
-                                <input asp-for="Telefone" id="celular" class="form-control" placeholder="Insira seu telefone" required />
+                                <input asp-for="Telefone" class="form-control" placeholder="Insira seu telefone" type="tel" required />
                             </div>
                         </div>
 
                         <div class="row justify-content-center">
+
                             <div class="col-sm-4 mt-2">
                                 <label>Email do Doador</label>
+                                
                                 <input asp-for="Email" class="form-control" placeholder="example@gmail.com" type="email" required />
                             </div>
+
                             <div class="col-sm-4 mt-2">
                                 <label>Status</label>
-                                <select asp-for="Status" class="form-select">
+                                <select asp-for="Status" class="form-select" required>
                                     <option value="1" selected>Ativo</option>
                                     <option value="0">Inativo</option>
                                 </select>
                             </div>
+
                             <div class="col-sm-4 mt-2">
                                 <label>Doador anônimo</label>
-                                <select asp-for="AnonimoDoador" class="form-select">
+                                <select asp-for="AnonimoDoador" class="form-select" required>
                                     <option value="1" selected>Verdadeiro</option>
                                     <option value="2">Falso</option>
                                 </select>
 
                             </div>
+
                         </div>
+
                         <div class="row justify-content-center">
+
                             <div class="col-sm-8 mt-2">
                                 <label>Observações</label>
-                                <textarea asp-for="ObservacaoDoador" class="form-control" rows="3" required>Insira a observações...</textarea>
+                                <textarea asp-for="ObservacaoDoador" class="form-control" rows="3"  required>Insira a observações...</textarea>
                             </div>
+
                             <div class="col-sm-4">
+
                                 <div class="mt-4 text-end">
                                     <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
                                     <input asp-action="Cadastrar" type="submit" value="Cadastrar" class="btn btn-success" />
                                 </div>
-                            </div>
+
+                            </div> 
+                            
                         </div>
+
                     </form>
+
                 </section>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 
@@ -76,27 +95,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-<script>
-
-    /* Mascaras */
-
-
-    /*Mascara para o Nome*/
-
-    $("#nome").on("input", function () {
-        var regexp = /[^a-zA-Z]/g;
-        if (this.value.match(regexp)) {
-            $(this).val(this.value.replace(regexp, ''));
-        }
-    });
-
-    /*Mascara para o CPF*/
-    $("cpf, #cpf").mask("000.000.000-00");
-
-
-    /*Mascara para celular*/
-    $("#telefone, #celular").mask("(00) 00000-0000");
-
-
-</script>
