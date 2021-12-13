@@ -77,12 +77,12 @@
                         <div class="row justify-content-center">
                             <div class="col-sm-4 mt-2">
                                 <label>Nome do beneficiado</label>
-                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome do beneficiado..." required />
+                                <input asp-for="Nome" id="nome" class="form-control" placeholder="Insira o nome do beneficiado..." required />
                             </div>
 
                             <div class="col-sm-4 mt-2">
                                 <label>CPF</label>
-                                <input asp-for="CpfBeneficiado" class="form-control" placeholder="000.000.000-00" required />
+                                <input asp-for="CpfBeneficiado" id="cpf" class="form-control" placeholder="000.000.000-00" required />
                             </div>
 
                             <div class="col-sm-4 mt-2">
@@ -94,23 +94,23 @@
 
                             <div class="col-sm-4 mt-2">
                                 <label>Telefone</label>
-                                <input asp-for="Telefone" class="form-control" placeholder="(00) 00000-0000" required />
+                                <input asp-for="Telefone" id="celular" class="form-control" placeholder="(00) 00000-0000" required />
                             </div>
 
                             <div class="col-sm-4 mt-2">
                                 <label>Nascimento</label>
-                                <input asp-for="DataNascimentoBeneficiado" class="form-control" required />
+                                <input asp-for="DataNascimentoBeneficiado" id="dataNascimento" class="form-control" required />
                             </div>
 
                             <div class="col-sm-4 mt-2">
                                 <label>Quantidade de Dependentes</label>
-                                <input asp-for="QuantidadeDependentes" class="form-control" placeholder="Ex: 3" required />
+                                <input asp-for="QuantidadeDependentes" id="QuantidadeDependentes" class="form-control" placeholder="Ex: 3" required />
                             </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-sm-4 mt-2">
                                 <label>Renda Mensal</label>
-                                <input asp-for="RendaMensalBeneficiado" class="form-control" placeholder="R$ = 0000" required />
+                                <input asp-for="RendaMensalBeneficiado" id="RendaMensalBeneficiado" class="form-control" placeholder="R$ = 0000" required />
                             </div>
                             <div class="col-sm-4 mt-2">
                                 <label>Status</label>
@@ -118,7 +118,7 @@
                                     <option value="1" selected>Ativo</option>
                                     <option value="0">Inativo</option>
                                 </select>
-                            </div> 
+                            </div>
 
                             <div class="col-sm-4 text-end" style="margin-top: 37.5px">
                                 <a class="btn btn-secondary" asp-action="Index"><i class="fas fa-arrow-left"></i> Retornar</a>
@@ -133,6 +133,39 @@
     </div>
 
 </section>
+
+
+<script>
+
+    /* Mascaras */
+
+
+    /*Mascara para o Nome*/
+
+    $("#nome").on("input", function () {
+        var regexp = /[^a-zA-Z]/g;
+        if (this.value.match(regexp)) {
+            $(this).val(this.value.replace(regexp, ''));
+        }
+    });
+
+    /*Mascara para o CPF*/
+    $("cpf, #cpf").mask("000.000.000-00");
+
+    /*Data de nascimento
+  $('.dataNascimento').mask('00/00/0000');*/
+
+    /*Mascara para celular*/
+    $("#telefone, #celular").mask("(00) 00000-0000");
+
+
+    /*Mascara RendaMensalBeneficiado*/
+    $('.RendaMensalBeneficiado').mask('#.##0,00', { reverse: true });
+
+    /*Masca Quantidade do produto*/
+    ('.QuantidadeDependentes').mask('0000');
+
+</script>
 
 
 

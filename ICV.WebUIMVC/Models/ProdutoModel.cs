@@ -24,7 +24,7 @@ namespace ICV.WebUIMVC.Models
 
         public string DataCadastroProduto { get; set; }
 
-        string dataAtual = DateTime.Now.ToString();
+        
 
         public List<ProdutoModel> BuscarProdutoSelect()
         {
@@ -106,7 +106,9 @@ namespace ICV.WebUIMVC.Models
             SqlConnection con = new SqlConnection(ConecteDb.Connect());
             con.Open();
 
-            string sql = "Insert Into TblProduto Values ('" + objeto.NomeProduto + "','" + (int)objeto.CategoriaProduto + "','" + objeto.QuantidadeProduto + "','" + dataAtual + "')";
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            string sql = "Insert Into TblProduto Values ('" + objeto.NomeProduto + "'," + (int)objeto.CategoriaProduto + "," + objeto.QuantidadeProduto + ",'" + date + "')";
 
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.ExecuteNonQuery();
