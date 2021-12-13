@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ICV.WebApi.Entity
+namespace ICV.WebApi.EF.Entity
 {
     public class Colaborador
     {

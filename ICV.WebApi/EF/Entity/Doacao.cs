@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ICV.WebApi.Entity
+namespace ICV.WebApi.EF.Entity
 {
-    public class EntradaDoacao
+    public class Doacao
     {
         public int IdEntradaDoacao { get; set; }
 
-        public int TipoEntradoDoacao { get; set; }
+        public int TipoEntradaDoacao { get; set; }
 
         public string DataCadastroEntradoDoacao { get; set; }
-
-        public int FKIdDoador { get; set; }
-
-        public int FkIdColaborador { get; set; }
-
     }
 }
