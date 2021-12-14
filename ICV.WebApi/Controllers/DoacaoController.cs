@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Cors;
 namespace ICV.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [EnableCors("AllowSpecificOrigin")]
     [ApiController]
     public class DoacaoController : ControllerBase
     {
