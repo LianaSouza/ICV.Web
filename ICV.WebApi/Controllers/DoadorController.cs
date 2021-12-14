@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using ICV.WebApi.EF.Context;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System;
 
 namespace ICV.WebApi.Controllers
 {
@@ -26,7 +25,7 @@ namespace ICV.WebApi.Controllers
                     return query;
                 }
             }
-            catch
+            catch 
             {
                 return null;
             }

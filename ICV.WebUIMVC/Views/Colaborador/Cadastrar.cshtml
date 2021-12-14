@@ -27,7 +27,7 @@
 
                             <div class="col-sm-6 mt-3">
                                 <label>Nome</label>
-                                <input asp-for="Nome" class="form-control" placeholder="Insira o nome" required />
+                                <input asp-for="Nome" id="nome" class="form-control" placeholder="Insira o nome" required />
                             </div>
 
                             <div class="col-sm-4 mt-3">
@@ -48,7 +48,7 @@
 
                             <div class="col-sm-4 mt-3">
                                 <label>Telefone</label>
-                                <input asp-for="Telefone"  type="tel" id="celular"  class="form-control" placeholder="(11)95140-7863" required />
+                                <input asp-for="Telefone" id="celular" class="form-control" placeholder="(11)95140-7863" required />
                             </div>
 
                             <div class="col-sm-4 mt-3">
@@ -72,7 +72,7 @@
 
                             <div class="col-sm-4 mt-3">
                                 <label>CPF</label>
-                                <input asp-for="DocumentoColaborador" class="form-control" placeholder="CPF" type="number" required />
+                                <input asp-for="DocumentoColaborador" id="cpf" class="form-control" placeholder="CPF" required />
                             </div>
                             <div class="col-sm-4 mt-3">
                                 <label>Senha</label>
@@ -90,8 +90,28 @@
     </div>
 </section>
 
+
+
 <script>
 
+    /* Mascaras */
+
+
+    /*Mascara para o Nome*/
+
+    $("#nome").on("input", function () {
+        var regexp = /[^a-zA-Z]/g;
+        if (this.value.match(regexp)) {
+            $(this).val(this.value.replace(regexp, ''));
+        }
+    });
+
+    /*Mascara para o CPF*/
+    $("cpf, #cpf").mask("000.000.000-00");
+
+
+    /*Mascara para celular*/
     $("#telefone, #celular").mask("(00) 00000-0000");
+
 
 </script>

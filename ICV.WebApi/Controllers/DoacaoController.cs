@@ -7,6 +7,7 @@ using ICV.WebApi.EF.Entity;
 using ICV.WebApi.Request;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace ICV.WebApi.Controllers
 {
@@ -14,7 +15,6 @@ namespace ICV.WebApi.Controllers
     [ApiController]
     public class DoacaoController : ControllerBase
     {
-        // GET: api/Doacao
         [HttpGet]
         public List<int?> Get()
         {

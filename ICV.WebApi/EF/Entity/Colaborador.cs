@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ICV.WebApi.EF.Entity
 {
     public class Colaborador
     {
+        [Key]
         public int IdColaborador { get; set; }
 
         public string NomeColaborador { get; set; }
